@@ -3,46 +3,67 @@ import Observation
 import SwiftData
 
 /// The only type that touches SwiftData. Everything else sees plain values.
-/// Slice 1 runs a single implicit profile; the profile picker arrives in slice 3.
+/// Every read/write is scoped to `activeProfile`; nothing works until the
+/// profile picker selects one (siblings share the iPad, not their progress).
 @Observable
 @MainActor
 final class ProgressStore {
     private let context: ModelContext
-    private(set) var activeProfile: KidProfile
+    private(set) var profiles: [KidProfile] = []
+    private(set) var activeProfile: KidProfile?
 
     init(container: ModelContainer) {
         self.context = container.mainContext
-        let existing = (try? context.fetch(FetchDescriptor<KidProfile>(
-            sortBy: [SortDescriptor(\.createdAt)]
-        ))) ?? []
-        if let first = existing.first {
-            activeProfile = first
-        } else {
-            let profile = KidProfile(name: "Explorer", avatarId: "🦊")
-            context.insert(profile)
-            try? context.save()
-            activeProfile = profile
-        }
+        reloadProfiles()
     }
 
-    var totalXP: Int { activeProfile.xp }
+    // MARK: - Profiles
+
+    func reloadProfiles() {
+        profiles = (try? context.fetch(FetchDescriptor<KidProfile>(
+            sortBy: [SortDescriptor(\.createdAt)]
+        ))) ?? []
+    }
+
+    @discardableResult
+    func createProfile(name: String, avatarId: String) -> KidProfile {
+        let trimmed = name.trimmingCharacters(in: .whitespaces)
+        let profile = KidProfile(name: trimmed.isEmpty ? "Explorer" : trimmed, avatarId: avatarId)
+        context.insert(profile)
+        try? context.save()
+        reloadProfiles()
+        activeProfile = profile
+        return profile
+    }
+
+    func select(_ profile: KidProfile) {
+        activeProfile = profile
+    }
+
+    /// Back to the picker (e.g. handing the iPad to a sibling).
+    func deselectProfile() {
+        activeProfile = nil
+    }
+
+    var totalXP: Int { activeProfile?.xp ?? 0 }
 
     func hasCompleted(lessonId: String) -> Bool {
-        activeProfile.completions.contains { $0.lessonId == lessonId }
+        activeProfile?.completions.contains { $0.lessonId == lessonId } ?? false
     }
 
     /// Records a finished lesson, updates skill mastery, returns the XP awarded.
     @discardableResult
     func recordCompletion(lesson: Lesson, firstTryAccuracy: Double) -> Int {
+        guard let profile = activeProfile else { return 0 }
         let xp = GameEconomy.xpForLesson(baseReward: lesson.xpReward, firstTryAccuracy: firstTryAccuracy)
         let completion = LessonCompletion(
             lessonId: lesson.id,
             firstTryAccuracy: firstTryAccuracy,
             xpEarned: xp
         )
-        completion.profile = activeProfile
+        completion.profile = profile
         context.insert(completion)
-        activeProfile.xp += xp
+        profile.xp += xp
         updateMastery(skillId: lesson.primarySkillId, sessionAccuracy: firstTryAccuracy)
         try? context.save()
         return xp
@@ -51,20 +72,22 @@ final class ProgressStore {
     // MARK: - Placement
 
     func subjectProgress(for subjectId: String) -> SubjectProgress? {
+        guard let profile = activeProfile else { return nil }
         let all = (try? context.fetch(FetchDescriptor<SubjectProgress>())) ?? []
-        return all.first { $0.subjectId == subjectId && $0.profile === activeProfile }
+        return all.first { $0.subjectId == subjectId && $0.profile === profile }
     }
 
     /// Records placement, seeds assumed mastery for skills below the band,
     /// and pays the completion XP. Returns the XP awarded.
     @discardableResult
     func recordPlacement(pack: SubjectPack, bandNumber: Int) -> Int {
+        guard let profile = activeProfile else { return 0 }
         if let existing = subjectProgress(for: pack.subjectId) {
             existing.placementBandNumber = bandNumber
             existing.placementAt = Date()
         } else {
             let progress = SubjectProgress(subjectId: pack.subjectId, placementBandNumber: bandNumber)
-            progress.profile = activeProfile
+            progress.profile = profile
             context.insert(progress)
         }
 
@@ -72,12 +95,12 @@ final class ProgressStore {
         for skill in pack.skills where (bandNumberById[skill.bandId] ?? 99) < bandNumber {
             if mastery(skillId: skill.id) == nil {
                 let record = SkillMastery(skillId: skill.id, mastery: TuningConstants.assumedMasteryBelowPlacement)
-                record.profile = activeProfile
+                record.profile = profile
                 context.insert(record)
             }
         }
 
-        activeProfile.xp += GameEconomy.placementCompletionXP
+        profile.xp += GameEconomy.placementCompletionXP
         try? context.save()
         return GameEconomy.placementCompletionXP
     }
@@ -85,18 +108,21 @@ final class ProgressStore {
     // MARK: - Mastery
 
     func mastery(skillId: String) -> SkillMastery? {
+        guard let profile = activeProfile else { return nil }
         let all = (try? context.fetch(FetchDescriptor<SkillMastery>())) ?? []
-        return all.first { $0.skillId == skillId && $0.profile === activeProfile }
+        return all.first { $0.skillId == skillId && $0.profile === profile }
     }
 
     var masteriesBySkill: [String: Double] {
+        guard let profile = activeProfile else { return [:] }
         let all = (try? context.fetch(FetchDescriptor<SkillMastery>())) ?? []
         return Dictionary(
-            uniqueKeysWithValues: all.filter { $0.profile === activeProfile }.map { ($0.skillId, $0.mastery) }
+            uniqueKeysWithValues: all.filter { $0.profile === profile }.map { ($0.skillId, $0.mastery) }
         )
     }
 
     private func updateMastery(skillId: String, sessionAccuracy: Double) {
+        guard let profile = activeProfile else { return }
         if let record = mastery(skillId: skillId) {
             record.mastery = ProgressEngine.updatedMastery(old: record.mastery, sessionAccuracy: sessionAccuracy)
             record.lastPracticedAt = Date()
@@ -105,7 +131,7 @@ final class ProgressStore {
                 skillId: skillId,
                 mastery: ProgressEngine.updatedMastery(old: nil, sessionAccuracy: sessionAccuracy)
             )
-            record.profile = activeProfile
+            record.profile = profile
             context.insert(record)
         }
     }
@@ -116,23 +142,23 @@ final class ProgressStore {
     @discardableResult
     func completeUnitViaChallenge(unitId: String, subjectId: String) -> Int {
         // The subject's progress row must exist (placement happens first).
-        guard let progress = subjectProgress(for: subjectId) else { return 0 }
+        guard let profile = activeProfile, let progress = subjectProgress(for: subjectId) else { return 0 }
         if !progress.completedUnitIds.contains(unitId) {
             progress.completedUnitIds.append(unitId)
         }
-        activeProfile.xp += GameEconomy.challengePassXP
+        profile.xp += GameEconomy.challengePassXP
         try? context.save()
         return GameEconomy.challengePassXP
     }
 
     var completedLessonIds: Set<String> {
-        Set(activeProfile.completions.map { $0.lessonId })
+        Set((activeProfile?.completions ?? []).map { $0.lessonId })
     }
 
     /// First-try accuracies of recent completions for this subject's lessons,
     /// oldest → newest, for the review/challenge adjusters.
     func recentAccuracies(lessonIdsInSubject: Set<String>, limit: Int = 5) -> [Double] {
-        activeProfile.completions
+        (activeProfile?.completions ?? [])
             .filter { lessonIdsInSubject.contains($0.lessonId) }
             .sorted { $0.completedAt < $1.completedAt }
             .suffix(limit)

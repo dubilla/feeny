@@ -31,7 +31,7 @@ struct FeenyApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SkillMapView()
+            RootView()
                 .environment(contentStore)
                 .environment(syncService)
                 .environment(progressStore)

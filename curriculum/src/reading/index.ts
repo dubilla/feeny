@@ -1,0 +1,78 @@
+import type { SubjectSeed } from "../schema/pack";
+// Band 1 — Letter Lagoon
+import { abcAdventure } from "./band1/unit-abc-adventure";
+import { letterParade } from "./band1/unit-letter-parade";
+import { littleLetters } from "./band1/unit-little-letters";
+// Band 2 — Sound Springs
+import { soundSafari } from "./band2/unit-sound-safari";
+import { firstSounds } from "./band2/unit-first-sounds";
+import { soundMatchUp } from "./band2/unit-sound-match-up";
+// Band 3 — Word Woods
+import { wordBuilders } from "./band3/unit-word-builders";
+import { rhymeTime } from "./band3/unit-rhyme-time";
+import { wordFamilies } from "./band3/unit-word-families";
+// Band 4 — Sentence Sky
+import { sightWordStars } from "./band4/unit-sight-word-stars";
+import { sentenceBuilders } from "./band4/unit-sentence-builders";
+import { questionQuest } from "./band4/unit-question-quest";
+// Band 5 — Story Stream
+import { digraphDive } from "./band5/unit-digraph-dive";
+import { storyTime } from "./band5/unit-story-time";
+import { wordDetective } from "./band5/unit-word-detective";
+
+/**
+ * Reading subject seed. Audio-first by design: bands 1–3 serve kids who
+ * cannot read yet, so the spoken prompt is always the primary stimulus.
+ */
+export const readingSeed: SubjectSeed = {
+  id: "reading",
+  title: "Reading",
+  sortOrder: 2,
+  bands: [
+    { id: "reading-b1", bandNumber: 1, title: "Letter Lagoon", description: "Knowing the letters" },
+    { id: "reading-b2", bandNumber: 2, title: "Sound Springs", description: "Letter sounds" },
+    { id: "reading-b3", bandNumber: 3, title: "Word Woods", description: "Building and reading small words" },
+    { id: "reading-b4", bandNumber: 4, title: "Sentence Sky", description: "Sight words and simple sentences" },
+    { id: "reading-b5", bandNumber: 5, title: "Story Stream", description: "Sound teams and little stories" },
+    { id: "reading-b6", bandNumber: 6, title: "Fluency Falls", description: "Reading smoothly, vocabulary" },
+    { id: "reading-b7", bandNumber: 7, title: "Meaning Mountain", description: "Paragraph comprehension" },
+    { id: "reading-b8", bandNumber: 8, title: "Inference Isle", description: "Reading between the lines" },
+  ],
+  skills: [
+    { id: "read-letters-upper", bandId: "reading-b1", title: "Big letters" },
+    { id: "read-letters-lower", bandId: "reading-b1", title: "Little letters" },
+    { id: "read-letter-sounds", bandId: "reading-b2", title: "Letter sounds" },
+    { id: "read-first-sounds", bandId: "reading-b2", title: "First sounds in words" },
+    { id: "read-cvc", bandId: "reading-b3", title: "Small words" },
+    { id: "read-rhymes", bandId: "reading-b3", title: "Rhymes" },
+    { id: "read-sight-words", bandId: "reading-b4", title: "Sight words" },
+    { id: "read-sentences", bandId: "reading-b4", title: "Sentences" },
+    { id: "read-digraphs", bandId: "reading-b5", title: "Sound teams" },
+    { id: "read-passages", bandId: "reading-b5", title: "Little stories" },
+  ],
+  units: [
+    abcAdventure,
+    letterParade,
+    littleLetters,
+    soundSafari,
+    firstSounds,
+    soundMatchUp,
+    wordBuilders,
+    rhymeTime,
+    wordFamilies,
+    sightWordStars,
+    sentenceBuilders,
+    questionQuest,
+    digraphDive,
+    storyTime,
+    wordDetective,
+  ],
+  // 3 single-tap probes per band (listen / MC / fill-blank), mid-unit lessons.
+  placementProbes: [
+    { bandNumber: 1, exerciseIds: ["read-e-abc-2-02", "read-e-letters2-2-03", "read-e-lower-2-04"] },
+    { bandNumber: 2, exerciseIds: ["read-e-sounds-2-02", "read-e-firstsounds-2-04", "read-e-soundmatch-2-03"] },
+    { bandNumber: 3, exerciseIds: ["read-e-cvc-2-03", "read-e-rhymes-2-02", "read-e-families-2-01"] },
+    { bandNumber: 4, exerciseIds: ["read-e-sight-2-04", "read-e-sentences-2-05", "read-e-questions-2-01"] },
+    { bandNumber: 5, exerciseIds: ["read-e-digraphs-2-01", "read-e-stories-2-04", "read-e-detective-2-03"] },
+  ],
+};

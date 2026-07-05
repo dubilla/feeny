@@ -1,11 +1,14 @@
 import SwiftUI
 
-/// The Duolingo-style path: bands top-to-bottom, unit nodes winding down the
-/// screen. Home screen for math in slice 2 (SubjectHome arrives in slice 3).
+/// The Duolingo-style path for one subject: bands top-to-bottom, unit nodes
+/// winding down the screen. Reached from SubjectHomeView.
 struct SkillMapView: View {
+    let subjectId: String
+
     @Environment(ContentStore.self) private var contentStore
     @Environment(ContentSyncService.self) private var syncService
     @Environment(ProgressStore.self) private var progressStore
+    @Environment(\.dismiss) private var dismiss
 
     @State private var activeLesson: LessonLaunch?
     @State private var selectedUnit: LearningUnit?
@@ -18,7 +21,7 @@ struct SkillMapView: View {
         var id: String { lesson.id }
     }
 
-    private var pack: SubjectPack? { contentStore.pack(for: "math") }
+    private var pack: SubjectPack? { contentStore.pack(for: subjectId) }
 
     var body: some View {
         ZStack {
@@ -159,15 +162,22 @@ struct SkillMapView: View {
     }
 
     private var header: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Feeny")
-                    .font(Theme.title(44))
-                    .foregroundStyle(Theme.accent)
-                Text("Hi \(progressStore.activeProfile.name)! \(progressStore.activeProfile.avatarId)")
-                    .font(Theme.body(22))
-                    .foregroundStyle(Theme.ink.opacity(0.7))
+        HStack(spacing: 18) {
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "chevron.left")
+                    .font(.system(size: 26, weight: .bold))
+                    .foregroundStyle(Theme.ink.opacity(0.55))
+                    .frame(width: 72, height: 72)
+                    .background(Circle().fill(Theme.card))
             }
+            .buttonStyle(SquishyButtonStyle())
+            .accessibilityIdentifier("back-to-subjects")
+
+            Text(subjectId == "math" ? "Math" : subjectId == "reading" ? "Reading" : subjectId.capitalized)
+                .font(Theme.title(44))
+                .foregroundStyle(Theme.accent)
             Spacer()
             VStack(spacing: 2) {
                 Text("Level \(GameEconomy.level(forXP: progressStore.totalXP))")

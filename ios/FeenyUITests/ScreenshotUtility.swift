@@ -3,22 +3,31 @@ import XCTest
 /// Dev utility, not a real test: captures screens to /tmp for visual review.
 /// Run via: xcodebuild test -only-testing:FeenyUITests/ScreenshotUtility
 final class ScreenshotUtility: XCTestCase {
+    private func snap(_ name: String) throws {
+        try XCUIScreen.main.screenshot().pngRepresentation
+            .write(to: URL(fileURLWithPath: "/tmp/feeny-\(name).png"))
+    }
+
     func testCaptureScreens() throws {
         let app = XCUIApplication()
         app.launch()
         sleep(4)
+        try snap("1-first")
 
-        // Whatever is up first (placement intro on fresh state, else the map).
-        try XCUIScreen.main.screenshot().pngRepresentation
-            .write(to: URL(fileURLWithPath: "/tmp/feeny-1-first.png"))
-
-        // If the map is showing, open the current unit's sheet too.
-        let currentNode = app.buttons["unit-node-current"]
-        if currentNode.waitForExistence(timeout: 5) {
-            currentNode.tap()
+        // Picker → first profile → subject home.
+        let profileCard = app.buttons.matching(identifier: "profile-card").firstMatch
+        if profileCard.waitForExistence(timeout: 5) {
+            profileCard.tap()
             sleep(2)
-            try XCUIScreen.main.screenshot().pngRepresentation
-                .write(to: URL(fileURLWithPath: "/tmp/feeny-2-unit-sheet.png"))
+            try snap("2-subject-home")
+        }
+
+        // Math map (placement may appear instead — capture whatever shows).
+        let mathCard = app.buttons["subject-card-math"]
+        if mathCard.waitForExistence(timeout: 5) {
+            mathCard.tap()
+            sleep(3)
+            try snap("3-math-map")
         }
     }
 }
