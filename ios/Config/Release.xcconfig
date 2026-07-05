@@ -1,0 +1,2 @@
+// Release: production content origin (set when the backend deploys in slice 5).
+API_BASE_URL = https:/$()/feeny-content.invalid

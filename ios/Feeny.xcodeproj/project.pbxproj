@@ -1,0 +1,712 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		056D0CAC4737C097D3D088D9 /* ContentSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733A3B7723780A13FB194B4 /* ContentSyncService.swift */; };
+		262849F7FB82B2BC05546DB1 /* CountObjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582257CA3E26285CB9505ACA /* CountObjectsView.swift */; };
+		49CEF40B6117C4F1E174F157 /* ContentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79664069712EDF6BCDD37F60 /* ContentStore.swift */; };
+		545521B857C5B15D4D025934 /* MultipleChoiceImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDA1AF5976E84EE13C73BC9 /* MultipleChoiceImageView.swift */; };
+		58BD3727EB2E3FAA04F602BA /* ProgressModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA1A323E2053709B39DB864 /* ProgressModels.swift */; };
+		6201C6384BA29BC26BA4A1CF /* ExercisePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C6C5413C4CFD9AA9EA9467 /* ExercisePayload.swift */; };
+		660D31652C733AB8CB790254 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A772BDA3521503CDDC8610F7 /* Theme.swift */; };
+		74E06A794BED449939F6C2A4 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE78CFC89460F6A04142663F /* SpeechService.swift */; };
+		75B03D58482C034088DD1D6F /* LessonSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0153B1EAE911FD1F0C64DBFF /* LessonSessionTests.swift */; };
+		7E28CEF584A5F07567ED3359 /* LessonPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCB2999A1896D6F1351FE7F /* LessonPlayerView.swift */; };
+		8EC3055F0AE302A0C1BB969D /* LessonSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9662A2C2F93EBE337BDF0C6C /* LessonSession.swift */; };
+		9F8DE4589B68D77DDD8D278D /* FeenyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054076F0E8E5DE0643E4353 /* FeenyApp.swift */; };
+		AB4BFC506E8A59E81520CCFE /* ExerciseDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18E0785CA5CDBEC4BC6B8F4 /* ExerciseDecodingTests.swift */; };
+		C5F73AAFB0CBB5F560205BB2 /* GameEconomy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E861A5C2429B09FBB2DF9246 /* GameEconomy.swift */; };
+		CB82882BCEEA6AC52E80114C /* fixtures in Resources */ = {isa = PBXBuildFile; fileRef = 1F1B9F2E21CFAE33853D3D79 /* fixtures */; };
+		DE43D19FC15376FC3AECFD31 /* ContentModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E371BDACC64188690A17BD4 /* ContentModels.swift */; };
+		E5890221BCF5806E5E58FF2A /* ScreenshotUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC50FE79C87E0FA79DB22C08 /* ScreenshotUtility.swift */; };
+		E5EFA17790121A47C78034D1 /* LessonCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D1B665954AEF2EB1C24368 /* LessonCompleteView.swift */; };
+		EAE95B1FE9B398433C41091C /* PlayLessonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22721A8B67AF49BC53AC8AC3 /* PlayLessonUITests.swift */; };
+		F47625450C731B26E8A1256C /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B0CFB9D183E8A86803EFE6 /* Confetti.swift */; };
+		FD3C202215AF2B808D2ECC73 /* LessonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635DFACFC6EDBB746787D247 /* LessonListView.swift */; };
+		FD521CA67DB8378DA63CBEF9 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0BC4CF68DF6D9BB933A1A8 /* APIClient.swift */; };
+		FFE2D9A33C574AF53A675376 /* ProgressStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DC412DF452EAF193077F51 /* ProgressStore.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		63A38C4638A66B682FB8012D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 040ABF57AE0E73EE037ED83B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 336EB5BD0CA8F23325BFD094;
+			remoteInfo = Feeny;
+		};
+		7E7018E50313563F7B00827E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 040ABF57AE0E73EE037ED83B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 336EB5BD0CA8F23325BFD094;
+			remoteInfo = Feeny;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0054076F0E8E5DE0643E4353 /* FeenyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeenyApp.swift; sourceTree = "<group>"; };
+		0153B1EAE911FD1F0C64DBFF /* LessonSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonSessionTests.swift; sourceTree = "<group>"; };
+		0733A3B7723780A13FB194B4 /* ContentSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSyncService.swift; sourceTree = "<group>"; };
+		1F1B9F2E21CFAE33853D3D79 /* fixtures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fixtures; path = ../curriculum/fixtures; sourceTree = SOURCE_ROOT; };
+		22721A8B67AF49BC53AC8AC3 /* PlayLessonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLessonUITests.swift; sourceTree = "<group>"; };
+		3406CE5CD104F2C9788D74F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		54DC412DF452EAF193077F51 /* ProgressStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressStore.swift; sourceTree = "<group>"; };
+		559AA38D0C8ADB6E9A1FBF38 /* FeenyUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = FeenyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		582257CA3E26285CB9505ACA /* CountObjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountObjectsView.swift; sourceTree = "<group>"; };
+		5F3F02CB482A0B2EECDC119B /* FeenyTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = FeenyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		635DFACFC6EDBB746787D247 /* LessonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonListView.swift; sourceTree = "<group>"; };
+		6E371BDACC64188690A17BD4 /* ContentModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModels.swift; sourceTree = "<group>"; };
+		6EA1A323E2053709B39DB864 /* ProgressModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressModels.swift; sourceTree = "<group>"; };
+		79664069712EDF6BCDD37F60 /* ContentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStore.swift; sourceTree = "<group>"; };
+		7D0BC4CF68DF6D9BB933A1A8 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		82D1B665954AEF2EB1C24368 /* LessonCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCompleteView.swift; sourceTree = "<group>"; };
+		8C6ED1113D5793B8FA7EC1EB /* Feeny.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Feeny.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DDA1AF5976E84EE13C73BC9 /* MultipleChoiceImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceImageView.swift; sourceTree = "<group>"; };
+		94F799AA34488CD8F9FF8DAF /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		9662A2C2F93EBE337BDF0C6C /* LessonSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonSession.swift; sourceTree = "<group>"; };
+		A772BDA3521503CDDC8610F7 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		B18E0785CA5CDBEC4BC6B8F4 /* ExerciseDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDecodingTests.swift; sourceTree = "<group>"; };
+		B8B0CFB9D183E8A86803EFE6 /* Confetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Confetti.swift; sourceTree = "<group>"; };
+		BC50FE79C87E0FA79DB22C08 /* ScreenshotUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotUtility.swift; sourceTree = "<group>"; };
+		BE78CFC89460F6A04142663F /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
+		C0C6C5413C4CFD9AA9EA9467 /* ExercisePayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePayload.swift; sourceTree = "<group>"; };
+		DDF2F5EAEC8889C5F20C5C96 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		E861A5C2429B09FBB2DF9246 /* GameEconomy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEconomy.swift; sourceTree = "<group>"; };
+		ECCB2999A1896D6F1351FE7F /* LessonPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlayerView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1425FC4F5A555A89023DDA83 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4F2EE9D74330D5A3CB858DFB /* Audio */,
+				E25D8046D21869AE478FBAB1 /* Content */,
+				CB9DBCE3B20A00558BA0ADBF /* Game */,
+				16781D1F1289DECA04154245 /* Progress */,
+				D375EEF1C72FB4D6D18A8995 /* UI */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		16781D1F1289DECA04154245 /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				6EA1A323E2053709B39DB864 /* ProgressModels.swift */,
+				54DC412DF452EAF193077F51 /* ProgressStore.swift */,
+			);
+			path = Progress;
+			sourceTree = "<group>";
+		};
+		1A23242E2542046F73EE3FBA /* FeenyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				22721A8B67AF49BC53AC8AC3 /* PlayLessonUITests.swift */,
+				BC50FE79C87E0FA79DB22C08 /* ScreenshotUtility.swift */,
+			);
+			path = FeenyUITests;
+			sourceTree = "<group>";
+		};
+		1B385E264286FFE2C5EE307C /* feeny */ = {
+			isa = PBXGroup;
+			children = (
+				48EFD582961C9D51F6C78460 /* curriculum */,
+			);
+			name = feeny;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		1FBE1ECC24C1373426CB7A4A /* Feeny */ = {
+			isa = PBXGroup;
+			children = (
+				3406CE5CD104F2C9788D74F4 /* Info.plist */,
+				5BE2E72F465764A277ED48DE /* App */,
+				1425FC4F5A555A89023DDA83 /* Core */,
+				3018F57206010E5D572BD828 /* Features */,
+			);
+			path = Feeny;
+			sourceTree = "<group>";
+		};
+		3018F57206010E5D572BD828 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				DD12651592DAA5F037F90328 /* LessonList */,
+				821A1BCC453AB56541CBABFE /* LessonPlayer */,
+				D722565806404EFBACC081AD /* Rewards */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		319814E2A467FE4AC04F6DF0 = {
+			isa = PBXGroup;
+			children = (
+				FA1B7B2CDFB32414E001FC4D /* Config */,
+				1FBE1ECC24C1373426CB7A4A /* Feeny */,
+				1B385E264286FFE2C5EE307C /* feeny */,
+				502265D75DBCBC3E5F181701 /* FeenyTests */,
+				1A23242E2542046F73EE3FBA /* FeenyUITests */,
+				A627D565DAF70B7121CEC57C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4057C60DD1997092D486B456 /* Exercises */ = {
+			isa = PBXGroup;
+			children = (
+				582257CA3E26285CB9505ACA /* CountObjectsView.swift */,
+				8DDA1AF5976E84EE13C73BC9 /* MultipleChoiceImageView.swift */,
+			);
+			path = Exercises;
+			sourceTree = "<group>";
+		};
+		48EFD582961C9D51F6C78460 /* curriculum */ = {
+			isa = PBXGroup;
+			children = (
+				1F1B9F2E21CFAE33853D3D79 /* fixtures */,
+			);
+			path = curriculum;
+			sourceTree = "<group>";
+		};
+		4F2EE9D74330D5A3CB858DFB /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				BE78CFC89460F6A04142663F /* SpeechService.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		502265D75DBCBC3E5F181701 /* FeenyTests */ = {
+			isa = PBXGroup;
+			children = (
+				B18E0785CA5CDBEC4BC6B8F4 /* ExerciseDecodingTests.swift */,
+				0153B1EAE911FD1F0C64DBFF /* LessonSessionTests.swift */,
+			);
+			path = FeenyTests;
+			sourceTree = "<group>";
+		};
+		5BE2E72F465764A277ED48DE /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0054076F0E8E5DE0643E4353 /* FeenyApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		821A1BCC453AB56541CBABFE /* LessonPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				ECCB2999A1896D6F1351FE7F /* LessonPlayerView.swift */,
+				9662A2C2F93EBE337BDF0C6C /* LessonSession.swift */,
+				4057C60DD1997092D486B456 /* Exercises */,
+			);
+			path = LessonPlayer;
+			sourceTree = "<group>";
+		};
+		A627D565DAF70B7121CEC57C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8C6ED1113D5793B8FA7EC1EB /* Feeny.app */,
+				5F3F02CB482A0B2EECDC119B /* FeenyTests.xctest */,
+				559AA38D0C8ADB6E9A1FBF38 /* FeenyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CB9DBCE3B20A00558BA0ADBF /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				E861A5C2429B09FBB2DF9246 /* GameEconomy.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		D375EEF1C72FB4D6D18A8995 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B8B0CFB9D183E8A86803EFE6 /* Confetti.swift */,
+				A772BDA3521503CDDC8610F7 /* Theme.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		D722565806404EFBACC081AD /* Rewards */ = {
+			isa = PBXGroup;
+			children = (
+				82D1B665954AEF2EB1C24368 /* LessonCompleteView.swift */,
+			);
+			path = Rewards;
+			sourceTree = "<group>";
+		};
+		DD12651592DAA5F037F90328 /* LessonList */ = {
+			isa = PBXGroup;
+			children = (
+				635DFACFC6EDBB746787D247 /* LessonListView.swift */,
+			);
+			path = LessonList;
+			sourceTree = "<group>";
+		};
+		E25D8046D21869AE478FBAB1 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				7D0BC4CF68DF6D9BB933A1A8 /* APIClient.swift */,
+				6E371BDACC64188690A17BD4 /* ContentModels.swift */,
+				79664069712EDF6BCDD37F60 /* ContentStore.swift */,
+				0733A3B7723780A13FB194B4 /* ContentSyncService.swift */,
+				C0C6C5413C4CFD9AA9EA9467 /* ExercisePayload.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		FA1B7B2CDFB32414E001FC4D /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				94F799AA34488CD8F9FF8DAF /* Debug.xcconfig */,
+				DDF2F5EAEC8889C5F20C5C96 /* Release.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		336EB5BD0CA8F23325BFD094 /* Feeny */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A995CD4D2D18F5D4ED70B8C /* Build configuration list for PBXNativeTarget "Feeny" */;
+			buildPhases = (
+				8E4AFB023D16FDD666E6BF82 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Feeny;
+			packageProductDependencies = (
+			);
+			productName = Feeny;
+			productReference = 8C6ED1113D5793B8FA7EC1EB /* Feeny.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4EF64883C853F471380516F5 /* FeenyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 737B8CF1B99C7BB85F65A022 /* Build configuration list for PBXNativeTarget "FeenyUITests" */;
+			buildPhases = (
+				1E535E1A788A53D9BA68FA92 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				752E509D70B4B2764A811235 /* PBXTargetDependency */,
+			);
+			name = FeenyUITests;
+			packageProductDependencies = (
+			);
+			productName = FeenyUITests;
+			productReference = 559AA38D0C8ADB6E9A1FBF38 /* FeenyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		D162012F15560A455D2DF07A /* FeenyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B149FA830DCFDF1C1B6001F4 /* Build configuration list for PBXNativeTarget "FeenyTests" */;
+			buildPhases = (
+				D2EF9A824CD7C830A691482B /* Sources */,
+				DABD355462A70C720FCC7336 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4052C8CFDF0842C4DFC45EA7 /* PBXTargetDependency */,
+			);
+			name = FeenyTests;
+			packageProductDependencies = (
+			);
+			productName = FeenyTests;
+			productReference = 5F3F02CB482A0B2EECDC119B /* FeenyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		040ABF57AE0E73EE037ED83B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					336EB5BD0CA8F23325BFD094 = {
+						ProvisioningStyle = Automatic;
+					};
+					4EF64883C853F471380516F5 = {
+						TestTargetID = 336EB5BD0CA8F23325BFD094;
+					};
+				};
+			};
+			buildConfigurationList = 355D4FFF07E29EB9135D2556 /* Build configuration list for PBXProject "Feeny" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 319814E2A467FE4AC04F6DF0;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				336EB5BD0CA8F23325BFD094 /* Feeny */,
+				D162012F15560A455D2DF07A /* FeenyTests */,
+				4EF64883C853F471380516F5 /* FeenyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DABD355462A70C720FCC7336 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB82882BCEEA6AC52E80114C /* fixtures in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1E535E1A788A53D9BA68FA92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAE95B1FE9B398433C41091C /* PlayLessonUITests.swift in Sources */,
+				E5890221BCF5806E5E58FF2A /* ScreenshotUtility.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E4AFB023D16FDD666E6BF82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD521CA67DB8378DA63CBEF9 /* APIClient.swift in Sources */,
+				F47625450C731B26E8A1256C /* Confetti.swift in Sources */,
+				DE43D19FC15376FC3AECFD31 /* ContentModels.swift in Sources */,
+				49CEF40B6117C4F1E174F157 /* ContentStore.swift in Sources */,
+				056D0CAC4737C097D3D088D9 /* ContentSyncService.swift in Sources */,
+				262849F7FB82B2BC05546DB1 /* CountObjectsView.swift in Sources */,
+				6201C6384BA29BC26BA4A1CF /* ExercisePayload.swift in Sources */,
+				9F8DE4589B68D77DDD8D278D /* FeenyApp.swift in Sources */,
+				C5F73AAFB0CBB5F560205BB2 /* GameEconomy.swift in Sources */,
+				E5EFA17790121A47C78034D1 /* LessonCompleteView.swift in Sources */,
+				FD3C202215AF2B808D2ECC73 /* LessonListView.swift in Sources */,
+				7E28CEF584A5F07567ED3359 /* LessonPlayerView.swift in Sources */,
+				8EC3055F0AE302A0C1BB969D /* LessonSession.swift in Sources */,
+				545521B857C5B15D4D025934 /* MultipleChoiceImageView.swift in Sources */,
+				58BD3727EB2E3FAA04F602BA /* ProgressModels.swift in Sources */,
+				FFE2D9A33C574AF53A675376 /* ProgressStore.swift in Sources */,
+				74E06A794BED449939F6C2A4 /* SpeechService.swift in Sources */,
+				660D31652C733AB8CB790254 /* Theme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2EF9A824CD7C830A691482B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB4BFC506E8A59E81520CCFE /* ExerciseDecodingTests.swift in Sources */,
+				75B03D58482C034088DD1D6F /* LessonSessionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4052C8CFDF0842C4DFC45EA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 336EB5BD0CA8F23325BFD094 /* Feeny */;
+			targetProxy = 7E7018E50313563F7B00827E /* PBXContainerItemProxy */;
+		};
+		752E509D70B4B2764A811235 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 336EB5BD0CA8F23325BFD094 /* Feeny */;
+			targetProxy = 63A38C4638A66B682FB8012D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0D6D6324A69345FFCF737F00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Feeny/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.danubilla.Feeny;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		52EE48A942E0D7039C6196D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.danubilla.FeenyTests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Feeny.app/Feeny";
+			};
+			name = Debug;
+		};
+		5894A31FAE8E3CFC0D123414 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Feeny/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.danubilla.Feeny;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		73EC69A71951E99B1586580F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94F799AA34488CD8F9FF8DAF /* Debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AD6D3BDEFF06237A2CD629EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.danubilla.FeenyTests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Feeny.app/Feeny";
+			};
+			name = Release;
+		};
+		C07357E5ED692EE9E894B1F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.danubilla.FeenyUITests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Feeny;
+			};
+			name = Release;
+		};
+		CDB926D9A35F559D0E75C6BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDF2F5EAEC8889C5F20C5C96 /* Release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		FEDDBFC19835CAD815A065BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.danubilla.FeenyUITests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Feeny;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		355D4FFF07E29EB9135D2556 /* Build configuration list for PBXProject "Feeny" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				73EC69A71951E99B1586580F /* Debug */,
+				CDB926D9A35F559D0E75C6BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		3A995CD4D2D18F5D4ED70B8C /* Build configuration list for PBXNativeTarget "Feeny" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D6D6324A69345FFCF737F00 /* Debug */,
+				5894A31FAE8E3CFC0D123414 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		737B8CF1B99C7BB85F65A022 /* Build configuration list for PBXNativeTarget "FeenyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FEDDBFC19835CAD815A065BB /* Debug */,
+				C07357E5ED692EE9E894B1F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B149FA830DCFDF1C1B6001F4 /* Build configuration list for PBXNativeTarget "FeenyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52EE48A942E0D7039C6196D6 /* Debug */,
+				AD6D3BDEFF06237A2CD629EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 040ABF57AE0E73EE037ED83B /* Project object */;
+}

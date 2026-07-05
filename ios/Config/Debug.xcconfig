@@ -1,0 +1,3 @@
+// Debug: talk to the local Next.js backend. // is a comment in xcconfig,
+// so the URL is split with an empty substitution.
+API_BASE_URL = http:/$()/localhost:3100
