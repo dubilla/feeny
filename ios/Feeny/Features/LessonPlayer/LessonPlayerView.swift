@@ -3,15 +3,36 @@ import SwiftUI
 /// Full-screen lesson experience: progress bar, spoken prompt, one exercise
 /// at a time, feedback, then the completion celebration.
 struct LessonPlayerView: View {
+    /// Challenge = the jump-ahead quiz: pass marks the whole unit complete,
+    /// fail is a cheerful no-op (no XP, nothing recorded).
+    enum Mode: Equatable {
+        case normal
+        case challenge(unitId: String, subjectId: String)
+    }
+
     @State private var session: LessonSession
+    private let mode: Mode
     @Environment(SpeechService.self) private var speech
     @Environment(ProgressStore.self) private var progressStore
     @Environment(\.dismiss) private var dismiss
 
     @State private var xpAwarded: Int?
+    @State private var completionRecorded = false
 
-    init(lesson: Lesson) {
+    init(lesson: Lesson, mode: Mode = .normal) {
         _session = State(initialValue: LessonSession(lesson: lesson))
+        self.mode = mode
+    }
+
+    private var challengePassed: Bool {
+        session.firstTryAccuracy >= TuningConstants.challengePassAccuracy
+    }
+
+    private var completionTitle: String {
+        switch mode {
+        case .normal: "You did it!"
+        case .challenge: challengePassed ? "Challenge champion!" : "So close!"
+        }
     }
 
     var body: some View {
@@ -20,6 +41,7 @@ struct LessonPlayerView: View {
 
             if case .complete = session.phase {
                 LessonCompleteView(
+                    title: completionTitle,
                     accuracy: session.firstTryAccuracy,
                     xpAwarded: xpAwarded ?? 0
                 ) {
@@ -92,6 +114,14 @@ struct LessonPlayerView: View {
             MultipleChoiceImageView(payload: payload, revealAnswer: revealAnswer) { session.submit(correct: $0) }
         case .countObjects(let payload):
             CountObjectsView(payload: payload, revealAnswer: revealAnswer) { session.submit(correct: $0) }
+        case .tapMatchPairs(let payload):
+            TapMatchPairsView(payload: payload, revealAnswer: revealAnswer) { session.submit(correct: $0) }
+        case .listenAndPick(let payload):
+            ListenAndPickView(payload: payload, revealAnswer: revealAnswer) { session.submit(correct: $0) }
+        case .ordering(let payload):
+            OrderingView(payload: payload, revealAnswer: revealAnswer) { session.submit(correct: $0) }
+        case .fillBlankWordBank(let payload):
+            FillBlankWordBankView(payload: payload, revealAnswer: revealAnswer) { session.submit(correct: $0) }
         case .unsupported:
             // playableExercises filters these out; defensive fallback only.
             Color.clear.onAppear { session.submit(correct: true) }
@@ -176,11 +206,18 @@ struct LessonPlayerView: View {
             }
         case .complete:
             speech.stop()
-            if xpAwarded == nil {
+            guard !completionRecorded else { break }
+            completionRecorded = true
+            switch mode {
+            case .normal:
                 xpAwarded = progressStore.recordCompletion(
                     lesson: session.lesson,
                     firstTryAccuracy: session.firstTryAccuracy
                 )
+            case .challenge(let unitId, let subjectId):
+                xpAwarded = challengePassed
+                    ? progressStore.completeUnitViaChallenge(unitId: unitId, subjectId: subjectId)
+                    : 0
             }
         case .answering:
             break

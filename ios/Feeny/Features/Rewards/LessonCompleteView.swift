@@ -2,6 +2,7 @@ import SwiftUI
 
 /// The end-of-lesson ceremony: confetti, stars by accuracy, XP count-up.
 struct LessonCompleteView: View {
+    var title: String = "You did it!"
     let accuracy: Double
     let xpAwarded: Int
     let onDone: () -> Void
@@ -21,7 +22,7 @@ struct LessonCompleteView: View {
     var body: some View {
         ZStack {
             VStack(spacing: 36) {
-                Text("You did it!")
+                Text(title)
                     .font(Theme.title(52))
                     .foregroundStyle(Theme.ink)
 
@@ -56,7 +57,7 @@ struct LessonCompleteView: View {
             ConfettiView()
         }
         .onAppear {
-            speech.speak("You did it! Great work!")
+            speech.speak(title == "You did it!" ? "You did it! Great work!" : title)
             starsShown = starCount
             Task {
                 // Count the XP up in steps — the number ticking is the fun part.

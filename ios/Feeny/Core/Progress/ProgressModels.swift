@@ -22,6 +22,40 @@ final class KidProfile {
     }
 }
 
+/// Per-subject position: set once by placement, extended by challenge skips.
+@Model
+final class SubjectProgress {
+    var subjectId: String
+    var placementBandNumber: Int
+    var placementAt: Date
+    /// Units completed wholesale via jump-ahead challenges (lesson-by-lesson
+    /// completion lives in LessonCompletion).
+    var completedUnitIds: [String]
+    var profile: KidProfile?
+
+    init(subjectId: String, placementBandNumber: Int) {
+        self.subjectId = subjectId
+        self.placementBandNumber = placementBandNumber
+        self.placementAt = Date()
+        self.completedUnitIds = []
+    }
+}
+
+/// Mastery ledger, one row per (profile, skill). EMA updated after each lesson.
+@Model
+final class SkillMastery {
+    var skillId: String
+    var mastery: Double
+    var lastPracticedAt: Date
+    var profile: KidProfile?
+
+    init(skillId: String, mastery: Double) {
+        self.skillId = skillId
+        self.mastery = mastery
+        self.lastPracticedAt = Date()
+    }
+}
+
 @Model
 final class LessonCompletion {
     var lessonId: String

@@ -25,12 +25,14 @@ An exercise on the wire:
 
 ## Exercise types (v1)
 
-| type | interaction |
-|---|---|
-| `multipleChoiceImage` | tap 1 of 2–4 large cards (visual and/or label) |
-| `countObjects` | scene of `count` × `object`, answer via `choices` number row |
-
-Slice 2 adds: `tapMatchPairs`, `listenAndPick`, `ordering`, `fillBlankWordBank`.
+| type | interaction | notes |
+|---|---|---|
+| `multipleChoiceImage` | tap 1 of 2–4 large cards (visual and/or label) | the workhorse |
+| `countObjects` | scene of `count` × `object`, answer via `choices` number row | `count` ≤ 20 |
+| `tapMatchPairs` | tap a left tile, then its right partner | 2–3 pairs; correct = zero mismatches |
+| `listenAndPick` | audio-only stimulus, tap 1 of 2–4 cards | `spokenText` required; no giveaway text |
+| `ordering` | tap tiles in sequence to fill slots | 3–5 items; correct = zero wrong taps |
+| `fillBlankWordBank` | tap a chip to fill the single `___` blank | template has exactly one `___` |
 
 ## Difficulty bands
 

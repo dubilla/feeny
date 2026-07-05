@@ -1,0 +1,36 @@
+{
+  "id": "math-e-count5-1-06",
+  "type": "tapMatchPairs",
+  "payload": {
+    "prompt": {
+      "text": "Match!",
+      "spokenText": "Count the ladybugs in each group, then tap the group and its matching number!"
+    },
+    "pairs": [
+      {
+        "id": "p1",
+        "left": {
+          "visual": {
+            "kind": "emoji",
+            "value": "🐞"
+          }
+        },
+        "right": {
+          "label": "1"
+        }
+      },
+      {
+        "id": "p2",
+        "left": {
+          "visual": {
+            "kind": "emoji",
+            "value": "🐞🐞"
+          }
+        },
+        "right": {
+          "label": "2"
+        }
+      }
+    ]
+  }
+}

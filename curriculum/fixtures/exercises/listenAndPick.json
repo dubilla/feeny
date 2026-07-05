@@ -1,0 +1,25 @@
+{
+  "id": "math-e-count5-1-03",
+  "type": "listenAndPick",
+  "payload": {
+    "prompt": {
+      "text": "Listen!",
+      "spokenText": "Tap the number two!"
+    },
+    "options": [
+      {
+        "id": "a",
+        "label": "1"
+      },
+      {
+        "id": "b",
+        "label": "2"
+      },
+      {
+        "id": "c",
+        "label": "3"
+      }
+    ],
+    "correctOptionId": "b"
+  }
+}

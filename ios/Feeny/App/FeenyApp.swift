@@ -10,8 +10,15 @@ struct FeenyApp: App {
     @State private var speechService = SpeechService()
 
     init() {
+        // QA/UI-test hook: wipe all local state before anything loads.
+        if CommandLine.arguments.contains("-feenyReset") {
+            Self.wipeAllLocalState()
+        }
+
         do {
-            modelContainer = try ModelContainer(for: KidProfile.self, LessonCompletion.self)
+            modelContainer = try ModelContainer(
+                for: KidProfile.self, LessonCompletion.self, SubjectProgress.self, SkillMastery.self
+            )
         } catch {
             fatalError("Could not create SwiftData container: \(error)")
         }
@@ -24,12 +31,22 @@ struct FeenyApp: App {
 
     var body: some Scene {
         WindowGroup {
-            LessonListView()
+            SkillMapView()
                 .environment(contentStore)
                 .environment(syncService)
                 .environment(progressStore)
                 .environment(speechService)
                 .modelContainer(modelContainer)
+        }
+    }
+
+    private static func wipeAllLocalState() {
+        let fm = FileManager.default
+        let appSupport = fm.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
+        try? fm.removeItem(at: appSupport.appending(path: "packs"))
+        // SwiftData default store lives in Application Support.
+        for name in ["default.store", "default.store-shm", "default.store-wal"] {
+            try? fm.removeItem(at: appSupport.appending(path: name))
         }
     }
 }

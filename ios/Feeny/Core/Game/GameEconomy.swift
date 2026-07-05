@@ -3,6 +3,10 @@ import Foundation
 /// Every tunable reward number lives here (mirrored in docs/ECONOMY.md).
 enum GameEconomy {
     static let perfectLessonBonus = 5
+    /// Finishing the placement warm-up always pays out, whatever the result —
+    /// the quiz itself is the achievement.
+    static let placementCompletionXP = 20
+    static let challengePassXP = 40
 
     /// Perfect = every exercise right on the first try.
     static func xpForLesson(baseReward: Int, firstTryAccuracy: Double) -> Int {

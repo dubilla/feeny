@@ -1,37 +1,34 @@
 {
-  "id": "math-e-add10-a1-03",
+  "id": "math-e-count5-1-04",
   "type": "multipleChoiceImage",
   "payload": {
     "prompt": {
-      "text": "2 frogs + 1 frog = ?",
-      "spokenText": "Two frogs are on a log. One more frog hops on! How many frogs now?"
+      "text": "Which shows 3?",
+      "spokenText": "Which picture shows three frogs? Count each group and tap it!"
     },
     "options": [
       {
         "id": "a",
         "visual": {
           "kind": "emoji",
-          "value": "🐸🐸"
-        },
-        "label": "2"
+          "value": "🐸🐸🐸"
+        }
       },
       {
         "id": "b",
         "visual": {
           "kind": "emoji",
-          "value": "🐸🐸🐸"
-        },
-        "label": "3"
+          "value": "🐸🐸"
+        }
       },
       {
         "id": "c",
         "visual": {
           "kind": "emoji",
-          "value": "🐸🐸🐸🐸"
-        },
-        "label": "4"
+          "value": "🐸"
+        }
       }
     ],
-    "correctOptionId": "b"
+    "correctOptionId": "a"
   }
 }

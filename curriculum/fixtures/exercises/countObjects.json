@@ -1,20 +1,20 @@
 {
-  "id": "math-e-add10-a1-01",
+  "id": "math-e-count5-1-01",
   "type": "countObjects",
   "payload": {
     "prompt": {
-      "text": "How many ducks?",
-      "spokenText": "Count the ducks! How many do you see?"
+      "text": "How many bugs?",
+      "spokenText": "Look! One little bug is crawling on a leaf. Count it, then tap the number. How many bugs?"
     },
     "object": {
       "kind": "emoji",
-      "value": "🦆"
+      "value": "🐛"
     },
-    "count": 3,
+    "count": 1,
     "choices": [
+      1,
       2,
-      3,
-      4
+      3
     ]
   }
 }

@@ -1,0 +1,39 @@
+{
+  "id": "math-e-count5-3-02",
+  "type": "ordering",
+  "payload": {
+    "prompt": {
+      "text": "Put them in order!",
+      "spokenText": "The numbers got all mixed up! Put them in order, starting at one and counting up to five."
+    },
+    "items": [
+      {
+        "id": "a",
+        "label": "3"
+      },
+      {
+        "id": "b",
+        "label": "1"
+      },
+      {
+        "id": "c",
+        "label": "5"
+      },
+      {
+        "id": "d",
+        "label": "2"
+      },
+      {
+        "id": "e",
+        "label": "4"
+      }
+    ],
+    "correctOrder": [
+      "b",
+      "d",
+      "a",
+      "e",
+      "c"
+    ]
+  }
+}

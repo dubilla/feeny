@@ -8,26 +8,37 @@
 
 /* Begin PBXBuildFile section */
 		056D0CAC4737C097D3D088D9 /* ContentSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733A3B7723780A13FB194B4 /* ContentSyncService.swift */; };
+		17C4D727BB2806BA106BD2C0 /* PlacementSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B409C35985B0F385366AE9 /* PlacementSession.swift */; };
+		25EC8FF543DEF51C4A231BC8 /* TuningConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A343C86BA7116E243B39E6EF /* TuningConstants.swift */; };
 		262849F7FB82B2BC05546DB1 /* CountObjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582257CA3E26285CB9505ACA /* CountObjectsView.swift */; };
+		3B3DEA46E7D1B20B707C5022 /* ProgressEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D08460EE01523CD3C9D8C2F /* ProgressEngineTests.swift */; };
 		49CEF40B6117C4F1E174F157 /* ContentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79664069712EDF6BCDD37F60 /* ContentStore.swift */; };
+		50CD4261433995EED97F617A /* ProgressEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2625B7BF36D5ACF802E8667 /* ProgressEngine.swift */; };
 		545521B857C5B15D4D025934 /* MultipleChoiceImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDA1AF5976E84EE13C73BC9 /* MultipleChoiceImageView.swift */; };
 		58BD3727EB2E3FAA04F602BA /* ProgressModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA1A323E2053709B39DB864 /* ProgressModels.swift */; };
+		5B166A03C372CD918BDC18E7 /* TapMatchPairsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7198DD648F060E8C44816176 /* TapMatchPairsView.swift */; };
 		6201C6384BA29BC26BA4A1CF /* ExercisePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C6C5413C4CFD9AA9EA9467 /* ExercisePayload.swift */; };
 		660D31652C733AB8CB790254 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A772BDA3521503CDDC8610F7 /* Theme.swift */; };
+		6A94F5A3C8436EC263F86B7E /* PlacementFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DCC4B2FDB78FC65790D6D /* PlacementFlowView.swift */; };
+		710794B27017AA0A6F64A1F1 /* FillBlankWordBankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F083F8ED7EAA4689ED5A365A /* FillBlankWordBankView.swift */; };
 		74E06A794BED449939F6C2A4 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE78CFC89460F6A04142663F /* SpeechService.swift */; };
 		75B03D58482C034088DD1D6F /* LessonSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0153B1EAE911FD1F0C64DBFF /* LessonSessionTests.swift */; };
+		7DFDF8CCF893A287186A6C95 /* OrderingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BDF84E8A54D5ED47F2AFCE /* OrderingView.swift */; };
 		7E28CEF584A5F07567ED3359 /* LessonPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCB2999A1896D6F1351FE7F /* LessonPlayerView.swift */; };
+		8095D8A15A66AC541EA37E6C /* ListenAndPickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AFCF3E84AAFAA8EC4F8041 /* ListenAndPickView.swift */; };
 		8EC3055F0AE302A0C1BB969D /* LessonSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9662A2C2F93EBE337BDF0C6C /* LessonSession.swift */; };
 		9F8DE4589B68D77DDD8D278D /* FeenyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054076F0E8E5DE0643E4353 /* FeenyApp.swift */; };
 		AB4BFC506E8A59E81520CCFE /* ExerciseDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18E0785CA5CDBEC4BC6B8F4 /* ExerciseDecodingTests.swift */; };
 		C5F73AAFB0CBB5F560205BB2 /* GameEconomy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E861A5C2429B09FBB2DF9246 /* GameEconomy.swift */; };
 		CB82882BCEEA6AC52E80114C /* fixtures in Resources */ = {isa = PBXBuildFile; fileRef = 1F1B9F2E21CFAE33853D3D79 /* fixtures */; };
+		CE9D71FDF3B0BF97E89DF7B1 /* PlacementSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B4C07881349A87392EE5EF /* PlacementSessionTests.swift */; };
+		D5B31672917FB8721EFBF964 /* SkillMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685D1E80D6489C8C83DD3F41 /* SkillMapView.swift */; };
 		DE43D19FC15376FC3AECFD31 /* ContentModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E371BDACC64188690A17BD4 /* ContentModels.swift */; };
+		E1772D2387A6F82619DFF89B /* UnitDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE657F892AB41BB5DF7AF03 /* UnitDetailSheet.swift */; };
 		E5890221BCF5806E5E58FF2A /* ScreenshotUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC50FE79C87E0FA79DB22C08 /* ScreenshotUtility.swift */; };
 		E5EFA17790121A47C78034D1 /* LessonCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D1B665954AEF2EB1C24368 /* LessonCompleteView.swift */; };
 		EAE95B1FE9B398433C41091C /* PlayLessonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22721A8B67AF49BC53AC8AC3 /* PlayLessonUITests.swift */; };
 		F47625450C731B26E8A1256C /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B0CFB9D183E8A86803EFE6 /* Confetti.swift */; };
-		FD3C202215AF2B808D2ECC73 /* LessonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635DFACFC6EDBB746787D247 /* LessonListView.swift */; };
 		FD521CA67DB8378DA63CBEF9 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0BC4CF68DF6D9BB933A1A8 /* APIClient.swift */; };
 		FFE2D9A33C574AF53A675376 /* ProgressStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DC412DF452EAF193077F51 /* ProgressStore.swift */; };
 /* End PBXBuildFile section */
@@ -56,29 +67,40 @@
 		1F1B9F2E21CFAE33853D3D79 /* fixtures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fixtures; path = ../curriculum/fixtures; sourceTree = SOURCE_ROOT; };
 		22721A8B67AF49BC53AC8AC3 /* PlayLessonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLessonUITests.swift; sourceTree = "<group>"; };
 		3406CE5CD104F2C9788D74F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		42B4C07881349A87392EE5EF /* PlacementSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementSessionTests.swift; sourceTree = "<group>"; };
+		52BDF84E8A54D5ED47F2AFCE /* OrderingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderingView.swift; sourceTree = "<group>"; };
 		54DC412DF452EAF193077F51 /* ProgressStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressStore.swift; sourceTree = "<group>"; };
 		559AA38D0C8ADB6E9A1FBF38 /* FeenyUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = FeenyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		582257CA3E26285CB9505ACA /* CountObjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountObjectsView.swift; sourceTree = "<group>"; };
+		5DE657F892AB41BB5DF7AF03 /* UnitDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitDetailSheet.swift; sourceTree = "<group>"; };
 		5F3F02CB482A0B2EECDC119B /* FeenyTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = FeenyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		635DFACFC6EDBB746787D247 /* LessonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonListView.swift; sourceTree = "<group>"; };
+		685D1E80D6489C8C83DD3F41 /* SkillMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillMapView.swift; sourceTree = "<group>"; };
 		6E371BDACC64188690A17BD4 /* ContentModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModels.swift; sourceTree = "<group>"; };
 		6EA1A323E2053709B39DB864 /* ProgressModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressModels.swift; sourceTree = "<group>"; };
+		7198DD648F060E8C44816176 /* TapMatchPairsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapMatchPairsView.swift; sourceTree = "<group>"; };
+		76B409C35985B0F385366AE9 /* PlacementSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementSession.swift; sourceTree = "<group>"; };
 		79664069712EDF6BCDD37F60 /* ContentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStore.swift; sourceTree = "<group>"; };
 		7D0BC4CF68DF6D9BB933A1A8 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		82D1B665954AEF2EB1C24368 /* LessonCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCompleteView.swift; sourceTree = "<group>"; };
 		8C6ED1113D5793B8FA7EC1EB /* Feeny.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Feeny.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D08460EE01523CD3C9D8C2F /* ProgressEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressEngineTests.swift; sourceTree = "<group>"; };
 		8DDA1AF5976E84EE13C73BC9 /* MultipleChoiceImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceImageView.swift; sourceTree = "<group>"; };
 		94F799AA34488CD8F9FF8DAF /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		9662A2C2F93EBE337BDF0C6C /* LessonSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonSession.swift; sourceTree = "<group>"; };
+		A343C86BA7116E243B39E6EF /* TuningConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuningConstants.swift; sourceTree = "<group>"; };
 		A772BDA3521503CDDC8610F7 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		B18E0785CA5CDBEC4BC6B8F4 /* ExerciseDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDecodingTests.swift; sourceTree = "<group>"; };
 		B8B0CFB9D183E8A86803EFE6 /* Confetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Confetti.swift; sourceTree = "<group>"; };
 		BC50FE79C87E0FA79DB22C08 /* ScreenshotUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotUtility.swift; sourceTree = "<group>"; };
 		BE78CFC89460F6A04142663F /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
 		C0C6C5413C4CFD9AA9EA9467 /* ExercisePayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePayload.swift; sourceTree = "<group>"; };
+		D3AFCF3E84AAFAA8EC4F8041 /* ListenAndPickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenAndPickView.swift; sourceTree = "<group>"; };
 		DDF2F5EAEC8889C5F20C5C96 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		E2625B7BF36D5ACF802E8667 /* ProgressEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressEngine.swift; sourceTree = "<group>"; };
+		E69DCC4B2FDB78FC65790D6D /* PlacementFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementFlowView.swift; sourceTree = "<group>"; };
 		E861A5C2429B09FBB2DF9246 /* GameEconomy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEconomy.swift; sourceTree = "<group>"; };
 		ECCB2999A1896D6F1351FE7F /* LessonPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlayerView.swift; sourceTree = "<group>"; };
+		F083F8ED7EAA4689ED5A365A /* FillBlankWordBankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillBlankWordBankView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -97,8 +119,10 @@
 		16781D1F1289DECA04154245 /* Progress */ = {
 			isa = PBXGroup;
 			children = (
+				E2625B7BF36D5ACF802E8667 /* ProgressEngine.swift */,
 				6EA1A323E2053709B39DB864 /* ProgressModels.swift */,
 				54DC412DF452EAF193077F51 /* ProgressStore.swift */,
+				A343C86BA7116E243B39E6EF /* TuningConstants.swift */,
 			);
 			path = Progress;
 			sourceTree = "<group>";
@@ -135,9 +159,10 @@
 		3018F57206010E5D572BD828 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				DD12651592DAA5F037F90328 /* LessonList */,
 				821A1BCC453AB56541CBABFE /* LessonPlayer */,
+				EA8B8C6BE58B52401E0AC8EB /* Placement */,
 				D722565806404EFBACC081AD /* Rewards */,
+				BF9943A9FA3E0953660C836A /* SkillMap */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -158,7 +183,11 @@
 			isa = PBXGroup;
 			children = (
 				582257CA3E26285CB9505ACA /* CountObjectsView.swift */,
+				F083F8ED7EAA4689ED5A365A /* FillBlankWordBankView.swift */,
+				D3AFCF3E84AAFAA8EC4F8041 /* ListenAndPickView.swift */,
 				8DDA1AF5976E84EE13C73BC9 /* MultipleChoiceImageView.swift */,
+				52BDF84E8A54D5ED47F2AFCE /* OrderingView.swift */,
+				7198DD648F060E8C44816176 /* TapMatchPairsView.swift */,
 			);
 			path = Exercises;
 			sourceTree = "<group>";
@@ -184,6 +213,8 @@
 			children = (
 				B18E0785CA5CDBEC4BC6B8F4 /* ExerciseDecodingTests.swift */,
 				0153B1EAE911FD1F0C64DBFF /* LessonSessionTests.swift */,
+				42B4C07881349A87392EE5EF /* PlacementSessionTests.swift */,
+				8D08460EE01523CD3C9D8C2F /* ProgressEngineTests.swift */,
 			);
 			path = FeenyTests;
 			sourceTree = "<group>";
@@ -216,6 +247,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		BF9943A9FA3E0953660C836A /* SkillMap */ = {
+			isa = PBXGroup;
+			children = (
+				685D1E80D6489C8C83DD3F41 /* SkillMapView.swift */,
+				5DE657F892AB41BB5DF7AF03 /* UnitDetailSheet.swift */,
+			);
+			path = SkillMap;
+			sourceTree = "<group>";
+		};
 		CB9DBCE3B20A00558BA0ADBF /* Game */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,14 +281,6 @@
 			path = Rewards;
 			sourceTree = "<group>";
 		};
-		DD12651592DAA5F037F90328 /* LessonList */ = {
-			isa = PBXGroup;
-			children = (
-				635DFACFC6EDBB746787D247 /* LessonListView.swift */,
-			);
-			path = LessonList;
-			sourceTree = "<group>";
-		};
 		E25D8046D21869AE478FBAB1 /* Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +291,15 @@
 				C0C6C5413C4CFD9AA9EA9467 /* ExercisePayload.swift */,
 			);
 			path = Content;
+			sourceTree = "<group>";
+		};
+		EA8B8C6BE58B52401E0AC8EB /* Placement */ = {
+			isa = PBXGroup;
+			children = (
+				E69DCC4B2FDB78FC65790D6D /* PlacementFlowView.swift */,
+				76B409C35985B0F385366AE9 /* PlacementSession.swift */,
+			);
+			path = Placement;
 			sourceTree = "<group>";
 		};
 		FA1B7B2CDFB32414E001FC4D /* Config */ = {
@@ -398,16 +439,25 @@
 				262849F7FB82B2BC05546DB1 /* CountObjectsView.swift in Sources */,
 				6201C6384BA29BC26BA4A1CF /* ExercisePayload.swift in Sources */,
 				9F8DE4589B68D77DDD8D278D /* FeenyApp.swift in Sources */,
+				710794B27017AA0A6F64A1F1 /* FillBlankWordBankView.swift in Sources */,
 				C5F73AAFB0CBB5F560205BB2 /* GameEconomy.swift in Sources */,
 				E5EFA17790121A47C78034D1 /* LessonCompleteView.swift in Sources */,
-				FD3C202215AF2B808D2ECC73 /* LessonListView.swift in Sources */,
 				7E28CEF584A5F07567ED3359 /* LessonPlayerView.swift in Sources */,
 				8EC3055F0AE302A0C1BB969D /* LessonSession.swift in Sources */,
+				8095D8A15A66AC541EA37E6C /* ListenAndPickView.swift in Sources */,
 				545521B857C5B15D4D025934 /* MultipleChoiceImageView.swift in Sources */,
+				7DFDF8CCF893A287186A6C95 /* OrderingView.swift in Sources */,
+				6A94F5A3C8436EC263F86B7E /* PlacementFlowView.swift in Sources */,
+				17C4D727BB2806BA106BD2C0 /* PlacementSession.swift in Sources */,
+				50CD4261433995EED97F617A /* ProgressEngine.swift in Sources */,
 				58BD3727EB2E3FAA04F602BA /* ProgressModels.swift in Sources */,
 				FFE2D9A33C574AF53A675376 /* ProgressStore.swift in Sources */,
+				D5B31672917FB8721EFBF964 /* SkillMapView.swift in Sources */,
 				74E06A794BED449939F6C2A4 /* SpeechService.swift in Sources */,
+				5B166A03C372CD918BDC18E7 /* TapMatchPairsView.swift in Sources */,
 				660D31652C733AB8CB790254 /* Theme.swift in Sources */,
+				25EC8FF543DEF51C4A231BC8 /* TuningConstants.swift in Sources */,
+				E1772D2387A6F82619DFF89B /* UnitDetailSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +467,8 @@
 			files = (
 				AB4BFC506E8A59E81520CCFE /* ExerciseDecodingTests.swift in Sources */,
 				75B03D58482C034088DD1D6F /* LessonSessionTests.swift in Sources */,
+				CE9D71FDF3B0BF97E89DF7B1 /* PlacementSessionTests.swift in Sources */,
+				3B3DEA46E7D1B20B707C5022 /* ProgressEngineTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

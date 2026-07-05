@@ -55,6 +55,73 @@ export const countObjectsPayloadSchema = z
     message: "choices must include the correct count",
   });
 
+/** A tile face: visual and/or short label. */
+const tileFaceSchema = z
+  .object({
+    visual: visualSchema.optional(),
+    label: z.string().optional(),
+  })
+  .refine((t) => t.visual !== undefined || (t.label ?? "").length > 0, {
+    message: "tile needs a visual or a label",
+  });
+export type TileFace = z.infer<typeof tileFaceSchema>;
+
+/** Tap a left tile then its right partner. 2–3 pairs (≤6 tiles for young kids). */
+export const tapMatchPairsPayloadSchema = z.object({
+  prompt: promptSchema,
+  pairs: z
+    .array(z.object({ id: z.string().min(1), left: tileFaceSchema, right: tileFaceSchema }))
+    .min(2)
+    .max(3),
+});
+
+/**
+ * Audio-first: the spoken text IS the stimulus ("Tap the word cat"), so
+ * spokenText is required and the UI shows no meaningful prompt text.
+ */
+export const listenAndPickPayloadSchema = z
+  .object({
+    prompt: promptSchema.extend({ spokenText: z.string().min(1) }),
+    options: z.array(choiceOptionSchema).min(2).max(4),
+    correctOptionId: z.string().min(1),
+  })
+  .refine((p) => p.options.some((o) => o.id === p.correctOptionId), {
+    message: "correctOptionId must reference an option",
+  });
+
+/** Tap tiles in sequence to fill ordered slots. */
+export const orderingPayloadSchema = z
+  .object({
+    prompt: promptSchema,
+    items: z
+      .array(z.object({ id: z.string().min(1), visual: visualSchema.optional(), label: z.string().optional() }))
+      .min(3)
+      .max(5),
+    correctOrder: z.array(z.string().min(1)).min(3).max(5),
+  })
+  .refine(
+    (p) =>
+      p.correctOrder.length === p.items.length &&
+      new Set(p.correctOrder).size === p.items.length &&
+      p.items.every((i) => p.correctOrder.includes(i.id)),
+    { message: "correctOrder must be a permutation of item ids" },
+  );
+
+/** Sentence/equation with one blank; tap a chip from the bank to fill it. */
+export const fillBlankWordBankPayloadSchema = z
+  .object({
+    prompt: promptSchema,
+    /** Display template containing exactly one `___` blank. */
+    template: z.string().refine((t) => t.split("___").length === 2, {
+      message: "template must contain exactly one ___ blank",
+    }),
+    bank: z.array(z.object({ id: z.string().min(1), label: z.string().min(1) })).min(2).max(4),
+    correctChipId: z.string().min(1),
+  })
+  .refine((p) => p.bank.some((c) => c.id === p.correctChipId), {
+    message: "correctChipId must reference a bank chip",
+  });
+
 export const exerciseSchema = z.discriminatedUnion("type", [
   z.object({
     id: z.string().min(1),
@@ -65,6 +132,26 @@ export const exerciseSchema = z.discriminatedUnion("type", [
     id: z.string().min(1),
     type: z.literal("countObjects"),
     payload: countObjectsPayloadSchema,
+  }),
+  z.object({
+    id: z.string().min(1),
+    type: z.literal("tapMatchPairs"),
+    payload: tapMatchPairsPayloadSchema,
+  }),
+  z.object({
+    id: z.string().min(1),
+    type: z.literal("listenAndPick"),
+    payload: listenAndPickPayloadSchema,
+  }),
+  z.object({
+    id: z.string().min(1),
+    type: z.literal("ordering"),
+    payload: orderingPayloadSchema,
+  }),
+  z.object({
+    id: z.string().min(1),
+    type: z.literal("fillBlankWordBank"),
+    payload: fillBlankWordBankPayloadSchema,
   }),
 ]);
 export type Exercise = z.infer<typeof exerciseSchema>;

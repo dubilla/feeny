@@ -1,0 +1,26 @@
+{
+  "id": "math-e-sub10-1-05",
+  "type": "fillBlankWordBank",
+  "payload": {
+    "prompt": {
+      "text": "Fill in the answer.",
+      "spokenText": "Five minus two equals what? Tap the number that finishes it."
+    },
+    "template": "5 − 2 = ___",
+    "bank": [
+      {
+        "id": "b1",
+        "label": "4"
+      },
+      {
+        "id": "b2",
+        "label": "3"
+      },
+      {
+        "id": "b3",
+        "label": "2"
+      }
+    ],
+    "correctChipId": "b2"
+  }
+}
