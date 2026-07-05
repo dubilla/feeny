@@ -1,0 +1,13 @@
+node_modules/
+.next/
+/logs
+.env
+.env.local
+*.tsbuildinfo
+
+# Xcode / iOS
+ios/Feeny.xcodeproj/xcuserdata/
+ios/Feeny.xcodeproj/project.xcworkspace/xcuserdata/
+DerivedData/
+*.xcresult
+.DS_Store

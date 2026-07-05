@@ -1,0 +1,37 @@
+{
+  "id": "math-e-add10-a1-03",
+  "type": "multipleChoiceImage",
+  "payload": {
+    "prompt": {
+      "text": "2 frogs + 1 frog = ?",
+      "spokenText": "Two frogs are on a log. One more frog hops on! How many frogs now?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "visual": {
+          "kind": "emoji",
+          "value": "🐸🐸"
+        },
+        "label": "2"
+      },
+      {
+        "id": "b",
+        "visual": {
+          "kind": "emoji",
+          "value": "🐸🐸🐸"
+        },
+        "label": "3"
+      },
+      {
+        "id": "c",
+        "visual": {
+          "kind": "emoji",
+          "value": "🐸🐸🐸🐸"
+        },
+        "label": "4"
+      }
+    ],
+    "correctOptionId": "b"
+  }
+}

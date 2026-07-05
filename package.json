@@ -1,0 +1,14 @@
+{
+  "name": "feeny",
+  "private": true,
+  "scripts": {
+    "db:up": "brew services start postgresql@16",
+    "db:down": "brew services stop postgresql@16",
+    "db:push": "pnpm --filter @feeny/backend db:push",
+    "seed": "pnpm --filter @feeny/backend seed",
+    "dev": "truncate -s 0 logs/dev.log && pnpm --filter @feeny/backend dev 2>&1 | tee logs/dev.log",
+    "export:fixtures": "pnpm --filter @feeny/curriculum export:fixtures",
+    "export:packs": "pnpm --filter @feeny/backend export:packs"
+  },
+  "packageManager": "pnpm@9.15.4"
+}
