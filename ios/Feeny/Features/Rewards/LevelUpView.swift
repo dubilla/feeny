@@ -6,6 +6,7 @@ struct LevelUpView: View {
     let onDone: () -> Void
 
     @Environment(SpeechService.self) private var speech
+    @Environment(SoundEffects.self) private var sounds
     @State private var stamped = false
 
     var body: some View {
@@ -62,6 +63,7 @@ struct LevelUpView: View {
             ConfettiView()
         }
         .onAppear {
+            sounds.play(.levelUp)
             withAnimation(.spring(response: 0.5, dampingFraction: 0.55).delay(0.1)) { stamped = true }
             speech.speak("Level up! You're level \(level)!")
         }

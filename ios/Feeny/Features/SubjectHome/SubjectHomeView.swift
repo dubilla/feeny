@@ -8,6 +8,8 @@ struct SubjectHomeView: View {
     @Environment(ProgressStore.self) private var progressStore
 
     @State private var showCollection = false
+    @State private var showParentGate = false
+    @State private var showSettings = false
 
     private static let subjectEmoji: [String: String] = ["math": "🔢", "reading": "📚"]
     private static let subjectColor: [String: Color] = [
@@ -31,6 +33,7 @@ struct SubjectHomeView: View {
                         subjectCards
                     }
                     Spacer()
+                    parentCorner
                 }
                 .padding(48)
             }
@@ -42,6 +45,12 @@ struct SubjectHomeView: View {
         .task { await syncService.refreshIfNeeded() }
         .fullScreenCover(isPresented: $showCollection) {
             CollectionView { showCollection = false }
+        }
+        .sheet(isPresented: $showParentGate) {
+            ParentGateView { showSettings = true }
+        }
+        .sheet(isPresented: $showSettings) {
+            ParentSettingsView()
         }
     }
 
@@ -125,6 +134,24 @@ struct SubjectHomeView: View {
                 ? "\(streak.count) day streak"
                 : "Your streak flame is sleeping. Play a lesson to wake it up!"
         )
+    }
+
+    /// Quiet corner button for parents — deliberately small and low-contrast
+    /// (this is the one tappable thing on screen NOT designed for kids).
+    private var parentCorner: some View {
+        HStack {
+            Spacer()
+            Button {
+                showParentGate = true
+            } label: {
+                Image(systemName: "gearshape.fill")
+                    .font(.system(size: 22))
+                    .foregroundStyle(Theme.ink.opacity(0.25))
+                    .frame(width: 56, height: 56)
+            }
+            .accessibilityIdentifier("parent-gate-button")
+            .accessibilityLabel("Grown-up settings")
+        }
     }
 
     /// Doorway to the Feenling album, with an egg badge when hatches are owed.

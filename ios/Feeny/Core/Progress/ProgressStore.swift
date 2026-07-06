@@ -297,6 +297,26 @@ final class ProgressStore {
         return result
     }
 
+    // MARK: - Parent-gated maintenance
+
+    /// Clears a subject's placement (and its challenge-skipped units) so the
+    /// warm-up quiz runs fresh next time. Lesson history and mastery stay —
+    /// finished lessons remain finished wherever the kid lands.
+    func resetPlacement(subjectId: String) {
+        guard let progress = subjectProgress(for: subjectId) else { return }
+        context.delete(progress)
+        try? context.save()
+    }
+
+    /// Permanently removes a profile and everything cascaded under it.
+    func deleteProfile(_ profile: KidProfile) {
+        let wasActive = activeProfile === profile
+        context.delete(profile)
+        try? context.save()
+        reloadProfiles()
+        if wasActive { activeProfile = nil }
+    }
+
     // MARK: - Streaks
 
     var streakDisplay: StreakEngine.Display {

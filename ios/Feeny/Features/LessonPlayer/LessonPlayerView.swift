@@ -25,6 +25,7 @@ struct LessonPlayerView: View {
     private let unit: LearningUnit?
     private let subjectId: String?
     @Environment(SpeechService.self) private var speech
+    @Environment(SoundEffects.self) private var sounds
     @Environment(ProgressStore.self) private var progressStore
     @Environment(\.dismiss) private var dismiss
 
@@ -259,6 +260,7 @@ struct LessonPlayerView: View {
         switch phase {
         case .feedback(let correct, _):
             if correct {
+                sounds.play(.correct)
                 // Correct answers auto-advance — snappy, no extra tap for a 5-year-old.
                 Task {
                     try? await Task.sleep(for: .seconds(1.1))

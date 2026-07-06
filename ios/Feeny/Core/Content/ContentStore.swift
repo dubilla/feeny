@@ -35,9 +35,12 @@ final class ContentStore {
         return nil
     }
 
-    /// Loads every cached pack from disk. Unreadable files are skipped, not fatal —
+    /// Loads every cached pack from disk, seeding the cache from the packs
+    /// bundled in the app binary first — a fresh install (or post-reset launch)
+    /// must play with zero network. Unreadable files are skipped, not fatal —
     /// the next sync overwrites them.
     func reload() {
+        seedCacheFromBundle()
         let dir = Self.packsDirectory
         guard let files = try? FileManager.default.contentsOfDirectory(at: dir, includingPropertiesForKeys: nil) else {
             packs = []
@@ -51,6 +54,26 @@ final class ContentStore {
                 return try? decoder.decode(SubjectPack.self, from: data)
             }
             .sorted { $0.subjectId < $1.subjectId }
+    }
+
+    /// Copies each bundled pack into the cache when the cache has no version
+    /// of that subject, or an older one (an app update can ship fresher
+    /// content than a stale cache). Never overwrites a newer synced pack.
+    private func seedCacheFromBundle() {
+        guard let bundled = Bundle.main.urls(
+            forResourcesWithExtension: "json", subdirectory: "BundledPacks"
+        ) else { return }
+        let decoder = JSONDecoder()
+        for url in bundled {
+            guard let data = try? Data(contentsOf: url),
+                  let pack = try? decoder.decode(SubjectPack.self, from: data) else { continue }
+            let cachedURL = Self.packsDirectory.appending(path: "\(pack.subjectId).json")
+            let cachedVersion = (try? Data(contentsOf: cachedURL))
+                .flatMap { try? decoder.decode(SubjectPack.self, from: $0) }?.version
+            if cachedVersion == nil || cachedVersion! < pack.version {
+                try? Self.writePack(data: data, subjectId: pack.subjectId)
+            }
+        }
     }
 
     /// Atomic write: decode-validated `data` lands as the new cache file in one move.

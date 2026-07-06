@@ -8,6 +8,7 @@ struct FeenyApp: App {
     @State private var syncService: ContentSyncService
     @State private var progressStore: ProgressStore
     @State private var speechService = SpeechService()
+    @State private var soundEffects = SoundEffects()
 
     init() {
         // QA/UI-test hook: wipe all local state before anything loads.
@@ -37,6 +38,7 @@ struct FeenyApp: App {
                 .environment(syncService)
                 .environment(progressStore)
                 .environment(speechService)
+                .environment(soundEffects)
                 .modelContainer(modelContainer)
         }
     }

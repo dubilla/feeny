@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "db:push": "drizzle-kit push",
-    "seed": "tsx src/db/seed.ts"
+    "seed": "tsx src/db/seed.ts",
+    "export:packs": "tsx scripts/export-packs.ts"
   },
   "dependencies": {
     "@feeny/curriculum": "workspace:*",

@@ -9,6 +9,7 @@ struct EggHatchView: View {
 
     @Environment(ProgressStore.self) private var progressStore
     @Environment(SpeechService.self) private var speech
+    @Environment(SoundEffects.self) private var sounds
 
     @State private var tapCount = 0
     @State private var wobble = false
@@ -104,6 +105,7 @@ struct EggHatchView: View {
             withAnimation(.spring(response: 0.2, dampingFraction: 0.4)) { wobble = false }
         }
         if tapCount >= 3 {
+            sounds.play(.hatch)
             let hatch = progressStore.hatchEgg(subjectId: subjectId)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                 withAnimation(.spring(response: 0.5, dampingFraction: 0.55)) {

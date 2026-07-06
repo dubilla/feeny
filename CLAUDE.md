@@ -16,6 +16,7 @@ pnpm db:push          # drizzle-kit push (db: feeny)
 pnpm seed             # rebuild content tables from curriculum/
 pnpm dev              # Next.js on :3100, logs to logs/dev.log
 pnpm export:fixtures  # regenerate curriculum/fixtures/exercises/*.json
+pnpm export:packs     # regenerate ios/BundledPacks/*.json (offline fallback; run after seed)
 
 cd ios && xcodegen generate
 xcodebuild -project ios/Feeny.xcodeproj -scheme Feeny \

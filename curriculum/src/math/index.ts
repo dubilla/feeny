@@ -19,6 +19,18 @@ import { doubleTrouble } from "./band4/unit-double-trouble";
 import { skipCountExpress } from "./band5/unit-skip-count-express";
 import { hundredChartHike } from "./band5/unit-hundred-chart-hike";
 import { twoDigitTeamUp } from "./band5/unit-two-digit-team-up";
+// Band 6 — Times Tide
+import { groupGatherers } from "./band6/unit-group-gatherers";
+import { clockClimbers } from "./band6/unit-clock-climbers";
+import { coinCollectors } from "./band6/unit-coin-collectors";
+// Band 7 — Fraction Falls
+import { timesTableTrek } from "./band7/unit-times-table-trek";
+import { sharingSquad } from "./band7/unit-sharing-squad";
+import { fractionPicnic } from "./band7/unit-fraction-picnic";
+// Band 8 — Galaxy Grid
+import { bigNumberBlastoff } from "./band8/unit-big-number-blastoff";
+import { multiplyMission } from "./band8/unit-multiply-mission";
+import { fractionFrontier } from "./band8/unit-fraction-frontier";
 
 /**
  * Math subject seed. Bands are the age-agnostic difficulty ladder (never
@@ -50,6 +62,12 @@ export const mathSeed: SubjectSeed = {
     { id: "math-place-value", bandId: "math-b4", title: "Tens and ones" },
     { id: "math-skip-count", bandId: "math-b5", title: "Skip counting" },
     { id: "math-add-sub-100", bandId: "math-b5", title: "Add & subtract within 100" },
+    { id: "math-equal-groups", bandId: "math-b6", title: "Equal groups" },
+    { id: "math-time-money", bandId: "math-b6", title: "Time and money" },
+    { id: "math-mult-facts", bandId: "math-b7", title: "Times tables" },
+    { id: "math-fractions-intro", bandId: "math-b7", title: "First fractions" },
+    { id: "math-multi-digit", bandId: "math-b8", title: "Big number math" },
+    { id: "math-compare-fractions", bandId: "math-b8", title: "Comparing fractions" },
   ],
   units: [
     countCritters,
@@ -67,6 +85,15 @@ export const mathSeed: SubjectSeed = {
     skipCountExpress,
     hundredChartHike,
     twoDigitTeamUp,
+    groupGatherers,
+    clockClimbers,
+    coinCollectors,
+    timesTableTrek,
+    sharingSquad,
+    fractionPicnic,
+    bigNumberBlastoff,
+    multiplyMission,
+    fractionFrontier,
   ],
   // 3 representative probes per band, drawn from mid-unit lessons.
   // Single-tap types only (MC / count / listen / fill-blank) so the
@@ -77,5 +104,8 @@ export const mathSeed: SubjectSeed = {
     { bandNumber: 3, exerciseIds: ["math-e-add10-a2-03", "math-e-sub10-2-02", "math-e-bonds10-2-07"] },
     { bandNumber: 4, exerciseIds: ["math-e-add20-2-02", "math-e-tensones-2-03", "math-e-doubles-2-06"] },
     { bandNumber: 5, exerciseIds: ["math-e-skip-2-05", "math-e-hundred-2-04", "math-e-2digit-2-03"] },
+    { bandNumber: 6, exerciseIds: ["math-e-groups-2-01", "math-e-clock-2-03", "math-e-coins-2-02"] },
+    { bandNumber: 7, exerciseIds: ["math-e-times-2-03", "math-e-share-2-02", "math-e-fracs-2-01"] },
+    { bandNumber: 8, exerciseIds: ["math-e-bignum-2-01", "math-e-multbig-2-04", "math-e-fraccomp-2-04"] },
   ],
 };

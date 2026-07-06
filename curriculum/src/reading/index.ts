@@ -19,6 +19,18 @@ import { questionQuest } from "./band4/unit-question-quest";
 import { digraphDive } from "./band5/unit-digraph-dive";
 import { storyTime } from "./band5/unit-story-time";
 import { wordDetective } from "./band5/unit-word-detective";
+// Band 6 — Fluency Falls
+import { wordPower } from "./band6/unit-word-power";
+import { wordPartsWorkshop } from "./band6/unit-word-parts-workshop";
+import { contextClues } from "./band6/unit-context-clues";
+// Band 7 — Meaning Mountain
+import { storySleuths } from "./band7/unit-story-sleuths";
+import { orderTheTale } from "./band7/unit-order-the-tale";
+import { mainIdeaMeadow } from "./band7/unit-main-idea-meadow";
+// Band 8 — Inference Isle
+import { clueHunters } from "./band8/unit-clue-hunters";
+import { feelingsFinder } from "./band8/unit-feelings-finder";
+import { idiomIsland } from "./band8/unit-idiom-island";
 
 /**
  * Reading subject seed. Audio-first by design: bands 1–3 serve kids who
@@ -49,6 +61,12 @@ export const readingSeed: SubjectSeed = {
     { id: "read-sentences", bandId: "reading-b4", title: "Sentences" },
     { id: "read-digraphs", bandId: "reading-b5", title: "Sound teams" },
     { id: "read-passages", bandId: "reading-b5", title: "Little stories" },
+    { id: "read-vocabulary", bandId: "reading-b6", title: "Word power" },
+    { id: "read-word-parts", bandId: "reading-b6", title: "Word parts" },
+    { id: "read-comprehension", bandId: "reading-b7", title: "Understanding stories" },
+    { id: "read-sequencing", bandId: "reading-b7", title: "Story order" },
+    { id: "read-inference", bandId: "reading-b8", title: "Reading between the lines" },
+    { id: "read-figurative", bandId: "reading-b8", title: "Sayings and feelings" },
   ],
   units: [
     abcAdventure,
@@ -66,6 +84,15 @@ export const readingSeed: SubjectSeed = {
     digraphDive,
     storyTime,
     wordDetective,
+    wordPower,
+    wordPartsWorkshop,
+    contextClues,
+    storySleuths,
+    orderTheTale,
+    mainIdeaMeadow,
+    clueHunters,
+    feelingsFinder,
+    idiomIsland,
   ],
   // 3 single-tap probes per band (listen / MC / fill-blank), mid-unit lessons.
   placementProbes: [
@@ -74,5 +101,8 @@ export const readingSeed: SubjectSeed = {
     { bandNumber: 3, exerciseIds: ["read-e-cvc-2-03", "read-e-rhymes-2-02", "read-e-families-2-01"] },
     { bandNumber: 4, exerciseIds: ["read-e-sight-2-04", "read-e-sentences-2-05", "read-e-questions-2-01"] },
     { bandNumber: 5, exerciseIds: ["read-e-digraphs-2-01", "read-e-stories-2-04", "read-e-detective-2-03"] },
+    { bandNumber: 6, exerciseIds: ["read-e-wordpower-2-01", "read-e-wordparts-2-04", "read-e-context-2-03"] },
+    { bandNumber: 7, exerciseIds: ["read-e-sleuth-2-02", "read-e-order-2-06", "read-e-mainidea-2-04"] },
+    { bandNumber: 8, exerciseIds: ["read-e-cluehunt-2-02", "read-e-feelings-2-04", "read-e-idioms-2-04"] },
   ],
 };
