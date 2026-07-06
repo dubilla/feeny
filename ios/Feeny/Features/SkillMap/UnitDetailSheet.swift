@@ -78,7 +78,7 @@ struct UnitDetailSheet: View {
         let playable = done || state == .golden || lesson.id == nextLessonId
 
         Button {
-            onPlay(SkillMapView.LessonLaunch(lesson: lesson, mode: .normal))
+            onPlay(SkillMapView.LessonLaunch(lesson: lesson, mode: .normal, unit: unit, subjectId: pack.subjectId))
         } label: {
             HStack(spacing: 18) {
                 Image(systemName: done ? "checkmark.seal.fill" : (playable ? "play.circle.fill" : "lock.fill"))
@@ -108,7 +108,9 @@ struct UnitDetailSheet: View {
             let challenge = ProgressEngine.challengeLesson(unit: unit, completedLessonIds: completedLessonIds)
             onPlay(SkillMapView.LessonLaunch(
                 lesson: challenge,
-                mode: .challenge(unitId: unit.id, subjectId: pack.subjectId)
+                mode: .challenge(unitId: unit.id, subjectId: pack.subjectId),
+                unit: unit,
+                subjectId: pack.subjectId
             ))
         } label: {
             HStack(spacing: 14) {

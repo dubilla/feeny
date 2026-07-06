@@ -7,6 +7,8 @@ struct SubjectHomeView: View {
     @Environment(ContentSyncService.self) private var syncService
     @Environment(ProgressStore.self) private var progressStore
 
+    @State private var showCollection = false
+
     private static let subjectEmoji: [String: String] = ["math": "🔢", "reading": "📚"]
     private static let subjectColor: [String: Color] = [
         "math": Theme.accent,
@@ -38,6 +40,9 @@ struct SubjectHomeView: View {
             }
         }
         .task { await syncService.refreshIfNeeded() }
+        .fullScreenCover(isPresented: $showCollection) {
+            CollectionView { showCollection = false }
+        }
     }
 
     private var header: some View {
@@ -64,6 +69,10 @@ struct SubjectHomeView: View {
                     .foregroundStyle(Theme.ink.opacity(0.6))
             }
             Spacer()
+
+            streakChip
+            collectionButton
+
             VStack(spacing: 2) {
                 Text("Level \(GameEconomy.level(forXP: progressStore.totalXP))")
                     .font(Theme.body(18))
@@ -77,6 +86,71 @@ struct SubjectHomeView: View {
             .padding(.vertical, 12)
             .background(Capsule().fill(Theme.gold))
         }
+    }
+
+    /// The streak flame: bright once a lesson is done today, asleep otherwise.
+    /// A sleeping flame is an invitation ("wake it up!"), never a guilt trip.
+    private var streakChip: some View {
+        let streak = progressStore.streakDisplay
+        return HStack(spacing: 8) {
+            ZStack {
+                Image(systemName: "flame.fill")
+                    .font(.system(size: 30))
+                    .foregroundStyle(
+                        streak.isAwakeToday
+                            ? AnyShapeStyle(LinearGradient(
+                                colors: [Theme.gold, Theme.incorrect],
+                                startPoint: .top, endPoint: .bottom
+                            ))
+                            : AnyShapeStyle(Theme.ink.opacity(0.25))
+                    )
+                if !streak.isAwakeToday {
+                    Image(systemName: "zzz")
+                        .font(.system(size: 15, weight: .bold))
+                        .foregroundStyle(Theme.ink.opacity(0.45))
+                        .offset(x: 16, y: -16)
+                }
+            }
+            Text("\(streak.count)")
+                .font(Theme.title(28))
+                .foregroundStyle(streak.isAwakeToday ? Theme.incorrect : Theme.ink.opacity(0.45))
+                .contentTransition(.numericText())
+        }
+        .padding(.horizontal, 22)
+        .frame(height: 86)
+        .background(Capsule().fill(Theme.card))
+        .accessibilityIdentifier("streak-chip")
+        .accessibilityLabel(
+            streak.isAwakeToday
+                ? "\(streak.count) day streak"
+                : "Your streak flame is sleeping. Play a lesson to wake it up!"
+        )
+    }
+
+    /// Doorway to the Feenling album, with an egg badge when hatches are owed.
+    private var collectionButton: some View {
+        Button {
+            showCollection = true
+        } label: {
+            ZStack(alignment: .topTrailing) {
+                Image(systemName: "pawprint.fill")
+                    .font(.system(size: 34))
+                    .foregroundStyle(Theme.accent)
+                    .frame(width: 86, height: 86)
+                    .background(Circle().fill(Theme.card))
+                let eggs = progressStore.pendingEggCount()
+                if eggs > 0 {
+                    Text("\(eggs)")
+                        .font(Theme.title(18))
+                        .foregroundStyle(.white)
+                        .frame(width: 34, height: 34)
+                        .background(Circle().fill(Theme.incorrect))
+                }
+            }
+        }
+        .buttonStyle(SquishyButtonStyle())
+        .accessibilityIdentifier("collection-button")
+        .accessibilityLabel("My Feenlings")
     }
 
     private var subjectCards: some View {

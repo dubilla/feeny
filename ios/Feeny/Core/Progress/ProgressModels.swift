@@ -11,14 +11,43 @@ final class KidProfile {
     var createdAt: Date
     var xp: Int
 
+    // Slice 4 — all defaulted so profiles from earlier builds migrate in place.
+    /// Catalog id of the starter picked at profile creation ("" pre-slice-4).
+    var starterFeenlingId: String = ""
+    /// One entry per unhatched egg; the value is the subject that earned it.
+    var pendingEggSubjectIds: [String] = []
+    var streakCount: Int = 0
+    var lastStreakDay: Date?
+    var lastNapDay: Date?
+
     @Relationship(deleteRule: .cascade, inverse: \LessonCompletion.profile)
     var completions: [LessonCompletion] = []
+
+    @Relationship(deleteRule: .cascade, inverse: \OwnedFeenling.profile)
+    var feenlings: [OwnedFeenling] = []
 
     init(name: String, avatarId: String) {
         self.name = name
         self.avatarId = avatarId
         self.createdAt = Date()
         self.xp = 0
+    }
+}
+
+/// One row per distinct Feenling a kid has hatched; duplicates bump `count`.
+@Model
+final class OwnedFeenling {
+    var collectibleId: String
+    var subjectId: String
+    var count: Int
+    var firstHatchedAt: Date
+    var profile: KidProfile?
+
+    init(collectibleId: String, subjectId: String, hatchedAt: Date) {
+        self.collectibleId = collectibleId
+        self.subjectId = subjectId
+        self.count = 1
+        self.firstHatchedAt = hatchedAt
     }
 }
 

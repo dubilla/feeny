@@ -3,6 +3,8 @@ import SwiftUI
 /// The end-of-lesson ceremony: confetti, stars by accuracy, XP count-up.
 struct LessonCompleteView: View {
     var title: String = "You did it!"
+    /// Extra line under the title (e.g. "Whole unit finished!").
+    var subtitle: String? = nil
     let accuracy: Double
     let xpAwarded: Int
     let onDone: () -> Void
@@ -25,6 +27,12 @@ struct LessonCompleteView: View {
                 Text(title)
                     .font(Theme.title(52))
                     .foregroundStyle(Theme.ink)
+
+                if let subtitle {
+                    Text(subtitle)
+                        .font(Theme.body(26))
+                        .foregroundStyle(Theme.gold)
+                }
 
                 HStack(spacing: 20) {
                     ForEach(0..<3, id: \.self) { index in

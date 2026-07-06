@@ -17,7 +17,8 @@ struct FeenyApp: App {
 
         do {
             modelContainer = try ModelContainer(
-                for: KidProfile.self, LessonCompletion.self, SubjectProgress.self, SkillMastery.self
+                for: KidProfile.self, LessonCompletion.self, SubjectProgress.self, SkillMastery.self,
+                OwnedFeenling.self
             )
         } catch {
             fatalError("Could not create SwiftData container: \(error)")

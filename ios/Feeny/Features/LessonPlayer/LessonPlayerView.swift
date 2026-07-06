@@ -10,18 +10,33 @@ struct LessonPlayerView: View {
         case challenge(unitId: String, subjectId: String)
     }
 
+    /// After the stars, the ceremony can keep going: egg hatch (unit finished),
+    /// then level-up (XP crossed a threshold) — in that order, each optional.
+    private enum CeremonyStage {
+        case stars
+        case eggHatch
+        case levelUp
+    }
+
     @State private var session: LessonSession
     private let mode: Mode
+    /// The unit this lesson belongs to, when launched from the map — needed to
+    /// notice "that was the unit's last lesson". Review lessons pass nil.
+    private let unit: LearningUnit?
+    private let subjectId: String?
     @Environment(SpeechService.self) private var speech
     @Environment(ProgressStore.self) private var progressStore
     @Environment(\.dismiss) private var dismiss
 
-    @State private var xpAwarded: Int?
+    @State private var rewards: ProgressStore.LessonRewards?
+    @State private var ceremonyStage: CeremonyStage = .stars
     @State private var completionRecorded = false
 
-    init(lesson: Lesson, mode: Mode = .normal) {
+    init(lesson: Lesson, mode: Mode = .normal, unit: LearningUnit? = nil, subjectId: String? = nil) {
         _session = State(initialValue: LessonSession(lesson: lesson))
         self.mode = mode
+        self.unit = unit
+        self.subjectId = subjectId
     }
 
     private var challengePassed: Bool {
@@ -40,13 +55,7 @@ struct LessonPlayerView: View {
             Theme.background.ignoresSafeArea()
 
             if case .complete = session.phase {
-                LessonCompleteView(
-                    title: completionTitle,
-                    accuracy: session.firstTryAccuracy,
-                    xpAwarded: xpAwarded ?? 0
-                ) {
-                    dismiss()
-                }
+                ceremonyView
             } else if let exercise = session.current {
                 VStack(spacing: 0) {
                     header
@@ -70,6 +79,60 @@ struct LessonPlayerView: View {
             handlePhaseChange(newPhase)
         }
         .onDisappear { speech.stop() }
+    }
+
+    // MARK: - Ceremony
+
+    @ViewBuilder
+    private var ceremonyView: some View {
+        switch ceremonyStage {
+        case .stars:
+            LessonCompleteView(
+                title: completionTitle,
+                subtitle: (rewards?.unitCompleted ?? false)
+                    ? "Whole unit finished! +\(GameEconomy.unitCompletionXP) XP bonus"
+                    : nil,
+                accuracy: session.firstTryAccuracy,
+                xpAwarded: rewards?.xpEarned ?? 0
+            ) {
+                advancePastStars()
+            }
+        case .eggHatch:
+            EggHatchView(subjectId: eggSubjectId ?? "math") {
+                advancePastEgg()
+            }
+        case .levelUp:
+            LevelUpView(level: GameEconomy.level(forXP: progressStore.totalXP)) {
+                dismiss()
+            }
+        }
+    }
+
+    private var eggSubjectId: String? {
+        if case .challenge(_, let subjectId) = mode { return subjectId }
+        return subjectId
+    }
+
+    private func advancePastStars() {
+        if let rewards, rewards.eggEarned, let eggSubjectId,
+           progressStore.pendingEggCount(subjectId: eggSubjectId) > 0 {
+            withAnimation { ceremonyStage = .eggHatch }
+        } else {
+            advanceToLevelUpOrDismiss()
+        }
+    }
+
+    private func advancePastEgg() {
+        advanceToLevelUpOrDismiss()
+    }
+
+    /// Checked last so sparkle-bonus XP from the hatch counts toward the level.
+    private func advanceToLevelUpOrDismiss() {
+        if let rewards, GameEconomy.level(forXP: progressStore.totalXP) > rewards.levelBefore {
+            withAnimation { ceremonyStage = .levelUp }
+        } else {
+            dismiss()
+        }
     }
 
     private var header: some View {
@@ -210,14 +273,16 @@ struct LessonPlayerView: View {
             completionRecorded = true
             switch mode {
             case .normal:
-                xpAwarded = progressStore.recordCompletion(
+                rewards = progressStore.recordCompletion(
                     lesson: session.lesson,
-                    firstTryAccuracy: session.firstTryAccuracy
+                    firstTryAccuracy: session.firstTryAccuracy,
+                    unit: unit,
+                    subjectId: subjectId
                 )
             case .challenge(let unitId, let subjectId):
-                xpAwarded = challengePassed
+                rewards = challengePassed
                     ? progressStore.completeUnitViaChallenge(unitId: unitId, subjectId: subjectId)
-                    : 0
+                    : nil
             }
         case .answering:
             break

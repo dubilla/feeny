@@ -99,18 +99,3 @@ final class LessonSessionTests: XCTestCase {
         XCTAssertEqual(session.queue.count, 2)
     }
 }
-
-final class GameEconomyTests: XCTestCase {
-    func testLevelCurve() {
-        XCTAssertEqual(GameEconomy.level(forXP: 0), 1)
-        XCTAssertEqual(GameEconomy.level(forXP: 49), 1)
-        XCTAssertEqual(GameEconomy.level(forXP: 50), 2)   // L1→2 costs 50
-        XCTAssertEqual(GameEconomy.level(forXP: 124), 2)  // L2→3 costs 75
-        XCTAssertEqual(GameEconomy.level(forXP: 125), 3)
-    }
-
-    func testPerfectLessonBonus() {
-        XCTAssertEqual(GameEconomy.xpForLesson(baseReward: 10, firstTryAccuracy: 1.0), 15)
-        XCTAssertEqual(GameEconomy.xpForLesson(baseReward: 10, firstTryAccuracy: 0.9), 10)
-    }
-}

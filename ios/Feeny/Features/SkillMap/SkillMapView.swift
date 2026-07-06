@@ -15,9 +15,13 @@ struct SkillMapView: View {
     @State private var showPlacement = false
 
     /// What the player should run: a lesson, review framing, or a challenge.
+    /// `unit` rides along so the player can spot unit completion (nil for
+    /// review lessons, which float outside the path).
     struct LessonLaunch: Identifiable {
         let lesson: Lesson
         let mode: LessonPlayerView.Mode
+        var unit: LearningUnit?
+        var subjectId: String?
         var id: String { lesson.id }
     }
 
@@ -45,7 +49,7 @@ struct SkillMapView: View {
             }
         }
         .fullScreenCover(item: $activeLesson) { launch in
-            LessonPlayerView(lesson: launch.lesson, mode: launch.mode)
+            LessonPlayerView(lesson: launch.lesson, mode: launch.mode, unit: launch.unit, subjectId: launch.subjectId)
         }
         .sheet(item: $selectedUnit) { unit in
             if let pack {
@@ -141,7 +145,8 @@ struct SkillMapView: View {
                                 UnitNodeView(
                                     unit: unit,
                                     state: states[unit.id] ?? .locked,
-                                    windingOffset: windingOffset(index)
+                                    windingOffset: windingOffset(index),
+                                    companionEmoji: progressStore.starterFeenling?.emoji
                                 ) {
                                     selectedUnit = unit
                                 }
@@ -197,7 +202,7 @@ struct SkillMapView: View {
 
     private func reviewCard(_ lesson: Lesson) -> some View {
         Button {
-            activeLesson = LessonLaunch(lesson: lesson, mode: .normal)
+            activeLesson = LessonLaunch(lesson: lesson, mode: .normal, unit: nil, subjectId: subjectId)
         } label: {
             HStack(spacing: 16) {
                 Text("⚡")
@@ -253,9 +258,12 @@ struct UnitNodeView: View {
     let unit: LearningUnit
     let state: ProgressEngine.UnitState
     let windingOffset: CGFloat
+    /// The kid's starter Feenling, camped beside whichever node is current.
+    var companionEmoji: String?
     let onTap: () -> Void
 
     @State private var pulsing = false
+    @State private var companionBob = false
 
     var body: some View {
         Button(action: onTap) {
@@ -277,6 +285,16 @@ struct UnitNodeView: View {
                         .saturation(state == .locked ? 0 : 1)
                         .opacity(state == .locked ? 0.45 : 1)
                     badge
+                    if state == .current, let companionEmoji {
+                        Text(companionEmoji)
+                            .font(.system(size: 44))
+                            .offset(x: -108, y: companionBob ? -6 : 6)
+                            .animation(
+                                .easeInOut(duration: 1.4).repeatForever(autoreverses: true),
+                                value: companionBob
+                            )
+                            .accessibilityHidden(true)
+                    }
                 }
                 Text(unit.title)
                     .font(Theme.body(20))
@@ -287,7 +305,10 @@ struct UnitNodeView: View {
         .disabled(state == .locked)
         .offset(x: windingOffset)
         .padding(.vertical, 10)
-        .onAppear { pulsing = state == .current }
+        .onAppear {
+            pulsing = state == .current
+            companionBob = state == .current
+        }
         .accessibilityIdentifier(state == .current ? "unit-node-current" : "unit-node")
     }
 

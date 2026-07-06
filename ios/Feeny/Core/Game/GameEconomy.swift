@@ -7,6 +7,10 @@ enum GameEconomy {
     /// the quiz itself is the achievement.
     static let placementCompletionXP = 20
     static let challengePassXP = 40
+    /// Finishing every lesson in a unit (or skipping it via challenge).
+    static let unitCompletionXP = 25
+    /// Hatching a Feenling you already have.
+    static let sparkleBonusXP = 30
 
     /// Perfect = every exercise right on the first try.
     static func xpForLesson(baseReward: Int, firstTryAccuracy: Double) -> Int {

@@ -22,12 +22,22 @@ final class ScreenshotUtility: XCTestCase {
             try snap("2-subject-home")
         }
 
+        // Feenling collection (slice 4).
+        let collectionButton = app.buttons["collection-button"]
+        if collectionButton.waitForExistence(timeout: 5) {
+            collectionButton.tap()
+            sleep(2)
+            try snap("3-collection")
+            let close = app.buttons["close-collection"]
+            if close.waitForExistence(timeout: 5) { close.tap() }
+        }
+
         // Math map (placement may appear instead — capture whatever shows).
         let mathCard = app.buttons["subject-card-math"]
         if mathCard.waitForExistence(timeout: 5) {
             mathCard.tap()
             sleep(3)
-            try snap("3-math-map")
+            try snap("4-math-map")
         }
     }
 }
