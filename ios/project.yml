@@ -22,10 +22,13 @@ targets:
       properties:
         CFBundleDisplayName: Feeny
         UILaunchScreen: {}
+        # All four required for iPad multitasking (App Store validation);
+        # landscape-first is a design intent, not a plist restriction.
         UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
           - UIInterfaceOrientationLandscapeLeft
           - UIInterfaceOrientationLandscapeRight
-          - UIInterfaceOrientationPortrait
         APIBaseURL: $(API_BASE_URL)
         NSAppTransportSecurity:
           NSAllowsLocalNetworking: true
