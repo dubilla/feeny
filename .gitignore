@@ -11,3 +11,4 @@ ios/Feeny.xcodeproj/project.xcworkspace/xcuserdata/
 DerivedData/
 *.xcresult
 .DS_Store
+.vercel

@@ -1,2 +1,3 @@
-// Release: production content origin (set when the backend deploys in slice 5).
-API_BASE_URL = https:/$()/feeny-content.invalid
+// Release: production content origin (Vercel project cherryroad/feeny-backend,
+// backed by Neon project odd-meadow-61435232).
+API_BASE_URL = https:/$()/feeny-backend.vercel.app

@@ -17,6 +17,8 @@ pnpm seed             # rebuild content tables from curriculum/
 pnpm dev              # Next.js on :3100, logs to logs/dev.log
 pnpm export:fixtures  # regenerate curriculum/fixtures/exercises/*.json
 pnpm export:packs     # regenerate ios/BundledPacks/*.json (offline fallback; run after seed)
+                      # ship-builds: export against the PROD DB (DATABASE_URL=<neon> …) so
+                      # bundled pack versions match the update channel, never the local counter
 
 cd ios && xcodegen generate
 xcodebuild -project ios/Feeny.xcodeproj -scheme Feeny \
