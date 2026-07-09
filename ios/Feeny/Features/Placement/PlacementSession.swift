@@ -90,7 +90,7 @@ final class PlacementSession {
         }
 
         if askedCount >= TuningConstants.placementMaxQuestions {
-            settleBandByMajority()
+            settleBandByMajority(lastAnswerCorrect: correct)
             isComplete = true
             currentExercise = nil
             return
@@ -175,9 +175,13 @@ final class PlacementSession {
         servedInBand += 1
     }
 
-    private func settleBandByMajority() {
+    private func settleBandByMajority(lastAnswerCorrect: Bool) {
         if correctInBand > wrongInBand {
             passedBands.insert(currentBand)
+        } else if correctInBand == wrongInBand, correctInBand > 0 {
+            // Tie at the question cap — the answer just given decides,
+            // matching the 1/1 split rule in submit().
+            if lastAnswerCorrect { passedBands.insert(currentBand) } else { failedBands.insert(currentBand) }
         } else if wrongInBand > 0 {
             failedBands.insert(currentBand)
         }

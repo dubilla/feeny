@@ -149,6 +149,16 @@ struct PlacementFlowView: View {
         }
         .padding(24)
         .onAppear { speakPrompt(exercise) }
+        .task(id: exercise.id) {
+            // One gentle auto-replay if the kid stalls — mirrors the lesson
+            // player; a stalled pre-reader here hasn't learned the speaker
+            // button yet. The id change on advance cancels the pending replay.
+            try? await Task.sleep(for: .seconds(10))
+            guard !Task.isCancelled else { return }
+            if case .question = stage, session.currentExercise?.id == exercise.id {
+                speakPrompt(exercise)
+            }
+        }
     }
 
     @ViewBuilder

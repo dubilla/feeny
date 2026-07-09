@@ -3,13 +3,13 @@ import XCTest
 
 final class PlacementSessionTests: XCTestCase {
     /// Builds a pack with 5 bands, one unit per band, 3 probes per band.
-    private func makePack() -> SubjectPack {
-        let bands = (1...5).map {
+    private func makePack(bandCount: Int = 5) -> SubjectPack {
+        let bands = (1...bandCount).map {
             Band(id: "math-b\($0)", bandNumber: $0, title: "Band \($0)", description: "d")
         }
         var units: [LearningUnit] = []
         var probes: [PlacementProbe] = []
-        for band in 1...5 {
+        for band in 1...bandCount {
             let exercises = (1...3).map { index in
                 Exercise(
                     id: "e-b\(band)-\(index)",
@@ -34,7 +34,7 @@ final class PlacementSessionTests: XCTestCase {
         return SubjectPack(
             subjectId: "math", version: 1, generatedAt: "now",
             bands: bands,
-            skills: (1...5).map { Skill(id: "s-b\($0)", bandId: "math-b\($0)", title: "S", sortOrder: $0) },
+            skills: (1...bandCount).map { Skill(id: "s-b\($0)", bandId: "math-b\($0)", title: "S", sortOrder: $0) },
             units: units,
             placementProbes: probes
         )
@@ -47,6 +47,21 @@ final class PlacementSessionTests: XCTestCase {
             guardCount += 1
         }
         XCTAssertTrue(session.isComplete, "placement never completed")
+    }
+
+    func testTieAtQuestionCapDecidedByLastAnswer() {
+        // Climb 3→8 passing five bands (10 questions), then split band 8
+        // wrong-then-correct so the 12-question cap lands on a 1/1 tie.
+        // The answer given on the capped question decides the band, matching
+        // the mid-session split rule.
+        let session = PlacementSession(pack: makePack(bandCount: 8), startBand: 3, maxBand: 8)
+        var asked = 0
+        while !session.isComplete, session.currentExercise != nil {
+            asked += 1
+            session.submit(correct: asked <= 10 || asked == 12)
+        }
+        XCTAssertEqual(asked, 12, "cap fires on the twelfth question")
+        XCTAssertEqual(session.placementBand, 8, "correct tiebreak at the cap counts as a pass")
     }
 
     func testExplicitStartBandIsUsed() {

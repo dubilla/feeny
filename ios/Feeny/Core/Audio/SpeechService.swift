@@ -19,7 +19,12 @@ final class SpeechService {
 
     /// Parent-facing toggle from grown-up settings. Defaults to on.
     var isEnabled: Bool {
-        didSet { UserDefaults.standard.set(isEnabled, forKey: Self.enabledDefaultsKey) }
+        didSet {
+            UserDefaults.standard.set(isEnabled, forKey: Self.enabledDefaultsKey)
+            // A parent flipping this off shouldn't have to wait out an
+            // in-flight utterance.
+            if !isEnabled { stop() }
+        }
     }
 
     static let enabledDefaultsKey = "feeny.speechEnabled"
