@@ -33,13 +33,17 @@ final class PlayLessonUITests: XCTestCase {
         }
     }
 
-    private func createProfile(_ app: XCUIApplication, avatarIndex: Int, starterIndex: Int = 0) {
+    private func createProfile(_ app: XCUIApplication, avatarIndex: Int, starterIndex: Int = 0, age: Int = 7) {
         let avatar = app.buttons.matching(identifier: "avatar-option").element(boundBy: avatarIndex)
         XCTAssertTrue(avatar.waitForExistence(timeout: 15), "avatar grid missing")
         avatar.tap()
         let go = app.buttons["create-profile"]
         XCTAssertTrue(go.waitForExistence(timeout: 5))
         go.tap()
+        // Age step: anchors placement (new profiles never hit the in-placement age-ask).
+        let ageButton = app.buttons["age-\(age)"]
+        XCTAssertTrue(ageButton.waitForExistence(timeout: 5), "age step missing")
+        ageButton.tap()
         // Slice 4: picking the starter Feenling is what creates the profile.
         let starter = app.buttons.matching(identifier: "starter-option").element(boundBy: starterIndex)
         XCTAssertTrue(starter.waitForExistence(timeout: 5), "starter pick missing")

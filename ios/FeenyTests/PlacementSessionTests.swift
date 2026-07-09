@@ -49,9 +49,13 @@ final class PlacementSessionTests: XCTestCase {
         XCTAssertTrue(session.isComplete, "placement never completed")
     }
 
+    func testExplicitStartBandIsUsed() {
+        let session = PlacementSession(pack: makePack(), startBand: 3, maxBand: 8)
+        XCTAssertEqual(session.currentBand, 3, "staircase starts at the given band")
+    }
+
     func testAllCorrectClimbsToTopBand() {
         let session = PlacementSession(pack: makePack())
-        XCTAssertEqual(session.currentBand, 3, "staircase starts at band 3")
         run(session) { _ in true }
         XCTAssertEqual(session.placementBand, 5)
     }
@@ -72,6 +76,86 @@ final class PlacementSessionTests: XCTestCase {
         let session = PlacementSession(pack: makePack())
         run(session) { band in band <= 2 }
         XCTAssertEqual(session.placementBand, 2, "fail 3, pass 2 → reversal, ceiling is 2")
+    }
+
+    // MARK: - Age anchor mapping (pure TuningConstants math)
+
+    func testNominalBandMapsAgeMinusThreeClamped() {
+        XCTAssertEqual(TuningConstants.nominalBand(forAge: 3), 1, "below range clamps to 1")
+        XCTAssertEqual(TuningConstants.nominalBand(forAge: 4), 1)
+        XCTAssertEqual(TuningConstants.nominalBand(forAge: 7), 4)
+        XCTAssertEqual(TuningConstants.nominalBand(forAge: 10), 7)
+        XCTAssertEqual(TuningConstants.nominalBand(forAge: 11), 8)
+        XCTAssertEqual(TuningConstants.nominalBand(forAge: 15), 8, "above range clamps to 8")
+    }
+
+    func testStartBandIsOneBelowNominalFlooredAtOne() {
+        XCTAssertEqual(TuningConstants.placementStartBand(forAge: 4), 1)
+        XCTAssertEqual(TuningConstants.placementStartBand(forAge: 5), 1)
+        XCTAssertEqual(TuningConstants.placementStartBand(forAge: 7), 3)
+        XCTAssertEqual(TuningConstants.placementStartBand(forAge: 10), 6)
+    }
+
+    func testMaxBandIsTwoAboveNominalCappedAtEight() {
+        XCTAssertEqual(TuningConstants.placementMaxBand(forAge: 4), 3)
+        XCTAssertEqual(TuningConstants.placementMaxBand(forAge: 7), 6)
+        XCTAssertEqual(TuningConstants.placementMaxBand(forAge: 9), 8)
+        XCTAssertEqual(TuningConstants.placementMaxBand(forAge: 10), 8)
+    }
+
+    // MARK: - Age-derived bands in the staircase
+
+    func testPassingMaxBandIsTerminal() {
+        let session = PlacementSession(pack: makePack(), startBand: 2, maxBand: 3)
+        run(session) { _ in true }
+        XCTAssertEqual(session.placementBand, 3, "passing maxBand places there; bands 4–5 stay for jump-ahead")
+    }
+
+    func testStartAndMaxBandsClampToBandsWithProbes() {
+        // Pack has bands 1–5 only: start 6 and max 8 both clamp to 5.
+        let session = PlacementSession(pack: makePack(), startBand: 6, maxBand: 8)
+        XCTAssertEqual(session.currentBand, 5)
+        run(session) { _ in true }
+        XCTAssertEqual(session.placementBand, 5)
+    }
+
+    func testMaxBandNeverClampsBelowStartBand() {
+        // Both clamp to band 5; maxBand is lifted to startBand, so passing
+        // the start band is terminal rather than trapping the session.
+        let session = PlacementSession(pack: makePack(), startBand: 8, maxBand: 5)
+        XCTAssertEqual(session.currentBand, 5)
+        session.submit(correct: true)
+        session.submit(correct: true)
+        XCTAssertTrue(session.isComplete)
+        XCTAssertEqual(session.placementBand, 5)
+    }
+
+    // MARK: - Fast-rescue (anchored too high)
+
+    func testFastRescueDescendsTwoBandsBeforeFirstCorrect() {
+        let session = PlacementSession(pack: makePack(), startBand: 5, maxBand: 5)
+        session.submit(correct: false)
+        session.submit(correct: false)
+        XCTAssertEqual(session.currentBand, 3, "0/2 with nothing right yet drops two bands")
+        session.submit(correct: false)
+        session.submit(correct: false)
+        XCTAssertEqual(session.currentBand, 1, "still nothing right: two more down")
+    }
+
+    func testFastRescueClampsToLowestAvailableBand() {
+        let session = PlacementSession(pack: makePack(), startBand: 2, maxBand: 5)
+        session.submit(correct: false)
+        session.submit(correct: false)
+        XCTAssertEqual(session.currentBand, 1, "only one band below: rescue lands on the lowest")
+    }
+
+    func testNormalDescentAfterFirstCorrectAnswer() {
+        let session = PlacementSession(pack: makePack(), startBand: 4, maxBand: 5)
+        // 1/1 split decided wrong → fail band 4; the correct answer already
+        // disarmed fast-rescue, so descend one band only.
+        session.submit(correct: true)
+        session.submit(correct: false)
+        XCTAssertEqual(session.currentBand, 3, "after the first correct answer, failures descend one band")
     }
 
     func testQuestionCapIsRespected() {

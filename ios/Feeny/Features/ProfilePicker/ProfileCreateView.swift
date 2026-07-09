@@ -1,7 +1,8 @@
 import SwiftUI
 
-/// Pick your animal, (optionally) type a name, then pick your starter
-/// Feenling. Avatar-first because five-year-olds pick pictures, not keyboards.
+/// Pick your animal, (optionally) type a name, tap your age, then pick your
+/// starter Feenling. Avatar-first because five-year-olds pick pictures, not
+/// keyboards. The age anchors placement — it is stored, never shown to kids.
 struct ProfileCreateView: View {
     var canCancel: Bool = false
     var onDone: () -> Void = {}
@@ -11,12 +12,14 @@ struct ProfileCreateView: View {
 
     private enum Step {
         case buddy
+        case age
         case starter
     }
 
     @State private var step: Step = .buddy
     @State private var selectedAvatar: String?
     @State private var name = ""
+    @State private var selectedAge: Int?
 
     private static let avatars = ["🦊", "🐸", "🐼", "🦄", "🐙", "🦖", "🐨", "🐯", "🦉", "🐬", "🐢", "🐰"]
     private let columns = Array(repeating: GridItem(.fixed(120), spacing: 20), count: 6)
@@ -24,12 +27,12 @@ struct ProfileCreateView: View {
     var body: some View {
         VStack(spacing: 36) {
             HStack {
-                if canCancel || step == .starter {
+                if canCancel || step != .buddy {
                     Button {
-                        if step == .starter {
-                            step = .buddy
-                        } else {
-                            onDone()
+                        switch step {
+                        case .starter: step = .age
+                        case .age: step = .buddy
+                        case .buddy: onDone()
                         }
                     } label: {
                         Image(systemName: "chevron.left")
@@ -43,6 +46,7 @@ struct ProfileCreateView: View {
 
             switch step {
             case .buddy: buddyStep
+            case .age: ageStep
             case .starter: starterStep
             }
 
@@ -94,8 +98,8 @@ struct ProfileCreateView: View {
 
         Button {
             guard selectedAvatar != nil else { return }
-            step = .starter
-            speech.speak("Now pick your first Feenling friend! It will come along on your adventure.")
+            step = .age
+            speech.speak(ageQuestion)
         } label: {
             Text("Let's Go!")
                 .font(Theme.title(30))
@@ -109,7 +113,31 @@ struct ProfileCreateView: View {
         .accessibilityIdentifier("create-profile")
     }
 
-    // MARK: - Step 2: starter Feenling
+    // MARK: - Step 2: age
+
+    /// "How old are you, Maya?" — personalized when a name was typed.
+    private var ageQuestion: String {
+        let trimmed = name.trimmingCharacters(in: .whitespaces)
+        return trimmed.isEmpty ? "How old are you?" : "How old are you, \(trimmed)?"
+    }
+
+    @ViewBuilder
+    private var ageStep: some View {
+        Text("How old are you?")
+            .font(Theme.title(46))
+            .foregroundStyle(Theme.ink)
+        Text("This helps us find the perfect starting spot")
+            .font(Theme.body(24))
+            .foregroundStyle(Theme.ink.opacity(0.6))
+
+        AgePicker { age in
+            selectedAge = age
+            step = .starter
+            speech.speak("Now pick your first Feenling friend! It will come along on your adventure.")
+        }
+    }
+
+    // MARK: - Step 3: starter Feenling
 
     @ViewBuilder
     private var starterStep: some View {
@@ -124,7 +152,12 @@ struct ProfileCreateView: View {
             ForEach(CollectibleCatalog.starters) { starter in
                 Button {
                     guard let avatar = selectedAvatar else { return }
-                    progressStore.createProfile(name: name, avatarId: avatar, starterFeenlingId: starter.id)
+                    progressStore.createProfile(
+                        name: name,
+                        avatarId: avatar,
+                        starterFeenlingId: starter.id,
+                        ageYears: selectedAge
+                    )
                     onDone()
                 } label: {
                     VStack(spacing: 14) {

@@ -1,15 +1,22 @@
 import Foundation
 import Observation
 
-/// The placement staircase. Serves 2 probes per band starting at band 3
+/// The placement staircase. Serves 2 probes per band from `startBand`
 /// (clamped to bands that actually have probes); 2/2 climbs, 0/2 descends,
-/// 1/2 asks one tiebreak. Stops on direction reversal (would enter a band
-/// already decided), band limits, or the question cap.
-/// Pure logic; unit-tested. Age is never an input.
+/// a 1/1 split is decided by the second answer. Until the first correct
+/// answer, a failed band descends two bands (fast-rescue for an anchor set
+/// way too high). Stops
+/// on direction reversal (would enter a band already decided), passing
+/// `maxBand`, band limits, or the question cap.
+/// Pure logic; unit-tested. Age is never an input — callers derive
+/// `startBand`/`maxBand` upstream (from the profile's age anchor) and this
+/// type only ever sees bands.
 @Observable
 final class PlacementSession {
     private let probesByBand: [Int: [Exercise]]
     private let availableBands: [Int]
+    /// Ceiling for this run: passing it places the kid there.
+    private let maxBand: Int
 
     private(set) var currentBand: Int
     private(set) var askedCount = 0
@@ -20,10 +27,16 @@ final class PlacementSession {
     private var servedInBand = 0
     private var passedBands: Set<Int> = []
     private var failedBands: Set<Int> = []
+    /// Fast-rescue flag: failures before the first correct answer drop two bands.
+    private var hasAnsweredCorrectly = false
 
     private(set) var currentExercise: Exercise?
 
-    init(pack: SubjectPack) {
+    init(
+        pack: SubjectPack,
+        startBand: Int = TuningConstants.placementStartBand,
+        maxBand: Int = 8
+    ) {
         var byBand: [Int: [Exercise]] = [:]
         let allExercises = Dictionary(
             uniqueKeysWithValues: pack.units
@@ -39,12 +52,20 @@ final class PlacementSession {
 
         if availableBands.isEmpty {
             currentBand = 1
+            self.maxBand = 1
             isComplete = true
         } else {
-            let preferred = TuningConstants.placementStartBand
-            currentBand = availableBands.contains(preferred)
-                ? preferred
-                : availableBands.min(by: { abs($0 - preferred) < abs($1 - preferred) })!
+            // Clamp both to the nearest band with probes; maxBand can never
+            // land below startBand after clamping.
+            let bands = availableBands
+            func nearest(to preferred: Int) -> Int {
+                bands.contains(preferred)
+                    ? preferred
+                    : bands.min(by: { abs($0 - preferred) < abs($1 - preferred) })!
+            }
+            let start = nearest(to: startBand)
+            currentBand = start
+            self.maxBand = max(start, nearest(to: maxBand))
             serveNext()
         }
     }
@@ -61,7 +82,12 @@ final class PlacementSession {
     func submit(correct: Bool) {
         guard !isComplete else { return }
         askedCount += 1
-        if correct { correctInBand += 1 } else { wrongInBand += 1 }
+        if correct {
+            correctInBand += 1
+            hasAnsweredCorrectly = true
+        } else {
+            wrongInBand += 1
+        }
 
         if askedCount >= TuningConstants.placementMaxQuestions {
             settleBandByMajority()
@@ -76,7 +102,7 @@ final class PlacementSession {
         } else if wrongInBand == probesNeeded {
             fail(band: currentBand)
         } else if servedInBand >= probesNeeded && correctInBand > 0 && wrongInBand > 0 {
-            // 1/1 split → the tiebreak probe just answered decides.
+            // 1/1 split → the answer just given decides the band.
             if correct { pass(band: currentBand) } else { fail(band: currentBand) }
         } else {
             serveNext()
@@ -85,6 +111,13 @@ final class PlacementSession {
 
     private func pass(band: Int) {
         passedBands.insert(band)
+        if band >= maxBand {
+            // Ceiling for this run — place here; jump-ahead challenges are
+            // the path beyond it.
+            isComplete = true
+            currentExercise = nil
+            return
+        }
         guard let next = availableBands.first(where: { $0 > band }) else {
             isComplete = true
             currentExercise = nil
@@ -101,10 +134,16 @@ final class PlacementSession {
 
     private func fail(band: Int) {
         failedBands.insert(band)
-        guard let next = availableBands.last(where: { $0 < band }) else {
+        let lowerBands = availableBands.filter { $0 < band }
+        guard var next = lowerBands.last else {
             isComplete = true
             currentExercise = nil
             return
+        }
+        if !hasAnsweredCorrectly && lowerBands.count >= 2 {
+            // Fast-rescue: nothing right yet, so the anchor was way too
+            // high — drop two bands (no pass can exist below to reverse into).
+            next = lowerBands[lowerBands.count - 2]
         }
         if passedBands.contains(next) {
             // Reversal: we already passed below — that pass stands.

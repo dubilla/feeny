@@ -56,9 +56,18 @@ final class ProgressStore {
     }
 
     @discardableResult
-    func createProfile(name: String, avatarId: String, starterFeenlingId: String? = nil) -> KidProfile {
+    func createProfile(
+        name: String,
+        avatarId: String,
+        starterFeenlingId: String? = nil,
+        ageYears: Int? = nil
+    ) -> KidProfile {
         let trimmed = name.trimmingCharacters(in: .whitespaces)
         let profile = KidProfile(name: trimmed.isEmpty ? "Explorer" : trimmed, avatarId: avatarId)
+        if let ageYears {
+            profile.ageYears = ageYears
+            profile.ageCapturedAt = now()
+        }
         context.insert(profile)
         if let starterId = starterFeenlingId, let starter = CollectibleCatalog.feenling(id: starterId) {
             profile.starterFeenlingId = starter.id
@@ -74,6 +83,15 @@ final class ProgressStore {
 
     func select(_ profile: KidProfile) {
         activeProfile = profile
+    }
+
+    /// Records (or corrects) the active kid's age. The capture date anchors
+    /// `KidProfile.currentAge`, which advances by whole elapsed years.
+    func setAge(years: Int) {
+        guard let profile = activeProfile else { return }
+        profile.ageYears = years
+        profile.ageCapturedAt = now()
+        try? context.save()
     }
 
     /// Back to the picker (e.g. handing the iPad to a sibling).
@@ -169,6 +187,7 @@ final class ProgressStore {
         for skill in pack.skills where (bandNumberById[skill.bandId] ?? 99) < bandNumber {
             if mastery(skillId: skill.id) == nil {
                 let record = SkillMastery(skillId: skill.id, mastery: TuningConstants.assumedMasteryBelowPlacement)
+                record.seededByPlacement = true
                 record.profile = profile
                 context.insert(record)
             }
@@ -200,6 +219,8 @@ final class ProgressStore {
         if let record = mastery(skillId: skillId) {
             record.mastery = ProgressEngine.updatedMastery(old: record.mastery, sessionAccuracy: sessionAccuracy)
             record.lastPracticedAt = Date()
+            // Real practice: the row is earned now, not a placement assumption.
+            record.seededByPlacement = false
         } else {
             let record = SkillMastery(
                 skillId: skillId,
@@ -300,10 +321,20 @@ final class ProgressStore {
     // MARK: - Parent-gated maintenance
 
     /// Clears a subject's placement (and its challenge-skipped units) so the
-    /// warm-up quiz runs fresh next time. Lesson history and mastery stay —
-    /// finished lessons remain finished wherever the kid lands.
-    func resetPlacement(subjectId: String) {
+    /// warm-up quiz runs fresh next time. Lesson history and earned mastery
+    /// stay — finished lessons remain finished wherever the kid lands — but
+    /// mastery rows the old placement merely assumed (still `seededByPlacement`,
+    /// never practiced) are deleted so they can't outlive the placement that
+    /// invented them. Pass the subject's skill ids so other subjects' seeds
+    /// are untouched.
+    func resetPlacement(subjectId: String, skillIdsInSubject: Set<String>) {
         guard let progress = subjectProgress(for: subjectId) else { return }
+        let profile = activeProfile
+        let all = (try? context.fetch(FetchDescriptor<SkillMastery>())) ?? []
+        for record in all
+        where record.profile === profile && record.seededByPlacement && skillIdsInSubject.contains(record.skillId) {
+            context.delete(record)
+        }
         context.delete(progress)
         try? context.save()
     }
