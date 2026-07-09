@@ -90,7 +90,7 @@ export const wordPower: UnitSeed = {
               text: "Pick the word that means the same!",
               spokenText: "Read the sentence, then pick the word that means the same as glad!",
             },
-            template: "I was glad, so I felt ___.",
+            template: "Glad and ___ mean the same thing.",
             bank: [
               { id: "a", label: "sleepy" },
               { id: "b", label: "happy" },

@@ -50,7 +50,7 @@ export const sightWordStars: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🐶",
+              text: "Finish the sentence!",
               spokenText: "Listen: I see a dog. Tap the missing word!",
             },
             template: "I ___ a dog.",
@@ -96,7 +96,7 @@ export const sightWordStars: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🐱 🐶",
+              text: "Finish the sentence!",
               spokenText: "Listen: I see a cat and a dog. Tap the missing word!",
             },
             template: "I see a cat ___ a dog.",
@@ -175,7 +175,7 @@ export const sightWordStars: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🐶",
+              text: "Finish the sentence!",
               spokenText: "Listen: Come here, dog! Tap the missing word!",
             },
             template: "Come ___, dog!",
@@ -205,7 +205,7 @@ export const sightWordStars: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🍎",
+              text: "Finish the sentence!",
               spokenText: "Listen: I like apples. Tap the missing word!",
             },
             template: "I ___ apples.",
@@ -238,7 +238,7 @@ export const sightWordStars: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🐔",
+              text: "Finish the sentence!",
               spokenText: "Listen: The hen said cluck. Tap the missing word!",
             },
             template: "The hen ___ cluck.",
@@ -289,7 +289,7 @@ export const sightWordStars: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🐷",
+              text: "Finish the sentence!",
               spokenText: "Listen: Come and see the pig! Tap the missing word!",
             },
             template: "Come ___ see the pig!",
@@ -336,7 +336,7 @@ export const sightWordStars: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🥛",
+              text: "Finish the sentence!",
               spokenText: "Listen: Do you like milk? Tap the missing word!",
             },
             template: "Do ___ like milk?",
@@ -368,7 +368,7 @@ export const sightWordStars: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🐸",
+              text: "Finish the sentence!",
               spokenText: "Listen: Come and see the frog! Tap the missing word!",
             },
             template: "Come and ___ the frog!",

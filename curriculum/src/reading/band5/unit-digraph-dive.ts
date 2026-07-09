@@ -57,8 +57,8 @@ export const digraphDive: UnitSeed = {
             },
             template: "___ip 🚢",
             bank: [
-              { id: "a", label: "ch" },
-              { id: "b", label: "dr" },
+              { id: "a", label: "th" },
+              { id: "b", label: "fr" },
               { id: "c", label: "sh" },
             ],
             correctChipId: "c",
