@@ -46,7 +46,7 @@ struct UnitDetailSheet: View {
             }
             .padding(.horizontal, 48)
         }
-        .presentationDetents([.medium, .large])
+        .presentationDetents([.large])
     }
 
     private var completedLessonIds: Set<String> { progressStore.completedLessonIds }
