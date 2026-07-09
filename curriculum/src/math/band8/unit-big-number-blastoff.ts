@@ -273,7 +273,7 @@ export const bigNumberBlastoff: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "58 rockets + 24 rockets = ?",
+              text: "58 + 24 = ?",
               spokenText: "Fifty-eight rockets wait on the launch pad. Twenty-four more roll out! How many rockets in all?",
             },
             options: [

@@ -116,7 +116,7 @@ export const doubleTrouble: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "3 bones + 3 bones = ?",
+              text: "3 + 3 = ?",
               spokenText: "Twin puppies each dig up three bones. How many bones did they dig up in all?",
             },
             options: [

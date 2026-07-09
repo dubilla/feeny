@@ -42,7 +42,7 @@ export const additionWithin10A: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "2 frogs + 1 frog = ?",
+              text: "2 + 1 = ?",
               spokenText: "Two frogs are on a log. One more frog hops on! How many frogs now?",
             },
             options: [
@@ -58,7 +58,7 @@ export const additionWithin10A: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "3 apples + 2 apples = ?",
+              text: "3 + 2 = ?",
               spokenText: "You have three apples. A friend gives you two more! How many apples do you have?",
             },
             options: [
@@ -199,7 +199,7 @@ export const additionWithin10A: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "3 bees + 3 bees = ?",
+              text: "3 + 3 = ?",
               spokenText: "Three bees are on a flower. Three more bees buzz over! How many bees now?",
             },
             options: [
