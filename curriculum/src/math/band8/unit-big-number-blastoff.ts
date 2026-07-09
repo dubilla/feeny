@@ -277,9 +277,9 @@ export const bigNumberBlastoff: UnitSeed = {
               spokenText: "Fifty-eight rockets wait on the launch pad. Twenty-four more roll out! How many rockets in all?",
             },
             options: [
-              { id: "a", visual: { kind: "emoji", value: "🚀" }, label: "72" },
-              { id: "b", visual: { kind: "emoji", value: "🚀" }, label: "81" },
-              { id: "c", visual: { kind: "emoji", value: "🚀" }, label: "82" },
+              { id: "a", label: "72" },
+              { id: "b", label: "81" },
+              { id: "c", label: "82" },
             ],
             correctOptionId: "c",
           },
@@ -378,13 +378,13 @@ export const bigNumberBlastoff: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "642 stars − 218 stars = ?",
+              text: "642 − 218 = ?",
               spokenText: "A space station has six hundred forty-two stars painted on it. Two hundred eighteen fade away! How many stars are left?",
             },
             options: [
-              { id: "a", visual: { kind: "emoji", value: "⭐" }, label: "424" },
-              { id: "b", visual: { kind: "emoji", value: "⭐" }, label: "434" },
-              { id: "c", visual: { kind: "emoji", value: "⭐" }, label: "414" },
+              { id: "a", label: "424" },
+              { id: "b", label: "434" },
+              { id: "c", label: "414" },
             ],
             correctOptionId: "a",
           },

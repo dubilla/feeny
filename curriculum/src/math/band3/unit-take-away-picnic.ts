@@ -36,13 +36,13 @@ export const takeAwayPicnic: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "6 apples − 2 apples = ?",
+              text: "6 − 2 = ?",
               spokenText: "Six apples are on the blanket. Two ants carry two apples away! How many apples are left?",
             },
             options: [
-              { id: "a", visual: { kind: "emoji", value: "🍎🍎🍎" }, label: "3" },
-              { id: "b", visual: { kind: "emoji", value: "🍎🍎🍎🍎" }, label: "4" },
-              { id: "c", visual: { kind: "emoji", value: "🍎🍎🍎🍎🍎" }, label: "5" },
+              { id: "a", label: "3" },
+              { id: "b", label: "4" },
+              { id: "c", label: "5" },
             ],
             correctOptionId: "b",
           },
@@ -52,7 +52,7 @@ export const takeAwayPicnic: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "3 cookies − 1 cookie = ?",
+              text: "3 − 1 = ?",
               spokenText: "Three cookies are on the plate. A sneaky bird grabs one! How many cookies are left?",
             },
             options: [
@@ -132,7 +132,7 @@ export const takeAwayPicnic: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "6 grapes − 3 grapes = ?",
+              text: "6 − 3 = ?",
               spokenText: "Six grapes are in the bowl. The ants march off with three! How many grapes are left?",
             },
             options: [
@@ -172,13 +172,13 @@ export const takeAwayPicnic: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "8 birds − 3 birds = ?",
+              text: "8 − 3 = ?",
               spokenText: "Eight birds sit on the picnic fence. Three fly away! How many birds are still sitting there?",
             },
             options: [
-              { id: "a", visual: { kind: "emoji", value: "🐦🐦🐦🐦" }, label: "4" },
-              { id: "b", visual: { kind: "emoji", value: "🐦🐦🐦🐦🐦🐦" }, label: "6" },
-              { id: "c", visual: { kind: "emoji", value: "🐦🐦🐦🐦🐦" }, label: "5" },
+              { id: "a", label: "4" },
+              { id: "b", label: "6" },
+              { id: "c", label: "5" },
             ],
             correctOptionId: "c",
           },
@@ -292,7 +292,7 @@ export const takeAwayPicnic: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "10 sandwiches − 6 = ?",
+              text: "10 − 6 = ?",
               spokenText: "Ten sandwiches are in the basket. The ant team carries off six! How many sandwiches are left?",
             },
             options: [
@@ -405,7 +405,7 @@ export const takeAwayPicnic: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "7 fireflies − 7 = ?",
+              text: "7 − 7 = ?",
               spokenText: "Seven fireflies glow at the picnic. All seven fly away into the night! How many fireflies are left?",
             },
             options: [

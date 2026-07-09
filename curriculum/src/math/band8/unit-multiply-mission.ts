@@ -278,9 +278,9 @@ export const multiplyMission: UnitSeed = {
               spokenText: "Each side of the rocket has sixteen windows. Both sides means sixteen times two! How many windows in all?",
             },
             options: [
-              { id: "a", visual: { kind: "emoji", value: "🛸" }, label: "18" },
-              { id: "b", visual: { kind: "emoji", value: "🛸" }, label: "32" },
-              { id: "c", visual: { kind: "emoji", value: "🛸" }, label: "36" },
+              { id: "a", label: "18" },
+              { id: "b", label: "32" },
+              { id: "c", label: "36" },
             ],
             correctOptionId: "b",
           },

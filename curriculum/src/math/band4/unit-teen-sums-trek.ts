@@ -176,7 +176,7 @@ export const teenSumsTrek: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "14 cookies − 6 = ?",
+              text: "14 − 6 = ?",
               spokenText: "The hikers packed fourteen trail cookies. They munch six on the way up! How many cookies are left?",
             },
             options: [
@@ -329,7 +329,7 @@ export const teenSumsTrek: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "18 stars − 9 = ?",
+              text: "18 − 9 = ?",
               spokenText: "Eighteen stars twinkle over the mountain. Clouds drift in and hide nine of them! How many stars still twinkle?",
             },
             options: [
@@ -409,7 +409,7 @@ export const teenSumsTrek: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "20 flags − 8 = ?",
+              text: "20 − 8 = ?",
               spokenText: "Twenty flags fly at the summit. A gust of wind blows eight away! How many flags are still flying?",
             },
             options: [

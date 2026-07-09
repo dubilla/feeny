@@ -230,9 +230,9 @@ export const twoDigitTeamUp: UnitSeed = {
               spokenText: "Twenty-four kids are riding the bus. At the next stop, twelve more climb on! How many kids are on the bus now?",
             },
             options: [
-              { id: "a", visual: { kind: "emoji", value: "🚌" }, label: "26" },
-              { id: "b", visual: { kind: "emoji", value: "🚌" }, label: "35" },
-              { id: "c", visual: { kind: "emoji", value: "🚌" }, label: "36" },
+              { id: "a", label: "26" },
+              { id: "b", label: "35" },
+              { id: "c", label: "36" },
             ],
             correctOptionId: "c",
           },
@@ -362,13 +362,13 @@ export const twoDigitTeamUp: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "39 stickers − 17 stickers = ?",
+              text: "39 − 17 = ?",
               spokenText: "You have thirty-nine shiny stickers. You give seventeen to your best friend! How many stickers do you have left?",
             },
             options: [
-              { id: "a", visual: { kind: "emoji", value: "✨" }, label: "21" },
-              { id: "b", visual: { kind: "emoji", value: "✨" }, label: "22" },
-              { id: "c", visual: { kind: "emoji", value: "✨" }, label: "32" },
+              { id: "a", label: "21" },
+              { id: "b", label: "22" },
+              { id: "c", label: "32" },
             ],
             correctOptionId: "b",
           },
