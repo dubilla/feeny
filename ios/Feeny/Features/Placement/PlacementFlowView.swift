@@ -10,6 +10,7 @@ struct PlacementFlowView: View {
     @State private var session: PlacementSession
     @State private var stage: Stage = .intro
     @State private var xpAwarded = 0
+    @State private var volumeNudgeDismissed = false
     @Environment(SpeechService.self) private var speech
     @Environment(ProgressStore.self) private var progressStore
     @Environment(\.dismiss) private var dismiss
@@ -44,6 +45,16 @@ struct PlacementFlowView: View {
                 doneView
             }
         }
+        .overlay(alignment: .top) {
+            if speech.shouldNudgeVolume && !volumeNudgeDismissed {
+                VolumeNudgeBanner {
+                    withAnimation { volumeNudgeDismissed = true }
+                }
+                .padding(.top, 16)
+                .transition(.move(edge: .top).combined(with: .opacity))
+            }
+        }
+        .animation(.spring(response: 0.4, dampingFraction: 0.8), value: speech.shouldNudgeVolume)
     }
 
     private var intro: some View {

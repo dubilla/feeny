@@ -32,6 +32,7 @@ struct LessonPlayerView: View {
     @State private var rewards: ProgressStore.LessonRewards?
     @State private var ceremonyStage: CeremonyStage = .stars
     @State private var completionRecorded = false
+    @State private var volumeNudgeDismissed = false
 
     init(lesson: Lesson, mode: Mode = .normal, unit: LearningUnit? = nil, subjectId: String? = nil) {
         _session = State(initialValue: LessonSession(lesson: lesson))
@@ -74,8 +75,28 @@ struct LessonPlayerView: View {
                 .onChange(of: exercise.id) {
                     speakPrompt(exercise)
                 }
+                .task(id: exerciseInstanceId(exercise)) {
+                    // One gentle auto-replay if the kid stalls — usually
+                    // means they missed the prompt. The id change on advance
+                    // cancels the pending replay.
+                    try? await Task.sleep(for: .seconds(10))
+                    guard !Task.isCancelled else { return }
+                    if case .answering = session.phase {
+                        speakPrompt(exercise)
+                    }
+                }
             }
         }
+        .overlay(alignment: .top) {
+            if speech.shouldNudgeVolume && !volumeNudgeDismissed {
+                VolumeNudgeBanner {
+                    withAnimation { volumeNudgeDismissed = true }
+                }
+                .padding(.top, 16)
+                .transition(.move(edge: .top).combined(with: .opacity))
+            }
+        }
+        .animation(.spring(response: 0.4, dampingFraction: 0.8), value: speech.shouldNudgeVolume)
         .onChange(of: session.phase) { _, newPhase in
             handlePhaseChange(newPhase)
         }

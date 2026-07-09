@@ -5,18 +5,33 @@ import SwiftUI
 struct ParentSettingsView: View {
     @Environment(ProgressStore.self) private var progressStore
     @Environment(ContentStore.self) private var contentStore
+    @Environment(SpeechService.self) private var speech
+    @Environment(SoundEffects.self) private var sounds
     @Environment(\.dismiss) private var dismiss
 
     @State private var confirmingDelete = false
     @State private var resetSubjectIds: Set<String> = []
 
     var body: some View {
-        NavigationStack {
+        @Bindable var speech = speech
+        @Bindable var sounds = sounds
+        return NavigationStack {
             List {
                 Section("Placement") {
                     ForEach(contentStore.subjectsSorted, id: \.subjectId) { pack in
                         placementRow(pack)
                     }
+                }
+
+                Section {
+                    Toggle("Spoken prompts", isOn: $speech.isEnabled)
+                        .accessibilityIdentifier("settings-speech-toggle")
+                    Toggle("Sound effects", isOn: $sounds.isEnabled)
+                        .accessibilityIdentifier("settings-sounds-toggle")
+                } header: {
+                    Text("Audio")
+                } footer: {
+                    Text("Spoken prompts read every task aloud — recommended for kids who aren't reading yet. When off, listening exercises show their words on screen instead.")
                 }
 
                 Section("Profile") {

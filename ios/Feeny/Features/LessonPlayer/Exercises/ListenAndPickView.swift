@@ -27,6 +27,21 @@ struct ListenAndPickView: View {
             }
             .buttonStyle(SquishyButtonStyle())
 
+            // Fallback when the prompt can't be heard (parent turned speech
+            // off, or volume is zero): show the words so a reading kid or a
+            // nearby grown-up can still solve it — without audio this
+            // exercise is otherwise pure guessing.
+            if speech.promptAudioUnavailable {
+                Text(payload.prompt.spoken)
+                    .font(Theme.title(32))
+                    .foregroundStyle(Theme.ink)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 32)
+                    .padding(.vertical, 16)
+                    .background(RoundedRectangle(cornerRadius: Theme.cornerRadius).fill(Theme.card))
+                    .accessibilityIdentifier("listen-fallback-text")
+            }
+
             HStack(spacing: 24) {
                 ForEach(payload.options) { option in
                     Button {
