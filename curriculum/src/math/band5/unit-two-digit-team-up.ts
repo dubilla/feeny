@@ -226,7 +226,7 @@ export const twoDigitTeamUp: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "24 kids + 12 kids = ?",
+              text: "24 + 12 = ?",
               spokenText: "Twenty-four kids are riding the bus. At the next stop, twelve more climb on! How many kids are on the bus now?",
             },
             options: [

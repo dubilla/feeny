@@ -56,7 +56,7 @@ export const teenSumsTrek: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "8 goats + 4 goats = ?",
+              text: "8 + 4 = ?",
               spokenText: "Eight mountain goats stand on the cliff. Four more climb up to join them! How many goats in all?",
             },
             options: [
