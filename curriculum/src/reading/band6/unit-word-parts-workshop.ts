@@ -225,9 +225,9 @@ export const wordPartsWorkshop: UnitSeed = {
           payload: {
             prompt: {
               text: "Pick the word that fits!",
-              spokenText: "The knot was tight, so what did I have to do to it? Pick the word that means to undo the tie!",
+              spokenText: "My boot would not come off because the knot was tight. What did I have to do? Pick the word that means to undo the tie!",
             },
-            template: "The knot was tight, so I had to ___ it.",
+            template: "My boot stayed on, so I had to ___ the tight knot.",
             bank: [
               { id: "a", label: "untie" },
               { id: "b", label: "retie" },

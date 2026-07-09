@@ -37,7 +37,7 @@ export const wordBuilders: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "🐶",
+              text: "Tap the word you hear!",
               spokenText: "Look, a dog! Tap the word that says dog.",
             },
             options: [
@@ -80,7 +80,7 @@ export const wordBuilders: UnitSeed = {
           type: "ordering",
           payload: {
             prompt: {
-              text: "Build: cat 🐱",
+              text: "Build: cat",
               spokenText: "Let's build the word cat! Tap the letters in order: c, a, t.",
             },
             items: [
@@ -109,7 +109,7 @@ export const wordBuilders: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🐱",
+              text: "Which letter finishes the word?",
               spokenText: "This is a cat! Which letter finishes the word cat?",
             },
             template: "ca___",
@@ -150,7 +150,7 @@ export const wordBuilders: UnitSeed = {
           type: "ordering",
           payload: {
             prompt: {
-              text: "Build: dog 🐶",
+              text: "Build: dog",
               spokenText: "Let's build the word dog! Tap the letters in order: d, o, g.",
             },
             items: [
@@ -166,7 +166,7 @@ export const wordBuilders: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🛏️",
+              text: "Which letter finishes the word?",
               spokenText: "This is a bed! Which letter finishes the word bed?",
             },
             template: "be___",
@@ -196,7 +196,7 @@ export const wordBuilders: UnitSeed = {
           type: "ordering",
           payload: {
             prompt: {
-              text: "Build: sun ☀️",
+              text: "Build: sun",
               spokenText: "Let's build the word sun! Tap the letters in order: s, u, n.",
             },
             items: [
@@ -227,7 +227,7 @@ export const wordBuilders: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🐷",
+              text: "Which letter finishes the word?",
               spokenText: "This is a pig! Which letter finishes the word pig?",
             },
             template: "pi___",
@@ -281,7 +281,7 @@ export const wordBuilders: UnitSeed = {
           type: "ordering",
           payload: {
             prompt: {
-              text: "Build: hen 🐔",
+              text: "Build: hen",
               spokenText: "Let's build the word hen! Tap the letters in order: h, e, n.",
             },
             items: [
@@ -297,7 +297,7 @@ export const wordBuilders: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "☀️",
+              text: "Which letter is in the middle?",
               spokenText: "This is the sun! Which letter goes in the middle of sun?",
             },
             template: "s___n",
@@ -327,7 +327,7 @@ export const wordBuilders: UnitSeed = {
           type: "ordering",
           payload: {
             prompt: {
-              text: "Build: bus 🚌",
+              text: "Build: bus",
               spokenText: "Let's build the word bus! Tap the letters in order: b, u, s.",
             },
             items: [
@@ -343,7 +343,7 @@ export const wordBuilders: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🐶",
+              text: "Which letter is in the middle?",
               spokenText: "This is a dog! Which letter goes in the middle of dog?",
             },
             template: "d___g",
@@ -375,7 +375,7 @@ export const wordBuilders: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "🪵",
+              text: "Tap the word you hear!",
               spokenText: "Look, a log! Tap the word that says log.",
             },
             options: [
@@ -391,7 +391,7 @@ export const wordBuilders: UnitSeed = {
           type: "ordering",
           payload: {
             prompt: {
-              text: "Build: bat 🦇",
+              text: "Build: bat",
               spokenText: "Let's build the word bat! Tap the letters in order: b, a, t.",
             },
             items: [

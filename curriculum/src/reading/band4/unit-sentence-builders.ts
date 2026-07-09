@@ -55,7 +55,7 @@ export const sentenceBuilders: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🐷",
+              text: "Finish the sentence!",
               spokenText: "Listen: The pig is big. Tap the missing word!",
             },
             template: "The pig is ___.",
@@ -104,13 +104,13 @@ export const sentenceBuilders: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🌙",
-              spokenText: "Listen: I like the moon. Tap the missing word!",
+              text: "Finish the sentence!",
+              spokenText: "Listen: The moon is in the sky. Tap the missing word!",
             },
-            template: "I like the ___.",
+            template: "The ___ is in the sky.",
             bank: [
               { id: "a", label: "moon" },
-              { id: "b", label: "man" },
+              { id: "b", label: "mat" },
               { id: "c", label: "mop" },
             ],
             correctChipId: "a",
@@ -177,7 +177,7 @@ export const sentenceBuilders: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🐸",
+              text: "Finish the sentence!",
               spokenText: "Listen: The frog can hop. Tap the missing word!",
             },
             template: "The frog can ___.",
@@ -226,14 +226,14 @@ export const sentenceBuilders: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🐝 🍎",
-              spokenText: "Listen: A bee is on the apple. Tap the missing word!",
+              text: "Finish the sentence!",
+              spokenText: "Listen: A bee can buzz. Tap the missing word!",
             },
-            template: "A bee is on the ___.",
+            template: "A ___ can buzz.",
             bank: [
-              { id: "a", label: "apple" },
-              { id: "b", label: "ant" },
-              { id: "c", label: "and" },
+              { id: "a", label: "bee" },
+              { id: "b", label: "bed" },
+              { id: "c", label: "bat" },
             ],
             correctChipId: "a",
           },
@@ -323,10 +323,10 @@ export const sentenceBuilders: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🪁",
-              spokenText: "Listen: The kite is up high. Tap the missing word!",
+              text: "Finish the sentence!",
+              spokenText: "Listen: The kite flies up high. Tap the missing word!",
             },
-            template: "The ___ is up high.",
+            template: "The ___ flies up high.",
             bank: [
               { id: "a", label: "kit" },
               { id: "b", label: "kite" },
@@ -374,7 +374,7 @@ export const sentenceBuilders: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🦊 🛏️",
+              text: "Finish the sentence!",
               spokenText: "Listen: The fox naps on the bed. Tap the missing word!",
             },
             template: "The fox naps on the ___.",

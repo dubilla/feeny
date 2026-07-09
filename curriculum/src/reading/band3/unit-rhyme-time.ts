@@ -232,7 +232,7 @@ export const rhymeTime: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🐱",
+              text: "Which word rhymes?",
               spokenText: "Cat rhymes with... tap the word! Is it hat, pig, or bus?",
             },
             template: "cat rhymes with ___",
@@ -336,7 +336,7 @@ export const rhymeTime: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "☀️",
+              text: "Which word rhymes?",
               spokenText: "Sun rhymes with... tap the word! Is it fun, sit, or pen?",
             },
             template: "sun rhymes with ___",
@@ -416,7 +416,7 @@ export const rhymeTime: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🐸",
+              text: "Which word rhymes?",
               spokenText: "Frog rhymes with... tap the word! Is it dog, fish, or hat?",
             },
             template: "frog rhymes with ___",

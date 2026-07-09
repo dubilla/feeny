@@ -24,7 +24,7 @@ export const wordFamilies: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🐱",
+              text: "Which letter starts the word?",
               spokenText: "This is a cat! Which letter starts the word cat?",
             },
             template: "___at",
@@ -57,7 +57,7 @@ export const wordFamilies: UnitSeed = {
           type: "ordering",
           payload: {
             prompt: {
-              text: "Build: hat 🎩",
+              text: "Build: hat",
               spokenText: "Hat is in the at family! Tap the letters in order: h, a, t.",
             },
             items: [
@@ -73,7 +73,7 @@ export const wordFamilies: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🐶",
+              text: "Which letter starts the word?",
               spokenText: "This is a dog! Which letter starts the word dog?",
             },
             template: "___og",
@@ -120,7 +120,7 @@ export const wordFamilies: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🦇",
+              text: "Which letter starts the word?",
               spokenText: "This is a bat! Which letter starts the word bat?",
             },
             template: "___at",
@@ -137,7 +137,7 @@ export const wordFamilies: UnitSeed = {
           type: "ordering",
           payload: {
             prompt: {
-              text: "Build: log 🪵",
+              text: "Build: log",
               spokenText: "Log is in the og family! Tap the letters in order: l, o, g.",
             },
             items: [
@@ -161,7 +161,7 @@ export const wordFamilies: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🐔",
+              text: "Which letter starts the word?",
               spokenText: "This is a hen! Which letter starts the word hen?",
             },
             template: "___en",
@@ -178,7 +178,7 @@ export const wordFamilies: UnitSeed = {
           type: "ordering",
           payload: {
             prompt: {
-              text: "Build: pen 🖊️",
+              text: "Build: pen",
               spokenText: "Pen is in the en family! Tap the letters in order: p, e, n.",
             },
             items: [
@@ -210,7 +210,7 @@ export const wordFamilies: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🐷",
+              text: "Which letter starts the word?",
               spokenText: "This is a pig! Which letter starts the word pig?",
             },
             template: "___ig",
@@ -346,7 +346,7 @@ export const wordFamilies: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🐷",
+              text: "Which letter is in the middle?",
               spokenText: "This is a pig! Pig is in the ig family. Which letter goes in the middle?",
             },
             template: "p___g",
@@ -410,7 +410,7 @@ export const wordFamilies: UnitSeed = {
           type: "fillBlankWordBank",
           payload: {
             prompt: {
-              text: "🐶",
+              text: "Which letter is in the middle?",
               spokenText: "This is a dog! Dog is in the og family. Which letter goes in the middle?",
             },
             template: "d___g",

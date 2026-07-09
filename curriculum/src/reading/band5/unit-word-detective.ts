@@ -263,7 +263,7 @@ export const wordDetective: UnitSeed = {
             template: "A kitten is small, but a lion is ___.",
             bank: [
               { id: "a", label: "sad" },
-              { id: "b", label: "fast" },
+              { id: "b", label: "small" },
               { id: "c", label: "big" },
             ],
             correctChipId: "c",
