@@ -8,21 +8,27 @@ struct PlacementFlowView: View {
     let pack: SubjectPack
 
     @State private var session: PlacementSession
-    @State private var stage: Stage = .intro
+    @State private var stage: Stage
     @State private var xpAwarded = 0
     @Environment(SpeechService.self) private var speech
     @Environment(ProgressStore.self) private var progressStore
     @Environment(\.dismiss) private var dismiss
 
     private enum Stage: Equatable {
+        case askAge
         case intro
         case question
         case interlude(String)
         case done
     }
 
-    init(pack: SubjectPack) {
+    /// `kidAge` is the profile's `currentAge` snapshot. Nil (profiles from
+    /// before ages existed) asks the kid first, then runs the warm-up.
+    init(pack: SubjectPack, kidAge: Int?) {
         self.pack = pack
+        _stage = State(initialValue: kidAge == nil ? .askAge : .intro)
+        // Placeholder; the real session is built when the warm-up starts,
+        // once the age (and its start/max bands) is settled.
         _session = State(initialValue: PlacementSession(pack: pack))
     }
 
@@ -30,6 +36,8 @@ struct PlacementFlowView: View {
         ZStack {
             Theme.background.ignoresSafeArea()
             switch stage {
+            case .askAge:
+                askAge
             case .intro:
                 intro
             case .question:
@@ -46,6 +54,28 @@ struct PlacementFlowView: View {
         }
     }
 
+    /// Age-ask for profiles created before ages existed. Same big-button UI
+    /// as profile creation; the answer is saved so it's never asked again.
+    private var askAge: some View {
+        VStack(spacing: 32) {
+            Text("How old are you?")
+                .font(Theme.title(48))
+                .foregroundStyle(Theme.ink)
+            Text("This helps us find the perfect starting spot")
+                .font(Theme.body(26))
+                .foregroundStyle(Theme.ink.opacity(0.7))
+            AgePicker { age in
+                progressStore.setAge(years: age)
+                withAnimation { stage = .intro }
+            }
+        }
+        .padding(60)
+        .onAppear {
+            let name = progressStore.activeProfile?.name ?? ""
+            speech.speak(name.isEmpty ? "How old are you?" : "How old are you, \(name)?")
+        }
+    }
+
     private var intro: some View {
         VStack(spacing: 32) {
             Text("🧭")
@@ -58,7 +88,7 @@ struct PlacementFlowView: View {
                 .foregroundStyle(Theme.ink.opacity(0.7))
                 .multilineTextAlignment(.center)
             Button {
-                stage = .question
+                startQuestions()
             } label: {
                 Text("Let's Go!")
                     .font(Theme.title(30))
@@ -171,6 +201,22 @@ struct PlacementFlowView: View {
             let bandTitle = band?.title ?? "your starting spot"
             speech.speak("You're all set! Your adventure starts in \(bandTitle)!")
         }
+    }
+
+    /// Builds the real staircase anchored to the kid's age (start one band
+    /// easy, cap two above nominal) — or the un-anchored fallback if the age
+    /// is somehow still missing — and serves the first question.
+    private func startQuestions() {
+        if let age = progressStore.activeProfile?.currentAge {
+            session = PlacementSession(
+                pack: pack,
+                startBand: TuningConstants.placementStartBand(forAge: age),
+                maxBand: TuningConstants.placementMaxBand(forAge: age)
+            )
+        } else {
+            session = PlacementSession(pack: pack)
+        }
+        stage = .question
     }
 
     /// Neutral, warm transition regardless of correctness.

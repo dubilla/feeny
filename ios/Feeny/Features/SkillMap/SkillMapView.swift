@@ -45,7 +45,7 @@ struct SkillMapView: View {
         .onAppear { checkPlacement() }
         .fullScreenCover(isPresented: $showPlacement) {
             if let pack {
-                PlacementFlowView(pack: pack)
+                PlacementFlowView(pack: pack, kidAge: progressStore.activeProfile?.currentAge)
             }
         }
         .fullScreenCover(item: $activeLesson) { launch in

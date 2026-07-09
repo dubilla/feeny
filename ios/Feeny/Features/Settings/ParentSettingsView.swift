@@ -20,6 +20,7 @@ struct ParentSettingsView: View {
                 }
 
                 Section("Profile") {
+                    ageRow
                     Button(role: .destructive) {
                         confirmingDelete = true
                     } label: {
@@ -38,7 +39,7 @@ struct ParentSettingsView: View {
                 } header: {
                     Text("About")
                 } footer: {
-                    Text("Redoing placement re-runs the warm-up quiz next time the subject opens. Finished lessons stay finished.")
+                    Text("Redoing placement re-runs the warm-up quiz next time the subject opens, starting from your child's age. Finished lessons stay finished.")
                 }
             }
             .navigationTitle("Grown-up settings")
@@ -86,11 +87,31 @@ struct ParentSettingsView: View {
             }
             Spacer()
             Button("Redo placement") {
-                progressStore.resetPlacement(subjectId: pack.subjectId)
+                progressStore.resetPlacement(
+                    subjectId: pack.subjectId,
+                    skillIdsInSubject: Set(pack.skills.map(\.id))
+                )
                 resetSubjectIds.insert(pack.subjectId)
             }
             .disabled(progress == nil)
             .accessibilityIdentifier("settings-redo-\(pack.subjectId)")
         }
+    }
+
+    /// Parent-side age correction; the kid answered this at profile creation.
+    /// Redo-placement reads this — the kid is never re-asked.
+    @ViewBuilder
+    private var ageRow: some View {
+        let currentAge = progressStore.activeProfile?.currentAge
+        Stepper(
+            value: Binding(
+                get: { currentAge ?? 6 },
+                set: { progressStore.setAge(years: $0) }
+            ),
+            in: 4...10
+        ) {
+            LabeledContent("Age", value: currentAge.map(String.init) ?? "Not set")
+        }
+        .accessibilityIdentifier("settings-age")
     }
 }

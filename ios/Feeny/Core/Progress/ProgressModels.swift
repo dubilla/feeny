@@ -20,6 +20,22 @@ final class KidProfile {
     var lastStreakDay: Date?
     var lastNapDay: Date?
 
+    // Age anchor (defaulted nil so pre-age profiles migrate in place).
+    /// Whole years old, as answered by the kid (or corrected by a parent).
+    var ageYears: Int?
+    /// When `ageYears` was captured, so `currentAge` can advance with time.
+    var ageCapturedAt: Date?
+
+    /// Age today: `ageYears` plus whole years elapsed since capture.
+    /// Nil until an age has been captured (old profiles).
+    var currentAge: Int? { currentAge(asOf: Date()) }
+
+    func currentAge(asOf date: Date) -> Int? {
+        guard let ageYears, let ageCapturedAt else { return nil }
+        let elapsed = Calendar.current.dateComponents([.year], from: ageCapturedAt, to: date).year ?? 0
+        return ageYears + max(0, elapsed)
+    }
+
     @Relationship(deleteRule: .cascade, inverse: \LessonCompletion.profile)
     var completions: [LessonCompletion] = []
 
@@ -76,6 +92,9 @@ final class SkillMastery {
     var skillId: String
     var mastery: Double
     var lastPracticedAt: Date
+    /// True for rows seeded at assumed mastery by placement (never practiced).
+    /// Real practice clears it; redoing placement deletes only these rows.
+    var seededByPlacement: Bool = false
     var profile: KidProfile?
 
     init(skillId: String, mastery: Double) {
