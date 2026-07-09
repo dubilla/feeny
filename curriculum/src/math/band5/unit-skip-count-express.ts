@@ -39,13 +39,13 @@ export const skipCountExpress: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "Count the socks by twos!",
+              text: "🧦🧦 🧦🧦 🧦🧦 — count by twos!",
               spokenText: "Three pairs of socks are hanging on the line. Count them by twos! How many socks in all?",
             },
             options: [
-              { id: "a", visual: { kind: "emoji", value: "🧦🧦 🧦🧦 🧦🧦" }, label: "6" },
-              { id: "b", visual: { kind: "emoji", value: "🧦🧦 🧦🧦" }, label: "4" },
-              { id: "c", visual: { kind: "emoji", value: "🧦🧦 🧦🧦 🧦🧦 🧦🧦" }, label: "8" },
+              { id: "a", label: "6" },
+              { id: "b", label: "4" },
+              { id: "c", label: "8" },
             ],
             correctOptionId: "a",
           },
@@ -227,13 +227,14 @@ export const skipCountExpress: UnitSeed = {
           type: "multipleChoiceImage",
           payload: {
             prompt: {
-              text: "Count the fingers by fives!",
+              text: "🖐️🖐️🖐️ — count the fingers by fives!",
               spokenText: "Three hands are waving hello! Each hand has five fingers. Count by fives... how many fingers in all?",
             },
             options: [
-              { id: "a", visual: { kind: "emoji", value: "🖐️🖐️🖐️" }, label: "15" },
-              { id: "b", visual: { kind: "emoji", value: "🖐️🖐️🖐️🖐️" }, label: "20" },
-              { id: "c", visual: { kind: "emoji", value: "🖐️🖐️🖐️🖐️🖐️" }, label: "25" },
+              { id: "a", label: "15" },
+              { id: "b", label: "20" },
+              { id: "c", label: "10" },
+              { id: "d", label: "3" },
             ],
             correctOptionId: "a",
           },

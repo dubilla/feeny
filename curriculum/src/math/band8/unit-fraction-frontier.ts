@@ -409,8 +409,8 @@ export const fractionFrontier: UnitSeed = {
               spokenText: "A moon cake shared by two astronauts is one half each. Shared by three is one third each. Which piece is bigger?",
             },
             options: [
-              { id: "a", visual: { kind: "emoji", value: "🌙" }, label: "1/3" },
-              { id: "b", visual: { kind: "emoji", value: "🌙" }, label: "1/2" },
+              { id: "a", label: "1/3" },
+              { id: "b", label: "1/2" },
             ],
             correctOptionId: "b",
           },
