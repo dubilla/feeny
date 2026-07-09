@@ -7,8 +7,10 @@ struct FeenyApp: App {
     @State private var contentStore: ContentStore
     @State private var syncService: ContentSyncService
     @State private var progressStore: ProgressStore
-    @State private var speechService = SpeechService()
-    @State private var soundEffects = SoundEffects()
+    // Created in init (not inline) so a -feenyReset wipe of the audio
+    // settings keys happens before the services read UserDefaults.
+    @State private var speechService: SpeechService
+    @State private var soundEffects: SoundEffects
 
     init() {
         // QA/UI-test hook: wipe all local state before anything loads.
@@ -29,6 +31,9 @@ struct FeenyApp: App {
         _contentStore = State(initialValue: content)
         _syncService = State(initialValue: ContentSyncService(contentStore: content))
         _progressStore = State(initialValue: ProgressStore(container: modelContainer))
+        // SpeechService first: it configures the shared audio session.
+        _speechService = State(initialValue: SpeechService())
+        _soundEffects = State(initialValue: SoundEffects())
     }
 
     var body: some Scene {
@@ -50,6 +55,11 @@ struct FeenyApp: App {
         // SwiftData default store lives in Application Support.
         for name in ["default.store", "default.store-shm", "default.store-wal"] {
             try? fm.removeItem(at: appSupport.appending(path: name))
+        }
+        // Audio settings live in UserDefaults; reset those too so QA/UI-test
+        // runs always start from the defaults (both toggles on).
+        for key in [SpeechService.enabledDefaultsKey, SoundEffects.enabledDefaultsKey] {
+            UserDefaults.standard.removeObject(forKey: key)
         }
     }
 }
