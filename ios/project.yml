@@ -30,6 +30,9 @@ targets:
           - UIInterfaceOrientationLandscapeLeft
           - UIInterfaceOrientationLandscapeRight
         APIBaseURL: $(API_BASE_URL)
+        # Only standard HTTPS (exempt) — without this every TestFlight build
+        # stalls on the manual "Missing Compliance" question in ASC.
+        ITSAppUsesNonExemptEncryption: false
         NSAppTransportSecurity:
           NSAllowsLocalNetworking: true
     settings:
