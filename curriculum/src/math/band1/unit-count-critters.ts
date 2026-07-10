@@ -24,7 +24,7 @@ export const countCritters: UnitSeed = {
           payload: {
             prompt: {
               text: "How many bugs?",
-              spokenText: "Look! One little bug is crawling on a leaf. Count it, then tap the number. How many bugs?",
+              spokenText: "Look! A little bug is crawling on a leaf. Count it, then tap the number. How many bugs?",
             },
             object: { kind: "emoji", value: "🐛" },
             count: 1,
@@ -37,7 +37,7 @@ export const countCritters: UnitSeed = {
           payload: {
             prompt: {
               text: "How many chicks?",
-              spokenText: "Two fluffy chicks are pecking for seeds. Count them one by one! How many chicks?",
+              spokenText: "The fluffy chicks are pecking for seeds. Count them one by one! How many chicks?",
             },
             object: { kind: "emoji", value: "🐥" },
             count: 2,
@@ -82,7 +82,7 @@ export const countCritters: UnitSeed = {
           payload: {
             prompt: {
               text: "How many turtles?",
-              spokenText: "Three slow turtles are walking to the pond. Count the turtles! How many are there?",
+              spokenText: "Some slow turtles are walking to the pond. Count the turtles! How many are there?",
             },
             object: { kind: "emoji", value: "🐢" },
             count: 3,
@@ -149,7 +149,7 @@ export const countCritters: UnitSeed = {
           payload: {
             prompt: {
               text: "How many bunnies?",
-              spokenText: "Four bunnies are hopping in the garden. Count every bunny! How many do you see?",
+              spokenText: "The bunnies are hopping in the garden. Count every bunny! How many do you see?",
             },
             object: { kind: "emoji", value: "🐰" },
             count: 4,
@@ -178,7 +178,7 @@ export const countCritters: UnitSeed = {
           payload: {
             prompt: {
               text: "How many ducks?",
-              spokenText: "Five ducks are splashing in the pond. Count them all! How many ducks?",
+              spokenText: "The ducks are splashing in the pond. Count them all! How many ducks?",
             },
             object: { kind: "emoji", value: "🦆" },
             count: 5,
@@ -222,7 +222,7 @@ export const countCritters: UnitSeed = {
           payload: {
             prompt: {
               text: "How many butterflies?",
-              spokenText: "Four pretty butterflies are flying in the sky. Count the butterflies!",
+              spokenText: "Some pretty butterflies are flying in the sky. Count the butterflies!",
             },
             object: { kind: "emoji", value: "🦋" },
             count: 4,
@@ -339,7 +339,7 @@ export const countCritters: UnitSeed = {
           payload: {
             prompt: {
               text: "How many hedgehogs?",
-              spokenText: "Four spiky hedgehogs are hiding in the leaves. Count the hedgehogs!",
+              spokenText: "Some spiky hedgehogs are hiding in the leaves. Count the hedgehogs!",
             },
             object: { kind: "emoji", value: "🦔" },
             count: 4,

@@ -120,7 +120,7 @@ export const tensOnesTower: UnitSeed = {
           payload: {
             prompt: {
               text: "Count the bricks!",
-              spokenText: "One tower floor holds exactly ten bricks. Count these bricks. How many are there?",
+              spokenText: "How many bricks fit on one tower floor? Count them!",
             },
             object: { kind: "emoji", value: "🧱" },
             count: 10,

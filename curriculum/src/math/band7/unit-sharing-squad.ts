@@ -91,13 +91,13 @@ export const sharingSquad: UnitSeed = {
           type: "countObjects",
           payload: {
             prompt: {
-              text: "9 acorns onto 3 branches. Count one branch!",
+              text: "8 acorns onto 4 branches. Count one branch!",
               spokenText:
-                "Nine acorns are shared fairly onto three branches. Count how many acorns are on just one branch!",
+                "Eight acorns are shared fairly onto four branches. Count how many acorns are on just one branch!",
             },
             object: { kind: "emoji", value: "🌰" },
-            count: 3,
-            choices: [2, 3, 4],
+            count: 2,
+            choices: [1, 2, 3],
           },
         },
         {

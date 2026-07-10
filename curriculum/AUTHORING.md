@@ -43,6 +43,13 @@ One TypeScript file per unit at `curriculum/src/math/band{N}/unit-<slug>.ts`, ex
 - Band 1–2: no reading required beyond single numerals. Band 3+: short words OK ("more", "less") but the spoken prompt always carries the meaning.
 - Math must be correct. Check every sum, difference, count, and sequence twice.
 
+## Spoken-prompt rules (TTS is the narrator — write for its failure modes)
+
+- **Never state the answer.** A `countObjects` prompt must not contain the count it asks for ("Two fluffy chicks… How many chicks?" hands the kid the answer). Same for any prompt: no number word or anchor word that equals or names the correct option.
+- **No raw phoneme strings** ("k-k-k", "sss", "buh", "sh-sh-sh"): TTS reads them as letter names ("kay kay kay") or gibberish. Anchor sounds to exemplar words instead — "Which letter starts the word kite?" / "Kangaroo starts with K! Which picture starts like kangaroo?" The exemplar must start with the same **letter** as the target (not just the same sound) and must not name any option's emoji. Digraphs are spelled as letters: "S-H", "C-H".
+- **One register per utterance.** A story exercise speaks the story; a symbolic exercise speaks the equation. Never both ("Ten birds sit on a fence. Two fly away. Ten take away two." — pick one).
+- **Short.** One story sentence plus the question. The prompt auto-plays on every exercise and replays on stall; flourish that's fun once is noise by lesson three.
+
 ## Validate before you finish
 
 From `curriculum/`:

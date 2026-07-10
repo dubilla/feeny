@@ -153,7 +153,7 @@ struct PlacementFlowView: View {
             // One gentle auto-replay if the kid stalls — mirrors the lesson
             // player; a stalled pre-reader here hasn't learned the speaker
             // button yet. The id change on advance cancels the pending replay.
-            try? await Task.sleep(for: .seconds(10))
+            try? await Task.sleep(for: .seconds(15))
             guard !Task.isCancelled else { return }
             if case .question = stage, session.currentExercise?.id == exercise.id {
                 speakPrompt(exercise)
@@ -243,7 +243,9 @@ struct PlacementFlowView: View {
     /// Neutral, warm transition regardless of correctness.
     private func answer(_ correct: Bool) {
         session.submit(correct: correct)
-        let cheer = ["Nice try!", "Let's keep going!", "You're doing great!", "On to the next one!"].randomElement()!
+        // No "Nice try!" here: the cheer is correctness-blind, and "nice try"
+        // reads as consolation — wrong after a correct answer.
+        let cheer = ["Let's keep going!", "You're doing great!", "On to the next one!"].randomElement()!
         withAnimation { stage = .interlude(cheer) }
         Task {
             try? await Task.sleep(for: .milliseconds(900))

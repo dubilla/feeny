@@ -22,7 +22,7 @@ export const digraphDive: UnitSeed = {
           id: "read-e-digraphs-1-01",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Sh-sh-sh! Tap the word that starts with sh!" },
+            prompt: { text: "Listen!", spokenText: "Shark starts with S-H! Tap the word that starts like shark." },
             options: [
               { id: "a", label: "sip" },
               { id: "b", label: "ship" },
@@ -37,7 +37,7 @@ export const digraphDive: UnitSeed = {
           payload: {
             prompt: {
               text: "Which word starts with sh?",
-              spokenText: "Which word starts with sh? Sound each one out!",
+              spokenText: "Which word starts with S-H? Sound each one out!",
             },
             options: [
               { id: "a", label: "shop" },
@@ -85,7 +85,7 @@ export const digraphDive: UnitSeed = {
           payload: {
             prompt: {
               text: "Which word ends with sh?",
-              spokenText: "Which word ends with sh? Read them all the way to the end!",
+              spokenText: "Which word ends with S-H? Read them all the way to the end!",
             },
             options: [
               { id: "a", label: "dish" },
@@ -99,7 +99,7 @@ export const digraphDive: UnitSeed = {
           id: "read-e-digraphs-1-06",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Sh-sh! Tap the picture whose name starts with sh!" },
+            prompt: { text: "Listen!", spokenText: "Sheep starts with S-H! Tap the picture that starts like sheep." },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🌳" } },
               { id: "b", visual: { kind: "emoji", value: "🧀" } },
@@ -154,7 +154,7 @@ export const digraphDive: UnitSeed = {
           id: "read-e-digraphs-2-01",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Ch-ch-ch! Tap the word that starts with ch!" },
+            prompt: { text: "Listen!", spokenText: "Cheese starts with C-H! Tap the word that starts like cheese." },
             options: [
               { id: "a", label: "chip" },
               { id: "b", label: "ship" },
@@ -169,7 +169,7 @@ export const digraphDive: UnitSeed = {
           payload: {
             prompt: {
               text: "Which word starts with ch?",
-              spokenText: "Which word starts with ch? Sound each one out!",
+              spokenText: "Which word starts with C-H? Sound each one out!",
             },
             options: [
               { id: "a", label: "kick" },
@@ -217,7 +217,7 @@ export const digraphDive: UnitSeed = {
           payload: {
             prompt: {
               text: "Which word starts with th?",
-              spokenText: "Which word starts with th? Sound them out!",
+              spokenText: "Which word starts with T-H? Sound them out!",
             },
             options: [
               { id: "a", label: "tin" },
@@ -231,7 +231,7 @@ export const digraphDive: UnitSeed = {
           id: "read-e-digraphs-2-06",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Listen for the end! Tap the word that ends with th." },
+            prompt: { text: "Listen!", spokenText: "Listen for the end! Tap the word that ends with T-H." },
             options: [
               { id: "a", label: "bat" },
               { id: "b", label: "ban" },
@@ -288,7 +288,7 @@ export const digraphDive: UnitSeed = {
           payload: {
             prompt: {
               text: "Which word starts with wh?",
-              spokenText: "New sound! W and h together say wh. Which word starts with wh?",
+              spokenText: "New sound! W and H together make one sound, like in wheel. Which word starts with W-H?",
             },
             options: [
               { id: "a", label: "whale" },
@@ -319,7 +319,7 @@ export const digraphDive: UnitSeed = {
           id: "read-e-digraphs-3-03",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Ch-ch! Tap the word that starts with ch!" },
+            prompt: { text: "Listen!", spokenText: "Cheese starts with C-H! Tap the word that starts like cheese." },
             options: [
               { id: "a", label: "shin" },
               { id: "b", label: "thin" },
@@ -382,7 +382,7 @@ export const digraphDive: UnitSeed = {
           payload: {
             prompt: {
               text: "Listen!",
-              spokenText: "Listen for the end! Tap the picture whose name ends with sh.",
+              spokenText: "Listen for the end! Tap the picture whose name ends with S-H.",
             },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🐟" } },

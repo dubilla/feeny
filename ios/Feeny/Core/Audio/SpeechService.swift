@@ -17,6 +17,15 @@ final class SpeechService {
     /// Slightly slower than default — child-appropriate pacing.
     private let rate: Float = 0.45
 
+    /// A beat of silence before each utterance so speech doesn't clip in the
+    /// instant a screen transition lands.
+    private let preUtteranceDelay: TimeInterval = 0.25
+
+    /// Best narrator installed on this device, resolved once at launch.
+    /// Downloading a nicer voice (Settings → Accessibility → Spoken Content →
+    /// Voices) upgrades narration automatically on next launch.
+    private let voice: AVSpeechSynthesisVoice?
+
     /// Parent-facing toggle from grown-up settings. Defaults to on.
     var isEnabled: Bool {
         didSet {
@@ -47,6 +56,7 @@ final class SpeechService {
 
     init() {
         isEnabled = UserDefaults.standard.object(forKey: Self.enabledDefaultsKey) as? Bool ?? true
+        voice = Self.bestAvailableVoice()
 
         let session = AVAudioSession.sharedInstance()
         try? session.setCategory(.playback, options: .mixWithOthers)
@@ -89,11 +99,43 @@ final class SpeechService {
         try? AVAudioSession.sharedInstance().setActive(true)
         let utterance = AVSpeechUtterance(string: text)
         utterance.rate = rate
-        // The en-US voice can be missing (deleted voice assets); fall back to
-        // the device language rather than an unintended nil voice.
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.preUtteranceDelay = preUtteranceDelay
+        // Fall back to the device language if no English voice survived the
+        // launch-time pick (deleted voice assets) — never an unintended nil.
+        utterance.voice = voice
             ?? AVSpeechSynthesisVoice(language: AVSpeechSynthesisVoice.currentLanguageCode())
         synthesizer.speak(utterance)
+    }
+
+    /// Warmest English voice actually installed: premium > enhanced > stock.
+    /// The stock tier includes novelty and screen-reader (Eloquence) voices
+    /// that sound robotic or jokey — never right for narrating to a kid, so
+    /// they're excluded even when nothing better is installed.
+    private static func bestAvailableVoice() -> AVSpeechSynthesisVoice? {
+        let novelty: Set<String> = [
+            "Albert", "Bad News", "Bahh", "Bells", "Boing", "Bubbles",
+            "Cellos", "Eddy", "Flo", "Fred", "Good News", "Grandma",
+            "Grandpa", "Jester", "Junior", "Kathy", "Organ", "Ralph",
+            "Reed", "Rocko", "Sandy", "Shelley", "Superstar", "Trinoids",
+            "Whisper", "Wobble", "Zarvox",
+        ]
+        let candidates = AVSpeechSynthesisVoice.speechVoices().filter { candidate in
+            candidate.language.hasPrefix("en")
+                && !novelty.contains(where: { candidate.name.hasPrefix($0) })
+        }
+        func score(_ candidate: AVSpeechSynthesisVoice) -> Int {
+            var value = 0
+            switch candidate.quality {
+            case .premium: value += 100
+            case .enhanced: value += 50
+            default: break
+            }
+            if candidate.language == "en-US" { value += 10 }
+            // Friendliest of the stock voices; tie-break toward it.
+            if candidate.name.hasPrefix("Samantha") { value += 1 }
+            return value
+        }
+        return candidates.max { score($0) < score($1) }
     }
 
     func stop() {

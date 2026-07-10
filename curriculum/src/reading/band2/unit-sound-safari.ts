@@ -2,8 +2,9 @@ import type { UnitSeed } from "../../schema/pack";
 
 /**
  * Band 2 · Letter sounds · sound → letter
- * "Which letter says mmm, like moon?" Sounds are written phonetically
- * ("mmm", "sss", "t-t-t") and always anchored with a familiar word.
+ * "Which letter starts the word moon?" Sounds are always anchored to a
+ * familiar exemplar word — never written phonetically ("mmm", "t-t-t"),
+ * because TTS reads those as letter names or gibberish (AUTHORING.md rules).
  * Lesson 1: m s b t p d f · Lesson 2: h k c n g l · Lesson 3: mixed + vowel a.
  */
 export const soundSafari: UnitSeed = {
@@ -14,7 +15,7 @@ export const soundSafari: UnitSeed = {
   lessons: [
     {
       id: "read-l-sounds-1",
-      title: "Mmm, Sss, and Friends",
+      title: "Moon, Sun, and Friends",
       primarySkillId: "read-letter-sounds",
       xpReward: 10,
       exercises: [
@@ -22,7 +23,7 @@ export const soundSafari: UnitSeed = {
           id: "read-e-sounds-1-01",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Which letter says mmm, like moon?" },
+            prompt: { text: "Listen!", spokenText: "Which letter starts the word moon?" },
             options: [
               { id: "a", label: "M" },
               { id: "b", label: "N" },
@@ -35,7 +36,7 @@ export const soundSafari: UnitSeed = {
           id: "read-e-sounds-1-02",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Tap what you hear!", spokenText: "Which letter says sss, like snake?" },
+            prompt: { text: "Tap what you hear!", spokenText: "Which letter starts the word snake?" },
             options: [
               { id: "a", label: "C" },
               { id: "b", label: "S" },
@@ -50,7 +51,7 @@ export const soundSafari: UnitSeed = {
           payload: {
             prompt: {
               text: "⚽",
-              spokenText: "A ball! Which letter says buh, like ball?",
+              spokenText: "A ball! Which letter starts the word ball?",
             },
             options: [
               { id: "a", label: "D" },
@@ -64,7 +65,7 @@ export const soundSafari: UnitSeed = {
           id: "read-e-sounds-1-04",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen close!", spokenText: "Which letter says t-t-t, like turtle?" },
+            prompt: { text: "Listen close!", spokenText: "Which letter starts the word turtle?" },
             options: [
               { id: "a", label: "D" },
               { id: "b", label: "T" },
@@ -92,7 +93,7 @@ export const soundSafari: UnitSeed = {
           id: "read-e-sounds-1-06",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Which letter says p-p-puh, like pig?" },
+            prompt: { text: "Listen!", spokenText: "Which letter starts the word pig?" },
             options: [
               { id: "a", label: "B" },
               { id: "b", label: "D" },
@@ -107,7 +108,7 @@ export const soundSafari: UnitSeed = {
           payload: {
             prompt: {
               text: "🐶",
-              spokenText: "A dog! Which letter says d-d-d, like dog?",
+              spokenText: "A dog! Which letter starts the word dog?",
             },
             options: [
               { id: "a", label: "D" },
@@ -121,7 +122,7 @@ export const soundSafari: UnitSeed = {
           id: "read-e-sounds-1-08",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Tap what you hear!", spokenText: "Which letter says fff, like fox?" },
+            prompt: { text: "Tap what you hear!", spokenText: "Which letter starts the word fox?" },
             options: [
               { id: "a", label: "F" },
               { id: "b", label: "E" },
@@ -142,7 +143,7 @@ export const soundSafari: UnitSeed = {
           id: "read-e-sounds-2-01",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Which letter says h-h-h, like hat?" },
+            prompt: { text: "Listen!", spokenText: "Which letter starts the word hat?" },
             options: [
               { id: "a", label: "N" },
               { id: "b", label: "H" },
@@ -155,7 +156,7 @@ export const soundSafari: UnitSeed = {
           id: "read-e-sounds-2-02",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Tap what you hear!", spokenText: "Which letter says k-k-k, like kite?" },
+            prompt: { text: "Tap what you hear!", spokenText: "Which letter starts the word kite?" },
             options: [
               { id: "a", label: "K" },
               { id: "b", label: "X" },
@@ -170,7 +171,7 @@ export const soundSafari: UnitSeed = {
           payload: {
             prompt: {
               text: "🐱",
-              spokenText: "A cat! Which letter says c-c-c, like cat?",
+              spokenText: "A cat! Which letter starts the word cat?",
             },
             options: [
               { id: "a", label: "O" },
@@ -184,7 +185,7 @@ export const soundSafari: UnitSeed = {
           id: "read-e-sounds-2-04",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen close!", spokenText: "Which letter says nnn, like nest?" },
+            prompt: { text: "Listen close!", spokenText: "Which letter starts the word nest?" },
             options: [
               { id: "a", label: "M" },
               { id: "b", label: "W" },
@@ -212,7 +213,7 @@ export const soundSafari: UnitSeed = {
           id: "read-e-sounds-2-06",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Which letter says g-g-guh, like goat?" },
+            prompt: { text: "Listen!", spokenText: "Which letter starts the word goat?" },
             options: [
               { id: "a", label: "G" },
               { id: "b", label: "C" },
@@ -227,7 +228,7 @@ export const soundSafari: UnitSeed = {
           payload: {
             prompt: {
               text: "🥛",
-              spokenText: "A glass of milk! Which letter says mmm, like milk?",
+              spokenText: "A glass of milk! Which letter starts the word milk?",
             },
             options: [
               { id: "a", label: "N" },
@@ -241,7 +242,7 @@ export const soundSafari: UnitSeed = {
           id: "read-e-sounds-2-08",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Tap what you hear!", spokenText: "Which letter says lll, like lion?" },
+            prompt: { text: "Tap what you hear!", spokenText: "Which letter starts the word lion?" },
             options: [
               { id: "a", label: "I" },
               { id: "b", label: "T" },
@@ -262,7 +263,7 @@ export const soundSafari: UnitSeed = {
           id: "read-e-sounds-3-01",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Which letter says a-a-a, like apple?" },
+            prompt: { text: "Listen!", spokenText: "Which letter starts the word apple?" },
             options: [
               { id: "a", label: "E" },
               { id: "b", label: "A" },
@@ -277,7 +278,7 @@ export const soundSafari: UnitSeed = {
           payload: {
             prompt: {
               text: "☀️",
-              spokenText: "The sun! Which letter says sss, like sun?",
+              spokenText: "The sun! Which letter starts the word sun?",
             },
             options: [
               { id: "a", label: "S" },
@@ -291,7 +292,7 @@ export const soundSafari: UnitSeed = {
           id: "read-e-sounds-3-03",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Tap what you hear!", spokenText: "Which letter says d-d-d, like dog?" },
+            prompt: { text: "Tap what you hear!", spokenText: "Which letter starts the word dog?" },
             options: [
               { id: "a", label: "P" },
               { id: "b", label: "B" },
@@ -319,7 +320,7 @@ export const soundSafari: UnitSeed = {
           id: "read-e-sounds-3-05",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen close!", spokenText: "Which letter says buh, like bus?" },
+            prompt: { text: "Listen close!", spokenText: "Which letter starts the word bus?" },
             options: [
               { id: "a", label: "D" },
               { id: "b", label: "B" },
@@ -334,7 +335,7 @@ export const soundSafari: UnitSeed = {
           payload: {
             prompt: {
               text: "🦊",
-              spokenText: "A fox! Which letter says fff, like fox?",
+              spokenText: "A fox! Which letter starts the word fox?",
             },
             options: [
               { id: "a", label: "E" },
@@ -348,7 +349,7 @@ export const soundSafari: UnitSeed = {
           id: "read-e-sounds-3-07",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Which letter says rrr, like robot?" },
+            prompt: { text: "Listen!", spokenText: "Which letter starts the word robot?" },
             options: [
               { id: "a", label: "R" },
               { id: "b", label: "P" },

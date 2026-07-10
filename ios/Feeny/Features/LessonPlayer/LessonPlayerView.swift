@@ -78,8 +78,10 @@ struct LessonPlayerView: View {
                 .task(id: exerciseInstanceId(exercise)) {
                     // One gentle auto-replay if the kid stalls — usually
                     // means they missed the prompt. The id change on advance
-                    // cancels the pending replay.
-                    try? await Task.sleep(for: .seconds(10))
+                    // cancels the pending replay. 15s, not less: counting a
+                    // big group legitimately takes past 10s, and a replay
+                    // mid-count is noise, not help.
+                    try? await Task.sleep(for: .seconds(15))
                     guard !Task.isCancelled else { return }
                     if case .answering = session.phase {
                         speakPrompt(exercise)

@@ -4,7 +4,7 @@
   "payload": {
     "prompt": {
       "text": "How many bugs?",
-      "spokenText": "Look! One little bug is crawling on a leaf. Count it, then tap the number. How many bugs?"
+      "spokenText": "Look! A little bug is crawling on a leaf. Count it, then tap the number. How many bugs?"
     },
     "object": {
       "kind": "emoji",

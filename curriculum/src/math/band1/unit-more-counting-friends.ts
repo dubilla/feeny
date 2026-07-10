@@ -23,7 +23,7 @@ export const moreCountingFriends: UnitSeed = {
           payload: {
             prompt: {
               text: "How many ladybugs?",
-              spokenText: "Six ladybugs landed on a big flower. Count them one by one! How many ladybugs?",
+              spokenText: "Some ladybugs landed on a big flower. Count them one by one! How many ladybugs?",
             },
             object: { kind: "emoji", value: "🐞" },
             count: 6,
@@ -36,7 +36,7 @@ export const moreCountingFriends: UnitSeed = {
           payload: {
             prompt: {
               text: "How many birds?",
-              spokenText: "Seven little birds are singing in the tree. Count the birds! How many are there?",
+              spokenText: "Some little birds are singing in the tree. Count the birds! How many are there?",
             },
             object: { kind: "emoji", value: "🐦" },
             count: 7,
@@ -81,7 +81,7 @@ export const moreCountingFriends: UnitSeed = {
           payload: {
             prompt: {
               text: "How many snails?",
-              spokenText: "Seven slow snails are sliding on the path. Count every snail!",
+              spokenText: "Some slow snails are sliding on the path. Count every snail!",
             },
             object: { kind: "emoji", value: "🐌" },
             count: 7,
@@ -148,7 +148,7 @@ export const moreCountingFriends: UnitSeed = {
           payload: {
             prompt: {
               text: "How many flowers?",
-              spokenText: "Eight flowers bloomed in the garden today! Count every flower. How many are there?",
+              spokenText: "Flowers bloomed in the garden today! Count every flower. How many are there?",
             },
             object: { kind: "emoji", value: "🌸" },
             count: 8,
@@ -177,7 +177,7 @@ export const moreCountingFriends: UnitSeed = {
           payload: {
             prompt: {
               text: "How many cars?",
-              spokenText: "Nine cars are zooming down the road. Beep beep! Count the cars!",
+              spokenText: "Cars are zooming down the road. Beep beep! Count the cars!",
             },
             object: { kind: "emoji", value: "🚗" },
             count: 9,
@@ -206,7 +206,7 @@ export const moreCountingFriends: UnitSeed = {
           payload: {
             prompt: {
               text: "How many sheep?",
-              spokenText: "Eight sleepy sheep are resting in the meadow. Count the sheep — but don't fall asleep!",
+              spokenText: "Some sleepy sheep are resting in the meadow. Count the sheep — but don't fall asleep!",
             },
             object: { kind: "emoji", value: "🐑" },
             count: 8,
@@ -275,7 +275,7 @@ export const moreCountingFriends: UnitSeed = {
           payload: {
             prompt: {
               text: "How many cookies?",
-              spokenText: "Ten yummy cookies are on the plate! Count every cookie before someone eats them!",
+              spokenText: "Yummy cookies are on the plate! Count every cookie before someone eats them!",
             },
             object: { kind: "emoji", value: "🍪" },
             count: 10,
@@ -338,7 +338,7 @@ export const moreCountingFriends: UnitSeed = {
           payload: {
             prompt: {
               text: "How many crabs?",
-              spokenText: "Nine crabs are scuttling on the sand. Count the crabs — click, click, click!",
+              spokenText: "Crabs are scuttling on the sand. Count the crabs — click, click, click!",
             },
             object: { kind: "emoji", value: "🦀" },
             count: 9,

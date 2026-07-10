@@ -2,7 +2,9 @@ import type { UnitSeed } from "../../schema/pack";
 
 /**
  * Band 2 · First sounds · sound → picture
- * "Which one starts with sss?" Options are emoji only, no labels.
+ * "Sock starts with S! Which picture starts like sock?" Options are emoji
+ * only, no labels. The exemplar word must never name any option's emoji,
+ * and no raw phoneme strings ("sss") — TTS mangles them (AUTHORING.md rules).
  * Every item has exactly one picture with the target first sound
  * (watch out: cat and kite are both /k/, sun and snake both /s/, etc.).
  * Lesson 3 stretches to four options.
@@ -23,7 +25,7 @@ export const firstSounds: UnitSeed = {
           id: "read-e-firstsounds-1-01",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Listen: mmm, mmm! Which picture starts with mmm?" },
+            prompt: { text: "Listen!", spokenText: "Mop starts with M! Which picture starts like mop?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🌙" } },
               { id: "b", visual: { kind: "emoji", value: "🍎" } },
@@ -36,7 +38,7 @@ export const firstSounds: UnitSeed = {
           id: "read-e-firstsounds-1-02",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Tap what you hear!", spokenText: "Listen: sss, sss! Which picture starts with sss?" },
+            prompt: { text: "Tap what you hear!", spokenText: "Sock starts with S! Which picture starts like sock?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🎩" } },
               { id: "b", visual: { kind: "emoji", value: "🐍" } },
@@ -49,7 +51,7 @@ export const firstSounds: UnitSeed = {
           id: "read-e-firstsounds-1-03",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen close!", spokenText: "Listen: buh, buh! Which picture starts with buh?" },
+            prompt: { text: "Listen close!", spokenText: "Banana starts with B! Which picture starts like banana?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🐟" } },
               { id: "b", visual: { kind: "emoji", value: "🥛" } },
@@ -64,7 +66,7 @@ export const firstSounds: UnitSeed = {
           payload: {
             prompt: {
               text: "S",
-              spokenText: "This is the letter S! It says sss. Which picture starts with sss?",
+              spokenText: "This is the letter S! Sock starts with S. Which picture starts like sock?",
             },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🍎" } },
@@ -100,7 +102,7 @@ export const firstSounds: UnitSeed = {
           id: "read-e-firstsounds-1-06",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Listen: d-d-d! Which picture starts with d-d-d?" },
+            prompt: { text: "Listen!", spokenText: "Door starts with D! Which picture starts like door?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🐶" } },
               { id: "b", visual: { kind: "emoji", value: "🎩" } },
@@ -115,7 +117,7 @@ export const firstSounds: UnitSeed = {
           payload: {
             prompt: {
               text: "M",
-              spokenText: "This is the letter M! It says mmm. Which picture starts with mmm?",
+              spokenText: "This is the letter M! Mop starts with M. Which picture starts like mop?",
             },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🍎" } },
@@ -129,7 +131,7 @@ export const firstSounds: UnitSeed = {
           id: "read-e-firstsounds-1-08",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Tap what you hear!", spokenText: "Listen: h-h-h! Which picture starts with h-h-h?" },
+            prompt: { text: "Tap what you hear!", spokenText: "Hippo starts with H! Which picture starts like hippo?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "⚽" } },
               { id: "b", visual: { kind: "emoji", value: "🎩" } },
@@ -150,7 +152,7 @@ export const firstSounds: UnitSeed = {
           id: "read-e-firstsounds-2-01",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Listen: p-p-puh! Which picture starts with p-p-puh?" },
+            prompt: { text: "Listen!", spokenText: "Penguin starts with P! Which picture starts like penguin?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🐷" } },
               { id: "b", visual: { kind: "emoji", value: "🥛" } },
@@ -163,7 +165,7 @@ export const firstSounds: UnitSeed = {
           id: "read-e-firstsounds-2-02",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Tap what you hear!", spokenText: "Listen: fff, fff! Which picture starts with fff?" },
+            prompt: { text: "Tap what you hear!", spokenText: "Fire starts with F! Which picture starts like fire?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🌙" } },
               { id: "b", visual: { kind: "emoji", value: "🦊" } },
@@ -178,7 +180,7 @@ export const firstSounds: UnitSeed = {
           payload: {
             prompt: {
               text: "B",
-              spokenText: "This is the letter B! It says buh. Which picture starts with buh?",
+              spokenText: "This is the letter B! Banana starts with B. Which picture starts like banana?",
             },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🐱" } },
@@ -192,7 +194,7 @@ export const firstSounds: UnitSeed = {
           id: "read-e-firstsounds-2-04",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen close!", spokenText: "Listen: k-k-k! Which picture starts with k-k-k?" },
+            prompt: { text: "Listen close!", spokenText: "Kangaroo starts with K! Which picture starts like kangaroo?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🍎" } },
               { id: "b", visual: { kind: "emoji", value: "🪁" } },
@@ -227,7 +229,7 @@ export const firstSounds: UnitSeed = {
           id: "read-e-firstsounds-2-06",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Listen: c-c-c! Which picture starts with c-c-c?" },
+            prompt: { text: "Listen!", spokenText: "Corn starts with C! Which picture starts like corn?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🐱" } },
               { id: "b", visual: { kind: "emoji", value: "🥛" } },
@@ -242,7 +244,7 @@ export const firstSounds: UnitSeed = {
           payload: {
             prompt: {
               text: "H",
-              spokenText: "This is the letter H! It says h-h-h. Which picture starts with h-h-h?",
+              spokenText: "This is the letter H! Hippo starts with H. Which picture starts like hippo?",
             },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🌙" } },
@@ -256,7 +258,7 @@ export const firstSounds: UnitSeed = {
           id: "read-e-firstsounds-2-08",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Tap what you hear!", spokenText: "Listen: a-a-a! Which picture starts with a-a-a?" },
+            prompt: { text: "Tap what you hear!", spokenText: "Ant starts with A! Which picture starts like ant?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🐶" } },
               { id: "b", visual: { kind: "emoji", value: "🍎" } },
@@ -277,7 +279,7 @@ export const firstSounds: UnitSeed = {
           id: "read-e-firstsounds-3-01",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Listen: mmm, mmm! Which picture starts with mmm?" },
+            prompt: { text: "Listen!", spokenText: "Mop starts with M! Which picture starts like mop?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🐟" } },
               { id: "b", visual: { kind: "emoji", value: "🥛" } },
@@ -291,7 +293,7 @@ export const firstSounds: UnitSeed = {
           id: "read-e-firstsounds-3-02",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Tap what you hear!", spokenText: "Listen: sss, sss! Which picture starts with sss?" },
+            prompt: { text: "Tap what you hear!", spokenText: "Sock starts with S! Which picture starts like sock?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "☀️" } },
               { id: "b", visual: { kind: "emoji", value: "🐷" } },
@@ -306,7 +308,7 @@ export const firstSounds: UnitSeed = {
           payload: {
             prompt: {
               text: "F",
-              spokenText: "This is the letter F! It says fff. Which picture starts with fff?",
+              spokenText: "This is the letter F! Fire starts with F. Which picture starts like fire?",
             },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🐱" } },
@@ -347,7 +349,7 @@ export const firstSounds: UnitSeed = {
           id: "read-e-firstsounds-3-05",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen close!", spokenText: "Listen: buh, buh! Which picture starts with buh?" },
+            prompt: { text: "Listen close!", spokenText: "Banana starts with B! Which picture starts like banana?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🎩" } },
               { id: "b", visual: { kind: "emoji", value: "🐟" } },
@@ -360,7 +362,7 @@ export const firstSounds: UnitSeed = {
           id: "read-e-firstsounds-3-06",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Listen: p-p-puh! Which picture starts with p-p-puh?" },
+            prompt: { text: "Listen!", spokenText: "Penguin starts with P! Which picture starts like penguin?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🐷" } },
               { id: "b", visual: { kind: "emoji", value: "🍎" } },
@@ -375,7 +377,7 @@ export const firstSounds: UnitSeed = {
           payload: {
             prompt: {
               text: "K",
-              spokenText: "This is the letter K! It says k-k-k. Which picture starts with k-k-k?",
+              spokenText: "This is the letter K! Kangaroo starts with K. Which picture starts like kangaroo?",
             },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🐶" } },
@@ -389,7 +391,7 @@ export const firstSounds: UnitSeed = {
           id: "read-e-firstsounds-3-08",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Tap what you hear!", spokenText: "Listen: fff, fff! Which picture starts with fff?" },
+            prompt: { text: "Tap what you hear!", spokenText: "Fire starts with F! Which picture starts like fire?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🍎" } },
               { id: "b", visual: { kind: "emoji", value: "🐟" } },

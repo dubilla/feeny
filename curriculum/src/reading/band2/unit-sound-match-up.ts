@@ -37,7 +37,7 @@ export const soundMatchUp: UnitSeed = {
           id: "read-e-soundmatch-1-02",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Which letter says sss, like sun?" },
+            prompt: { text: "Listen!", spokenText: "Which letter starts the word sun?" },
             options: [
               { id: "a", label: "Z" },
               { id: "b", label: "S" },
@@ -50,7 +50,7 @@ export const soundMatchUp: UnitSeed = {
           id: "read-e-soundmatch-1-03",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Tap what you hear!", spokenText: "Listen: mmm, mmm! Which picture starts with mmm?" },
+            prompt: { text: "Tap what you hear!", spokenText: "Mop starts with M! Which picture starts like mop?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🥛" } },
               { id: "b", visual: { kind: "emoji", value: "🐍" } },
@@ -80,7 +80,7 @@ export const soundMatchUp: UnitSeed = {
           payload: {
             prompt: {
               text: "C",
-              spokenText: "This is the letter C! It says c-c-c. Which picture starts with c-c-c?",
+              spokenText: "This is the letter C! Corn starts with C. Which picture starts like corn?",
             },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🐱" } },
@@ -94,7 +94,7 @@ export const soundMatchUp: UnitSeed = {
           id: "read-e-soundmatch-1-06",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen close!", spokenText: "Which letter says fff, like fish?" },
+            prompt: { text: "Listen close!", spokenText: "Which letter starts the word fish?" },
             options: [
               { id: "a", label: "T" },
               { id: "b", label: "F" },
@@ -122,7 +122,7 @@ export const soundMatchUp: UnitSeed = {
           id: "read-e-soundmatch-1-08",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Listen: buh, buh! Which picture starts with buh?" },
+            prompt: { text: "Listen!", spokenText: "Banana starts with B! Which picture starts like banana?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🐍" } },
               { id: "b", visual: { kind: "emoji", value: "🌙" } },
@@ -158,7 +158,7 @@ export const soundMatchUp: UnitSeed = {
           id: "read-e-soundmatch-2-02",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Which letter says h-h-h, like hat?" },
+            prompt: { text: "Listen!", spokenText: "Which letter starts the word hat?" },
             options: [
               { id: "a", label: "B" },
               { id: "b", label: "H" },
@@ -173,7 +173,7 @@ export const soundMatchUp: UnitSeed = {
           payload: {
             prompt: {
               text: "🐷",
-              spokenText: "A pig! Which letter says p-p-puh, like pig?",
+              spokenText: "A pig! Which letter starts the word pig?",
             },
             options: [
               { id: "a", label: "P" },
@@ -187,7 +187,7 @@ export const soundMatchUp: UnitSeed = {
           id: "read-e-soundmatch-2-04",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Tap what you hear!", spokenText: "Listen: k-k-k! Which picture starts with k-k-k?" },
+            prompt: { text: "Tap what you hear!", spokenText: "Kangaroo starts with K! Which picture starts like kangaroo?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🐟" } },
               { id: "b", visual: { kind: "emoji", value: "🍎" } },
@@ -215,7 +215,7 @@ export const soundMatchUp: UnitSeed = {
           id: "read-e-soundmatch-2-06",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen close!", spokenText: "Which letter says c-c-c, like cat?" },
+            prompt: { text: "Listen close!", spokenText: "Which letter starts the word cat?" },
             options: [
               { id: "a", label: "O" },
               { id: "b", label: "G" },
@@ -228,7 +228,7 @@ export const soundMatchUp: UnitSeed = {
           id: "read-e-soundmatch-2-07",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Listen: a-a-a! Which picture starts with a-a-a?" },
+            prompt: { text: "Listen!", spokenText: "Ant starts with A! Which picture starts like ant?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🍎" } },
               { id: "b", visual: { kind: "emoji", value: "⚽" } },
@@ -243,7 +243,7 @@ export const soundMatchUp: UnitSeed = {
           payload: {
             prompt: {
               text: "🦊",
-              spokenText: "A fox! Which letter says fff, like fox?",
+              spokenText: "A fox! Which letter starts the word fox?",
             },
             options: [
               { id: "a", label: "E" },
@@ -280,7 +280,7 @@ export const soundMatchUp: UnitSeed = {
           id: "read-e-soundmatch-3-02",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Which letter says mmm, like moon?" },
+            prompt: { text: "Listen!", spokenText: "Which letter starts the word moon?" },
             options: [
               { id: "a", label: "W" },
               { id: "b", label: "N" },
@@ -293,7 +293,7 @@ export const soundMatchUp: UnitSeed = {
           id: "read-e-soundmatch-3-03",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Tap what you hear!", spokenText: "Listen: sss, sss! Which picture starts with sss?" },
+            prompt: { text: "Tap what you hear!", spokenText: "Sock starts with S! Which picture starts like sock?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🐍" } },
               { id: "b", visual: { kind: "emoji", value: "🥛" } },
@@ -309,7 +309,7 @@ export const soundMatchUp: UnitSeed = {
           payload: {
             prompt: {
               text: "🪁",
-              spokenText: "A kite! Which letter says k-k-k, like kite?",
+              spokenText: "A kite! Which letter starts the word kite?",
             },
             options: [
               { id: "a", label: "H" },
@@ -338,7 +338,7 @@ export const soundMatchUp: UnitSeed = {
           id: "read-e-soundmatch-3-06",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen close!", spokenText: "Which letter says d-d-d, like dog?" },
+            prompt: { text: "Listen close!", spokenText: "Which letter starts the word dog?" },
             options: [
               { id: "a", label: "D" },
               { id: "b", label: "B" },
@@ -351,7 +351,7 @@ export const soundMatchUp: UnitSeed = {
           id: "read-e-soundmatch-3-07",
           type: "listenAndPick",
           payload: {
-            prompt: { text: "Listen!", spokenText: "Listen: h-h-h! Which picture starts with h-h-h?" },
+            prompt: { text: "Listen!", spokenText: "Hippo starts with H! Which picture starts like hippo?" },
             options: [
               { id: "a", visual: { kind: "emoji", value: "🥛" } },
               { id: "b", visual: { kind: "emoji", value: "🐷" } },
@@ -366,7 +366,7 @@ export const soundMatchUp: UnitSeed = {
           payload: {
             prompt: {
               text: "🌙",
-              spokenText: "The moon! Which letter says mmm, like moon?",
+              spokenText: "The moon! Which letter starts the word moon?",
             },
             options: [
               { id: "a", label: "N" },
