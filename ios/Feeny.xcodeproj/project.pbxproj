@@ -488,6 +488,7 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					336EB5BD0CA8F23325BFD094 = {
+						DevelopmentTeam = 2YH555648Y;
 						ProvisioningStyle = Automatic;
 					};
 					4EF64883C853F471380516F5 = {
@@ -634,6 +635,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2YH555648Y;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Feeny/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -671,6 +673,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2YH555648Y;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Feeny/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
