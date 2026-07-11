@@ -21,7 +21,10 @@ targets:
       path: Feeny/Info.plist
       properties:
         CFBundleDisplayName: Feeny
-        UILaunchScreen: {}
+        # Static designed launch: warm paper, no animation — a daily-use app
+        # opens instantly (launch bow cut on taste grounds, see backlog).
+        UILaunchScreen:
+          UIColorName: LaunchBackground
         # All four required for iPad multitasking (App Store validation);
         # landscape-first is a design intent, not a plist restriction.
         UISupportedInterfaceOrientations:
