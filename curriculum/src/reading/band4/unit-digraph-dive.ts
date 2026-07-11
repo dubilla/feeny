@@ -288,7 +288,7 @@ export const digraphDive: UnitSeed = {
           payload: {
             prompt: {
               text: "Which word starts with wh?",
-              spokenText: "New sound! W and H together make one sound, like in wheel. Which word starts with W-H?",
+              spokenText: "W and H together make one sound, like in wheel. Which word starts with W-H?",
             },
             options: [
               { id: "a", label: "whale" },

@@ -19,7 +19,9 @@ import { wordFamilies } from "./band3/unit-word-families";
 // Band 4 — Team-Up Trail (Fundations L1 early-mid: digraphs → glued sounds,
 // trick words in parallel — see curriculum/FUNDATIONS_MAP.md)
 import { digraphDive } from "./band4/unit-digraph-dive";
+import { moreSoundTeams } from "./band4/unit-more-sound-teams";
 import { stickySounds } from "./band4/unit-sticky-sounds";
+import { singAndHonk } from "./band4/unit-sing-and-honk";
 import { sightWordStars } from "./band4/unit-sight-word-stars";
 // Band 5 — Story Stream (blends → sentences → little stories)
 import { blendBlast } from "./band5/unit-blend-blast";
@@ -93,7 +95,9 @@ export const readingSeed: SubjectSeed = {
     rhymeTime,
     wordFamilies,
     digraphDive,
+    moreSoundTeams,
     stickySounds,
+    singAndHonk,
     sightWordStars,
     blendBlast,
     sentenceBuilders,
@@ -113,7 +117,7 @@ export const readingSeed: SubjectSeed = {
   // 3 single-tap probes per band (listen / MC / fill-blank), mid-unit lessons.
   placementProbes: [
     { bandNumber: 1, exerciseIds: ["read-e-abc-2-02", "read-e-letters2-2-03", "read-e-lower-2-04"] },
-    { bandNumber: 2, exerciseIds: ["read-e-sounds-2-02", "read-e-firstsounds-2-04", "read-e-soundmatch-2-03"] },
+    { bandNumber: 2, exerciseIds: ["read-e-soundfriends-am-2-03", "read-e-firstsounds-2-04", "read-e-soundmatch-2-03"] },
     { bandNumber: 3, exerciseIds: ["read-e-cvc-2-03", "read-e-rhymes-2-02", "read-e-families-2-01"] },
     { bandNumber: 4, exerciseIds: ["read-e-digraphs-2-01", "read-e-glued-2-02", "read-e-sight-2-04"] },
     { bandNumber: 5, exerciseIds: ["read-e-blends-2-03", "read-e-sentences-2-05", "read-e-stories-2-04"] },

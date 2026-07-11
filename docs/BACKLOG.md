@@ -161,7 +161,7 @@ probes intentionally don't sample anchors yet (folded into F3's
 re-curation, noted in map doc). Full suite green ×2. **Left:** Dan prod
 seed + pack export.
 
-### [ ] F3: Digraphs, bonus letters, and glued sounds
+### [x] F3: Digraphs, bonus letters, and glued sounds — DONE locally (2026-07-11); prod seed pending (Dan)
 
 **User Value**: The distinctive Level-1 material — wh/ch/sh/th/ck digraphs,
 bonus letters (ff/ll/ss), and glued sounds (all/am/an, -ang/-ing/-ong/-ung,
@@ -176,6 +176,20 @@ ship ritual.
 **Definition of Done**: Each digraph and glued-sound family is a nameable
 unit a parent can point at; all fill-blanks substitution-tested; band 2–3
 placement probes updated.
+
+**Resolution (2026-07-11):** Two units, not three (advisor call: ck and
+ff/ll/ss are the same "extra letters spell one ending sound" move, so no
+separate bonus-letters unit/skill). Band 4 path: Digraph Dive → **More
+Sound Teams** (`read-u-digraphs2`, 4 lessons: wh → ck → floss ff/ll/ss →
+mixed) → Sticky Sounds → **Sing and Honk** (`read-u-gluedng`, -ng/-nk
+families + audible ear contrasts fan/fang, sang/sank) → Sight Word Stars —
+exact Fundations L1 order. Binding rules added to FUNDATIONS_MAP.md: wh is
+spelling-only (wine–whine merger makes it inaudible in TTS), no bare-w
+chips, floss endings spoken as letters, no -an/-am chips in ng/nk banks.
+Band-2 probe #1 now samples the F2 anchor units. Digraph Dive 3-01 copy
+de-conflicted. Review fixes: 🗑️-as-"trash" ear task → word labels,
+lesson-3 answer cycle broken, "kill"-formable chip swapped. Suite green.
+**Left:** Dan prod seed + pack export.
 
 ### [ ] F4: Trick words track
 

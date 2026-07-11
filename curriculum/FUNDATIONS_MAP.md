@@ -75,6 +75,29 @@ x box 📦 (final /ks/: "box ends with X") · y yo-yo 🪀 · z zebra 🦓
 - Band-2 placement probes intentionally do not yet sample the anchor units;
   fold into F3's probe re-curation.
 
+## F3 decisions of record (2026-07-11)
+
+- **ck and bonus letters (ff/ll/ss) live with digraphs**, not in their own
+  unit/skill: they're the same pedagogical move ("extra letters spelling one
+  ending sound"), Fundations L1 teaches them alongside digraphs, and a
+  single-unit skill would fragment review-engine mastery. More Sound Teams
+  (`read-u-digraphs2`, skill `read-digraphs`) = wh → ck → ff/ll/ss → mixed.
+- **wh is a spelling fact, not a listening fact**: the wine–whine merger
+  makes wh/w homophones in modern TTS and most kids' dialects. wh appears
+  only in read-the-word / fill-blank formats; never ear-only wh-vs-w
+  discrimination; never a bare `w` chip in a wh fill-blank bank.
+- **Floss endings spoken as letters**: "Puff ends with F-F!" (matches the
+  "Ball ends with A-L-L" idiom) — never "double f."
+- **-ng/-nk families (Sing and Honk, `read-u-gluedng`, skill `read-glued`)
+  stay in band 4** with Sticky Sounds — skills can't span bands. The an/ang
+  and ank/ang contrasts are done by ear (`listenAndPick`, genuinely audible);
+  -an/-am chips NEVER appear in ng/nk fill-blank banks (ban/bang, ran/rang
+  would double-solve the template). -onk/-ung get lighter coverage (thin
+  word/emoji inventory) rather than forced weak stimuli.
+- Band-2 probe #1 swapped to sample the F2 anchor units
+  (`read-e-soundfriends-am-2-03`); first-sounds and sound-match probes kept
+  so both band-2 skills stay represented.
+
 ## Known gaps (by slice)
 
 - F2: letter-keyword-sound three-part drill (band 2) with Feeny's own
