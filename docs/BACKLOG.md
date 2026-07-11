@@ -82,7 +82,7 @@ in kid-facing copy. Parent-facing copy says the honest generic thing:
 "follows the phonics sequence used in most classrooms (Orton-Gillingham
 style)."
 
-### [x] F1: Re-sequence early reading onto the OG spine — DONE locally (2026-07-11); prod seed + pack export pending (Dan)
+### [x] F1: Re-sequence early reading onto the OG spine — SHIPPED to prod 2026-07-11 (reading v4)
 
 **User Value**: A kid mid-way through Fundations K or 1 places into Feeny
 and lands on the *same skill family they're doing at school this month* —
@@ -124,8 +124,7 @@ moved/added below a kid's placement after a re-sequence don't read as
 mastery-0 and drag Power-Up Practice back to band 1 — covered by new
 engine tests. Full suite green; adversarial review findings fixed
 (ambiguous 🍳-as-pan probe-adjacent exercise, duplicate drum fill-blank,
-stale headers). **Left:** Dan runs prod seed + `pnpm export:packs` against
-prod + bundled-packs commit, per ship ritual.
+stale headers). Prod-shipped same day (reading v4, packs 0b91005).
 
 ### [x] F2: Letter-keyword-sound anchors — SHIPPED to prod 2026-07-11 (reading v5)
 
