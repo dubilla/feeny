@@ -30,8 +30,8 @@ struct UnitDetailSheet: View {
                         .minimumScaleFactor(0.6)
                 }
 
-                if state == .golden {
-                    Text("You already know this! Play any lesson for fun. 👑")
+                if state == .explore {
+                    Text("Warm-up practice — play any lesson for fun.")
                         .font(Theme.body(22))
                         .foregroundStyle(Theme.ink.opacity(0.7))
                 }
@@ -74,8 +74,8 @@ struct UnitDetailSheet: View {
     @ViewBuilder
     private func lessonRow(_ lesson: Lesson) -> some View {
         let done = completedLessonIds.contains(lesson.id)
-        // Golden units are fully replayable; otherwise lessons unlock in order.
-        let playable = done || state == .golden || lesson.id == nextLessonId
+        // Explore units are fully replayable; otherwise lessons unlock in order.
+        let playable = done || state == .explore || lesson.id == nextLessonId
 
         Button {
             onPlay(SkillMapView.LessonLaunch(lesson: lesson, mode: .normal, unit: unit, subjectId: pack.subjectId))

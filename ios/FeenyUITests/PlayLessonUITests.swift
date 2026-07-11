@@ -108,6 +108,14 @@ final class PlayLessonUITests: XCTestCase {
             .write(to: URL(fileURLWithPath: "/tmp/feeny-placement-done.png"))
         finishPlacement.tap()
 
+        // B1 verification: the map must open centered on the placement band's
+        // START (not parked at band 1). Capture it for the design review loop.
+        let firstCurrent = app.buttons["unit-node-current"]
+        XCTAssertTrue(firstCurrent.waitForExistence(timeout: 10), "map has no START after placement")
+        XCTAssertTrue(firstCurrent.isHittable, "START must be on-screen, not scrolled off below band 1")
+        try? XCUIScreen.main.screenshot().pngRepresentation
+            .write(to: URL(fileURLWithPath: "/tmp/feeny-skillmap-after-placement.png"))
+
         // 4. Map → play lessons until the unit finishes and the egg hatches.
         var hatchedEgg = false
         for _ in 0..<8 {

@@ -50,11 +50,51 @@ final class ProgressEngineTests: XCTestCase {
         let states = ProgressEngine.unitStates(
             pack: pack, placementBandNumber: 2, completedLessonIds: [], completedUnitIds: []
         )
-        XCTAssertEqual(states["u-1-1"], .golden)
-        XCTAssertEqual(states["u-1-2"], .golden)
+        // Below placement: explorable, never auto-completed.
+        XCTAssertEqual(states["u-1-1"], .explore)
+        XCTAssertEqual(states["u-1-2"], .explore)
+        // START lands on the placement band's first unit — never band 1.
         XCTAssertEqual(states["u-2-1"], .current)
         XCTAssertEqual(states["u-2-2"], .locked)
         XCTAssertEqual(states["u-3-1"], .locked)
+    }
+
+    func testUnitStatesPlacedAtBandOneStartsAtTheVeryFirstUnit() {
+        let pack = makePack()
+        let states = ProgressEngine.unitStates(
+            pack: pack, placementBandNumber: 1, completedLessonIds: [], completedUnitIds: []
+        )
+        // Nothing below band 1, so no explore nodes; START is unit 1 of band 1.
+        XCTAssertFalse(states.values.contains(.explore))
+        XCTAssertEqual(states["u-1-1"], .current)
+        XCTAssertEqual(states["u-1-2"], .locked)
+    }
+
+    func testUnitStatesPlacedAtTopBandMakesEverythingBelowExplore() {
+        let pack = makePack()
+        let states = ProgressEngine.unitStates(
+            pack: pack, placementBandNumber: 3, completedLessonIds: [], completedUnitIds: []
+        )
+        XCTAssertEqual(states["u-1-1"], .explore)
+        XCTAssertEqual(states["u-1-2"], .explore)
+        XCTAssertEqual(states["u-2-1"], .explore)
+        XCTAssertEqual(states["u-2-2"], .explore)
+        XCTAssertEqual(states["u-3-1"], .current)
+        XCTAssertEqual(states["u-3-2"], .locked)
+    }
+
+    func testFinishedExploreUnitBelowPlacementShowsCompleted() {
+        let pack = makePack()
+        // Placed at band 2; the kid wandered back and finished a band-1 unit.
+        let states = ProgressEngine.unitStates(
+            pack: pack,
+            placementBandNumber: 2,
+            completedLessonIds: ["l-1-1-1", "l-1-1-2"],
+            completedUnitIds: []
+        )
+        XCTAssertEqual(states["u-1-1"], .completed, "played-through explore unit earns its checkmark")
+        XCTAssertEqual(states["u-1-2"], .explore, "the untouched one stays explorable")
+        XCTAssertEqual(states["u-2-1"], .current, "START is unaffected — still the placement band")
     }
 
     func testCompletingAllLessonsAdvancesCurrent() {

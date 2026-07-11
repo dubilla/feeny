@@ -13,6 +13,9 @@ struct SkillMapView: View {
     @State private var activeLesson: LessonLaunch?
     @State private var selectedUnit: LearningUnit?
     @State private var showPlacement = false
+    /// Bumped when the placement cover dismisses, so the map deliberately
+    /// re-centers on the freshly-derived START (see mapContent's onChange).
+    @State private var placementRecenter = 0
 
     /// What the player should run: a lesson, review framing, or a challenge.
     /// `unit` rides along so the player can spot unit completion (nil for
@@ -43,7 +46,7 @@ struct SkillMapView: View {
             if !isEmpty { checkPlacement() }
         }
         .onAppear { checkPlacement() }
-        .fullScreenCover(isPresented: $showPlacement) {
+        .fullScreenCover(isPresented: $showPlacement, onDismiss: { placementRecenter += 1 }) {
             if let pack {
                 PlacementFlowView(pack: pack, kidAge: progressStore.activeProfile?.currentAge)
             }
@@ -128,6 +131,7 @@ struct SkillMapView: View {
     private func mapContent(_ pack: SubjectPack) -> some View {
         let states = unitStates(pack)
         let unitsByBand = Dictionary(grouping: pack.units) { $0.bandId }
+        let currentUnitId = pack.units.first(where: { states[$0.id] == .current })?.id
 
         return ScrollViewReader { proxy in
             ScrollView {
@@ -158,8 +162,16 @@ struct SkillMapView: View {
                 .padding(.bottom, 60)
             }
             .onAppear {
-                if let current = pack.units.first(where: { states[$0.id] == .current }) {
-                    proxy.scrollTo(current.id, anchor: .center)
+                if let currentUnitId {
+                    proxy.scrollTo(currentUnitId, anchor: .center)
+                }
+            }
+            // The first onAppear runs while placement is still on top of the
+            // map, so it centers on band 1's START (no placement yet). When the
+            // warm-up cover dismisses, re-center on the now-correct START.
+            .onChange(of: placementRecenter) {
+                if let currentUnitId {
+                    proxy.scrollTo(currentUnitId, anchor: .center)
                 }
             }
         }
@@ -303,12 +315,18 @@ struct UnitNodeView: View {
         .onAppear {
             pulsing = state == .current
         }
+        // After placement the START moves to a node that was already on screen
+        // (behind the warm-up cover), so its onAppear won't re-fire — arm the
+        // pulse when the state itself flips to current.
+        .onChange(of: state) {
+            pulsing = state == .current
+        }
         .accessibilityIdentifier(state == .current ? "unit-node-current" : "unit-node")
     }
 
     private var fillColor: Color {
         switch state {
-        case .golden: Theme.gold.opacity(0.85)
+        case .explore: Theme.card
         case .completed: Theme.correct.opacity(0.85)
         case .current: Theme.card
         case .locked: Color(white: 0.88)
@@ -322,11 +340,9 @@ struct UnitNodeView: View {
     @ViewBuilder
     private var badge: some View {
         switch state {
-        case .golden:
-            Image(systemName: "crown.fill")
-                .font(.system(size: 26, weight: .bold))
-                .foregroundStyle(.white)
-                .offset(y: -66)
+        case .explore:
+            // Open but unearned — no badge. The kid can wander here by choice.
+            EmptyView()
         case .completed:
             Image(systemName: "checkmark.circle.fill")
                 .font(.system(size: 34))

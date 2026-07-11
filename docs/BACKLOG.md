@@ -14,7 +14,7 @@ full suite → curate/verify placement probes → Dan runs the prod seed →
 
 ## Bugs (top priority — before new initiative work)
 
-### [ ] B1: Placement result doesn't move the kid's starting spot
+### [x] B1: Placement result doesn't move the kid's starting spot — FIXED (2026-07-11)
 
 **Observed (Dan, 2026-07-11, real device):** Finish the Warm-Up Adventure —
 the arrival screen says "Your adventure starts in <band>!" — but the skill
@@ -44,6 +44,23 @@ just a fresh one.
 band N's first unit, bands 1..N-1 tappable-but-unchecked; engine unit tests
 cover placed-at-band-1, mid-band, and top-band cases; existing profiles
 self-heal on next map open.
+
+**Resolution (2026-07-11):** Root cause was *not* the engine — `unitStates`
+already put START on the placement band. The map renders behind the placement
+`fullScreenCover`, so its one-shot `scrollTo(current)` `onAppear` fired while
+`placementBandNumber` still defaulted to 1, then never re-ran when the cover
+dismissed — the map stayed parked at band 1 with START scrolled off below.
+Fix: re-center on the freshly-derived START from the cover's `onDismiss`
+(deliberate token, not the incidental XP re-render); re-arm the START pulse via
+`onChange(of: state)` (its `onAppear` doesn't re-fire either). Design: below
+placement renamed `.golden`→`.explore` — plain warm nodes, no crown, "Warm-up
+practice — play any lesson for fun," and a played-through explore unit now
+earns its checkmark (completion beats the band gate). Pure-derivation states
+mean existing mis-placed profiles self-heal on next map open. Covered by new
+`ProgressEngineTests` (band-1 / mid / top / finished-explore) + a post-placement
+map screenshot in the UI journey. **Last mile:** confirm on a real device with
+a band>1 placement (sim renders all emoji as "?" and the UI test's rotating-tap
+placement lands nondeterministically, usually band 1).
 
 ---
 

@@ -4,17 +4,21 @@ import Foundation
 /// and returns plain values so it's directly unit-testable.
 enum ProgressEngine {
     enum UnitState: Equatable {
-        /// Below the kid's placement band: shown gold, "You already know this!"
-        case golden
+        /// Below the kid's placement band: unlocked and freely playable, but
+        /// never auto-completed — no crown, no checkmark, no "you already know
+        /// this." A kid can wander back here by choice; nothing is credited
+        /// until they actually play it.
+        case explore
         case completed
         /// The one unit to play next (pulsing on the map).
         case current
         case locked
     }
 
-    /// Path states in pack order. Units below the placement band are golden;
-    /// a unit is completed when all its lessons are done or it was skipped via
-    /// challenge; the first incomplete unit at/after placement is current.
+    /// Path states in pack order. Units below the placement band are
+    /// `explore` (open but unearned); a unit is completed when all its lessons
+    /// are done or it was skipped via challenge; the first incomplete unit
+    /// at/after placement is current.
     static func unitStates(
         pack: SubjectPack,
         placementBandNumber: Int,
@@ -27,13 +31,14 @@ enum ProgressEngine {
 
         for unit in pack.units {
             let bandNumber = bandNumberById[unit.bandId] ?? 1
-            if bandNumber < placementBandNumber {
-                states[unit.id] = .golden
-                continue
-            }
             let allLessonsDone = unit.lessons.allSatisfy { completedLessonIds.contains($0.id) }
+            // Completion always wins — an explore unit the kid chose to finish
+            // earns its checkmark (the XP/egg were paid; the map must agree).
             if allLessonsDone || completedUnitIds.contains(unit.id) {
                 states[unit.id] = .completed
+            } else if bandNumber < placementBandNumber {
+                // Below placement, still unplayed: open but unearned.
+                states[unit.id] = .explore
             } else if !currentAssigned {
                 states[unit.id] = .current
                 currentAssigned = true
