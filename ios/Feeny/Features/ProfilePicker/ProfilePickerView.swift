@@ -21,47 +21,24 @@ struct ProfilePickerView: View {
     }
 
     private var picker: some View {
-        VStack(spacing: 44) {
+        VStack(spacing: Theme.Space.xxl) {
             Text("Who's playing?")
-                .font(Theme.title(52))
+                .font(Theme.display(54))
                 .foregroundStyle(Theme.ink)
 
-            HStack(spacing: 32) {
+            HStack(spacing: Theme.Space.xl) {
                 ForEach(progressStore.profiles, id: \.persistentModelID) { profile in
-                    profileCard(profile)
+                    ProfilePickCard(profile: profile) {
+                        progressStore.select(profile)
+                    }
                 }
                 if progressStore.profiles.count < 6 {
                     newProfileCard
                 }
             }
         }
-        .padding(60)
+        .padding(Theme.Space.xxl)
         .onAppear { speech.speak("Who's playing today?") }
-    }
-
-    private func profileCard(_ profile: KidProfile) -> some View {
-        Button {
-            progressStore.select(profile)
-        } label: {
-            VStack(spacing: 14) {
-                Text(profile.avatarId)
-                    .font(.system(size: 76))
-                    .frame(width: 130, height: 130)
-                    .background(Circle().fill(Theme.card))
-                    .overlay(Circle().stroke(Theme.accent.opacity(0.35), lineWidth: 5))
-                Text(profile.name)
-                    .font(Theme.title(26))
-                    .foregroundStyle(Theme.ink)
-                Text("Level \(GameEconomy.level(forXP: profile.xp))")
-                    .font(Theme.body(18))
-                    .foregroundStyle(Theme.ink.opacity(0.55))
-            }
-            .padding(24)
-            .background(RoundedRectangle(cornerRadius: Theme.cornerRadius).fill(Theme.card.opacity(0.6)))
-            .shadow(color: .black.opacity(0.07), radius: 10, y: 5)
-        }
-        .buttonStyle(SquishyButtonStyle())
-        .accessibilityIdentifier("profile-card")
     }
 
     private var newProfileCard: some View {
@@ -84,5 +61,40 @@ struct ProfilePickerView: View {
         }
         .buttonStyle(SquishyButtonStyle())
         .accessibilityIdentifier("new-profile-card")
+    }
+}
+
+/// One kid's card: buddy breathes gently, so the picker feels alive without
+/// blinking at anyone.
+private struct ProfilePickCard: View {
+    let profile: KidProfile
+    let onPick: () -> Void
+
+    @State private var breathe = false
+
+    var body: some View {
+        Button(action: onPick) {
+            VStack(spacing: Theme.Space.m) {
+                AvatarView(avatarId: profile.avatarId, size: 96)
+                    .frame(width: 130, height: 130)
+                    .background(Circle().fill(Theme.card))
+                    .overlay(Circle().stroke(Theme.accent.opacity(0.35), lineWidth: 5))
+                    .scaleEffect(y: breathe ? 1.02 : 1.0, anchor: .bottom)
+                    .motion(Theme.Motion.breathe, value: breathe)
+                Text(profile.name)
+                    .font(Theme.title(26))
+                    .foregroundStyle(Theme.ink)
+                Text("Level \(GameEconomy.level(forXP: profile.xp))")
+                    .font(Theme.caption(18))
+                    .foregroundStyle(Theme.ink.opacity(0.55))
+            }
+            .padding(Theme.Space.l)
+            .background(RoundedRectangle(cornerRadius: Theme.Radius.l).fill(Theme.card.opacity(0.6)))
+            .shadow(color: .black.opacity(0.07), radius: 10, y: 5)
+        }
+        .buttonStyle(SquishyButtonStyle())
+        .accessibilityIdentifier("profile-card")
+        .accessibilityLabel("\(profile.name), level \(GameEconomy.level(forXP: profile.xp))")
+        .onAppear { breathe = true }
     }
 }

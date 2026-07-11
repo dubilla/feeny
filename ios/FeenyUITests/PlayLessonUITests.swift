@@ -172,6 +172,9 @@ final class PlayLessonUITests: XCTestCase {
         let profileCards = app.buttons.matching(identifier: "profile-card")
         XCTAssertTrue(profileCards.firstMatch.waitForExistence(timeout: 15))
         XCTAssertEqual(profileCards.count, 2, "both profiles should appear in the picker")
+        // Free screenshot of the two-kid picker for the design review loop.
+        try? XCUIScreen.main.screenshot().pngRepresentation
+            .write(to: URL(fileURLWithPath: "/tmp/feeny-profile-picker.png"))
         profileCards.element(boundBy: 0).tap()
         XCTAssertEqual(currentXP(app), profile1XP, "first kid's XP must survive relaunch")
     }

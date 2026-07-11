@@ -183,6 +183,10 @@ struct SkillMapView: View {
                 .font(Theme.title(44))
                 .foregroundStyle(Theme.accent)
             Spacer()
+            // The kid's buddy rides along on their path.
+            AvatarView(avatarId: progressStore.activeProfile?.avatarId ?? "round-violet", size: 54)
+                .frame(width: 72, height: 72)
+                .background(Circle().fill(Theme.card))
             VStack(spacing: 2) {
                 Text("Level \(GameEconomy.level(forXP: progressStore.totalXP))")
                     .font(Theme.body(18))

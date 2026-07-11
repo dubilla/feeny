@@ -74,8 +74,7 @@ struct SubjectHomeView: View {
                 soundEffects.play(.tap)
                 progressStore.deselectProfile()
             } label: {
-                Text(progressStore.activeProfile?.avatarId ?? "🙂")
-                    .font(.system(size: 52))
+                AvatarView(avatarId: progressStore.activeProfile?.avatarId ?? "round-violet", size: 68)
                     .frame(width: Theme.minTouchTarget, height: Theme.minTouchTarget)
                     .background(Circle().fill(Theme.card))
                     .overlay(Circle().stroke(Theme.accent.opacity(0.3), lineWidth: 4))

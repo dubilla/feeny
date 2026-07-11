@@ -15,12 +15,17 @@ final class ScreenshotUtility: XCTestCase {
         app.launchArguments = ["-feenyReset"]
         app.launch()
         sleep(3)
-        try snap("1-create-buddy")
 
-        // Walk the create wizard, capturing each step.
+        // Walk the create wizard, capturing each step. Pick a face + tint
+        // first so the buddy-builder capture shows a live selection.
         let avatar = app.buttons.matching(identifier: "avatar-option").element(boundBy: 2)
-        if avatar.waitForExistence(timeout: 10) {
+        XCTAssertTrue(avatar.waitForExistence(timeout: 10), "buddy grid missing — captures would be silently empty")
+        if avatar.exists {
             avatar.tap()
+            let tint = app.buttons.matching(identifier: "tint-option").element(boundBy: 1)
+            if tint.waitForExistence(timeout: 5) { tint.tap() }
+            sleep(1)
+            try snap("1-create-buddy")
             let go = app.buttons["create-profile"]
             if go.waitForExistence(timeout: 5) { go.tap() }
             sleep(1)
