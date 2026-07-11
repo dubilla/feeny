@@ -127,7 +127,7 @@ engine tests. Full suite green; adversarial review findings fixed
 stale headers). **Left:** Dan runs prod seed + `pnpm export:packs` against
 prod + bundled-packs commit, per ship ritual.
 
-### [x] F2: Letter-keyword-sound anchors — DONE locally (2026-07-11); prod seed pending (Dan)
+### [x] F2: Letter-keyword-sound anchors — SHIPPED to prod 2026-07-11 (reading v5)
 
 **User Value**: The core OG move — "a, apple, /ă/" — becomes playable:
 every letter gets an anchor unit where the kid hears letter → keyword →
