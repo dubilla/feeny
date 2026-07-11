@@ -12,6 +12,41 @@ full suite → curate/verify placement probes → Dan runs the prod seed →
 
 ---
 
+## Bugs (top priority — before new initiative work)
+
+### [ ] B1: Placement result doesn't move the kid's starting spot
+
+**Observed (Dan, 2026-07-11, real device):** Finish the Warm-Up Adventure —
+the arrival screen says "Your adventure starts in <band>!" — but the skill
+map still starts the kid at the very first unit of band 1. The celebrated
+placement has no visible effect on the path.
+
+**Expected:**
+- The *current* (START) node after placement is the first unit of the band
+  the arrival screen named — the screen and the map must never disagree.
+- Every unit *below* the placement point is **unlocked but not completed**
+  (believed-right design, confirm during fix): kids can wander back to
+  easier material by choice, nothing shows a checkmark they didn't earn,
+  and no "completed" XP/egg credit is granted retroactively.
+- Mastery seeding below placement (`SkillMastery.seededByPlacement`,
+  `assumedMasteryBelowPlacement`) keeps working as-is — this bug is about
+  the path pointer/locks, not the mastery model.
+
+**Fix shape (suspected):** `ProgressEngine.unitStates` derives states from
+`placementBandNumber` + completions — audit why the current pointer lands at
+band 1 (likely: "current = first not-completed unit" ignores the placement
+band, or the map's scroll-to-current works but states don't). States are
+derived at render time, so a pure engine fix should also retroactively heal
+already-affected profiles — verify with an existing mis-placed profile, not
+just a fresh one.
+
+**Definition of Done:** Place into band N (N>1) → map opens with START on
+band N's first unit, bands 1..N-1 tappable-but-unchecked; engine unit tests
+cover placed-at-band-1, mid-band, and top-band cases; existing profiles
+self-heal on next map open.
+
+---
+
 ## Initiative 1: Weave Fundations into the reading path
 
 **Why now:** Feeny's reading bands teach generic phonics in a plausible
