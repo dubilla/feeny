@@ -127,7 +127,7 @@ engine tests. Full suite green; adversarial review findings fixed
 stale headers). **Left:** Dan runs prod seed + `pnpm export:packs` against
 prod + bundled-packs commit, per ship ritual.
 
-### [ ] F2: Letter-keyword-sound anchors
+### [x] F2: Letter-keyword-sound anchors — DONE locally (2026-07-11); prod seed pending (Dan)
 
 **User Value**: The core OG move — "a, apple, /ă/" — becomes playable:
 every letter gets an anchor unit where the kid hears letter → keyword →
@@ -144,6 +144,23 @@ ship ritual.
 **Definition of Done**: All 26 letters have anchor coverage; every prompt
 passes the spoken-prompt rules; a pre-reader can solve every anchor exercise
 by ear alone.
+
+**Resolution (2026-07-11):** Feeny's 26-keyword set is a decision of record
+in `curriculum/FUNDATIONS_MAP.md` (ant→zebra, all short vowels, only
+queen/zebra coincide with Wilson's; binding rules for 👑/🦎/🪺 ambiguity,
+q/x/y format restriction, bare-leading-A/I TTS trap). Four new units open
+bands 1–2: Letter Friends / More Letter Friends (b1, letter-name↔keyword,
+upper/lower/mixed lessons) and Sound Friends / More Sound Friends (b2, the
+three-part drill via word anchors, skill `read-letter-sounds` — existing
+skills reused deliberately so anchor play feeds the same mastery the review
+engine keys on). Anchor units placed first-in-band: START deliberately
+pulls back to them for mid-band kids (pinned by engine test). Adversarial
+review fixes applied: keyword emoji removed from unnamed distractor slots,
+lesson-3 prompts no longer speak the answer letter, correct-position cycles
+reshuffled, 3 letter-option exercises converted mCI→listenAndPick. Band-2
+probes intentionally don't sample anchors yet (folded into F3's
+re-curation, noted in map doc). Full suite green ×2. **Left:** Dan prod
+seed + pack export.
 
 ### [ ] F3: Digraphs, bonus letters, and glued sounds
 

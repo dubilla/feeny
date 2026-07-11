@@ -1,9 +1,14 @@
 import type { SubjectSeed } from "../schema/pack";
-// Band 1 — Letter Lagoon
+// Band 1 — Letter Lagoon (anchor units first: the letter-keyword drill is
+// the classroom's daily opener — see FUNDATIONS_MAP.md keyword set)
+import { letterFriendsAM } from "./band1/unit-letter-friends-am";
+import { letterFriendsNZ } from "./band1/unit-letter-friends-nz";
 import { abcAdventure } from "./band1/unit-abc-adventure";
 import { letterParade } from "./band1/unit-letter-parade";
 import { littleLetters } from "./band1/unit-little-letters";
-// Band 2 — Sound Springs
+// Band 2 — Sound Springs (anchor units first)
+import { soundFriendsAM } from "./band2/unit-sound-friends-am";
+import { soundFriendsNZ } from "./band2/unit-sound-friends-nz";
 import { soundSafari } from "./band2/unit-sound-safari";
 import { firstSounds } from "./band2/unit-first-sounds";
 import { soundMatchUp } from "./band2/unit-sound-match-up";
@@ -74,9 +79,13 @@ export const readingSeed: SubjectSeed = {
     { id: "read-figurative", bandId: "reading-b8", title: "Sayings and feelings" },
   ],
   units: [
+    letterFriendsAM,
+    letterFriendsNZ,
     abcAdventure,
     letterParade,
     littleLetters,
+    soundFriendsAM,
+    soundFriendsNZ,
     soundSafari,
     firstSounds,
     soundMatchUp,

@@ -150,6 +150,21 @@ final class ProgressEngineTests: XCTestCase {
         XCTAssertEqual(lesson?.primarySkillId, "skill-b1")
     }
 
+    func testNewUnitInsertedAheadOfCompletedWorkBecomesCurrent() {
+        // Content re-sequencing can insert a unit ahead of ones a kid already
+        // finished (F2 anchor units open each band). Deliberate behavior:
+        // START pulls back to the new opener; completed units keep checkmarks.
+        let pack = makePack()
+        let doneLessons: Set<String> = ["l-1-2-1", "l-1-2-2"]
+        let states = ProgressEngine.unitStates(
+            pack: pack, placementBandNumber: 1,
+            completedLessonIds: doneLessons, completedUnitIds: ["u-1-2"]
+        )
+        XCTAssertEqual(states["u-1-1"], .current, "unplayed opener becomes START")
+        XCTAssertEqual(states["u-1-2"], .completed, "earned checkmark survives")
+        XCTAssertEqual(states["u-2-1"], .locked)
+    }
+
     func testEffectiveMasteriesAssumesBelowPlacementAtReadTime() {
         let pack = makePack()
         // Kid placed at band 3, but skill-b2 has no stored row (e.g. the skill

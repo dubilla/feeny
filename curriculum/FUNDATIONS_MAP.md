@@ -47,6 +47,34 @@ of high-frequency irregulars running alongside from early Level 1.
   (`read-digraphs`→b4, `read-sentences`→b5) so the review engine's
   band-eligibility filter matches the map.
 
+## Feeny keyword set (F2, decision of record 2026-07-11)
+
+Our own 26 anchors — not Wilson's set (only queen/zebra coincide). All vowels
+short per OG convention; no soft c/g; no digraph starters; every word
+emoji-representable today and kid-illustratable for owned art (design slice 13).
+
+a ant 🐜 · b bus 🚌 · c cow 🐮 · d duck 🦆 · e egg 🥚 · f fish 🐟 · g goat 🐐 ·
+h horse 🐴 · i iguana 🦎 · j jellyfish 🪼 · k kangaroo 🦘 · l lion 🦁 ·
+m moon 🌙 · n nest 🪺 · o otter 🦦 · p pig 🐷 · q queen 👑 · r rainbow 🌈 ·
+s sun ☀️ · t turtle 🐢 · u umbrella ☂️ · v volcano 🌋 · w watermelon 🍉 ·
+x box 📦 (final /ks/: "box ends with X") · y yo-yo 🪀 · z zebra 🦓
+
+**Authoring rules for this set:**
+- 👑 reads as "crown" (collides with cow's C): it may appear only where the
+  spoken prompt says the word "queen" — never as an unnamed option/distractor.
+  Same rule, milder, for 🦎 (kids say "lizard") and 🪺; never put 🪺 and 🥚 in
+  the same option set (egg is the E keyword).
+- **q, x, y** get letter↔keyword formats only (tap-the-letter, matching) —
+  never "starts like / ends like" picture discrimination; their non-keyword
+  option pools are empty or near-empty.
+- A bare leading "A" or "I" TTS-renders as the article/pronoun — those two
+  letters never lead an utterance bare: "The letter A…" or doubled
+  ("A! A is for ant"). Other letters may lead ("B is for bus!").
+- The three-part "X starts with Y!" scaffold belongs in teaching lessons
+  (1–2); mixed-review lessons ask without speaking the answer.
+- Band-2 placement probes intentionally do not yet sample the anchor units;
+  fold into F3's probe re-curation.
+
 ## Known gaps (by slice)
 
 - F2: letter-keyword-sound three-part drill (band 2) with Feeny's own

@@ -12,3 +12,4 @@ DerivedData/
 *.xcresult
 .DS_Store
 .vercel
+.playwright-mcp/
