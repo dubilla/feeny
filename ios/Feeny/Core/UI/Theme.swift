@@ -17,10 +17,17 @@ enum Theme {
     static let card = Color.white
     static let ink = Color(red: 0.24, green: 0.19, blue: 0.35)
     static let accent = Color(red: 0.48, green: 0.35, blue: 0.92)
+    /// Shadow side of `accent` — character wings, pressed states.
+    static let accentDeep = Color(red: 0.38, green: 0.27, blue: 0.75)
     static let teal = Color(red: 0.13, green: 0.62, blue: 0.74)
     static let correct = Color(red: 0.22, green: 0.72, blue: 0.42)
-    static let incorrect = Color(red: 0.98, green: 0.55, blue: 0.25)
+    /// Warm coral-orange. As feedback it's the try-again color (`incorrect`);
+    /// decoratively it's feet/cheeks/beaks — never red either way.
+    static let coral = Color(red: 0.98, green: 0.55, blue: 0.25)
+    static let incorrect = coral
     static let gold = Color(red: 1.0, green: 0.76, blue: 0.18)
+    /// Sprout stems and other little woody details on characters.
+    static let stem = Color(red: 0.54, green: 0.43, blue: 0.12)
 
     // MARK: Type ramp
     // Display face = Feeny Display (Fraunces, soft+wonky, OFL — see

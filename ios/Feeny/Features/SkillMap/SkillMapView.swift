@@ -145,8 +145,7 @@ struct SkillMapView: View {
                                 UnitNodeView(
                                     unit: unit,
                                     state: states[unit.id] ?? .locked,
-                                    windingOffset: windingOffset(index),
-                                    companionEmoji: progressStore.starterFeenling?.emoji
+                                    windingOffset: windingOffset(index)
                                 ) {
                                     selectedUnit = unit
                                 }
@@ -258,12 +257,9 @@ struct UnitNodeView: View {
     let unit: LearningUnit
     let state: ProgressEngine.UnitState
     let windingOffset: CGFloat
-    /// The kid's starter Feenling, camped beside whichever node is current.
-    var companionEmoji: String?
     let onTap: () -> Void
 
     @State private var pulsing = false
-    @State private var companionBob = false
 
     var body: some View {
         Button(action: onTap) {
@@ -278,22 +274,17 @@ struct UnitNodeView: View {
                             .stroke(Theme.accent.opacity(0.45), lineWidth: 6)
                             .frame(width: 140, height: 140)
                             .scaleEffect(pulsing ? 1.08 : 0.96)
-                            .animation(.easeInOut(duration: 0.9).repeatForever(autoreverses: true), value: pulsing)
+                            .motion(Theme.Motion.pulse, value: pulsing)
                     }
                     Text(unit.icon)
                         .font(.system(size: 52))
                         .saturation(state == .locked ? 0 : 1)
                         .opacity(state == .locked ? 0.45 : 1)
                     badge
-                    if state == .current, let companionEmoji {
-                        Text(companionEmoji)
-                            .font(.system(size: 44))
-                            .offset(x: -108, y: companionBob ? -6 : 6)
-                            .animation(
-                                .easeInOut(duration: 1.4).repeatForever(autoreverses: true),
-                                value: companionBob
-                            )
-                            .accessibilityHidden(true)
+                    if state == .current {
+                        // Feeny camps beside wherever the kid is headed next.
+                        FeenyMascot(pose: .idle, size: 84)
+                            .offset(x: -112, y: 8)
                     }
                 }
                 Text(unit.title)
@@ -307,7 +298,6 @@ struct UnitNodeView: View {
         .padding(.vertical, 10)
         .onAppear {
             pulsing = state == .current
-            companionBob = state == .current
         }
         .accessibilityIdentifier(state == .current ? "unit-node-current" : "unit-node")
     }

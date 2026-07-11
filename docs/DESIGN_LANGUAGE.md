@@ -93,9 +93,28 @@ Wiring rule: every interaction answers in motion **and** sound together.
 
 Vector emblems and glyphs drawn as SwiftUI shapes in a 100×100 design box,
 colors parameterized: `SubjectEmblem` (math blocks / reading book, fallback
-star), `FlameGlyph` (streak, lit/asleep), `EggGlyph` (collection). The
-character pipeline (SVG → `Shape`) arrives in Slice 2 and will be documented
-here.
+star), `FlameGlyph` (streak, lit/asleep), `EggGlyph` (collection).
+
+## Character pipeline (SVG → SwiftUI `Path`)
+
+All characters — Feeny and every Feenling to come — ride one pipeline:
+
+1. **Author** the character as an SVG in `ios/DesignAssets/` (absolute
+   M/C/L/Q/Z path commands; circles/ellipses fine; every layer needs an
+   `id`). Preview it in any browser while drawing. SVG fills are
+   preview-only.
+2. **Compile**: `python3 ios/tools/svg2shape.py ios/DesignAssets/feeny.svg
+   ios/Feeny/Core/UI/Characters/FeenyPaths.swift FeenyPaths` → a generated
+   enum of unit-normalized `Path` layers (checked in, never hand-edited).
+3. **Rig** by hand in the character's View (`FeenyMascot.swift`): color each
+   layer from Theme tokens, attach joints (blink squash, wing shoulder
+   rotation, breathe scale, hop offset). Rig states so far: `idle`, `wave`,
+   `celebrate` — all with Reduce Motion stand-ins (still poses, no loops).
+
+Distinctiveness budget (from the backlog): silhouette varies per *family*;
+species within a family vary by palette/detail; rarity is spent on animation
+and effects, never new geometry. Feeny's silhouette (egg body + sprout) is
+reserved for the mascot.
 
 ## Review ritual
 

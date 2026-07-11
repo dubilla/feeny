@@ -43,6 +43,7 @@
 		8095D8A15A66AC541EA37E6C /* ListenAndPickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AFCF3E84AAFAA8EC4F8041 /* ListenAndPickView.swift */; };
 		8B4B1312CF32B902F088C6DD /* ProfilePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA79F4BC9B4B9C3511469370 /* ProfilePickerView.swift */; };
 		8CC7FC45F5ED2B427BE2B85D /* FeenyDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 133DE4C860D2BAE5996475A1 /* FeenyDisplay-Bold.ttf */; };
+		8E9EFE5200867FF9702F7C3B /* FeenyPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E6C914AE0D9607C4E33DD5 /* FeenyPaths.swift */; };
 		8EC3055F0AE302A0C1BB969D /* LessonSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9662A2C2F93EBE337BDF0C6C /* LessonSession.swift */; };
 		9090064A7578EEC308310CD2 /* AgePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647136C00CB071AF4EDC38D /* AgePicker.swift */; };
 		9173A49D2DC82D67A4321840 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9456CE0E47EC7614C7D2D56 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		A9251ED1615DCF5830342F2A /* ProfileCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925108BF435A8D87D4A84142 /* ProfileCreateView.swift */; };
 		A95C182220BD322060AC24AE /* correct.caf in Resources */ = {isa = PBXBuildFile; fileRef = F61B53479C33C9DF172743A0 /* correct.caf */; };
 		AB4BFC506E8A59E81520CCFE /* ExerciseDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18E0785CA5CDBEC4BC6B8F4 /* ExerciseDecodingTests.swift */; };
+		ACF478BCE71B22A0C8DD0F08 /* FeenyMascot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B0A20F18DE019D011D56A1 /* FeenyMascot.swift */; };
 		B22D92A69FC0228D668DCF02 /* SubjectHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407AAC5D1995F77BA5D1DF25 /* SubjectHomeView.swift */; };
 		B9515F2C948AAF860B8E5ECB /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2597EB2B770FC37D4B67E5AE /* RootView.swift */; };
 		C2C1EC34473E208297A6FE34 /* StreakEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAC4154C80D3960BE7C9609 /* StreakEngineTests.swift */; };
@@ -95,10 +97,12 @@
 		0054076F0E8E5DE0643E4353 /* FeenyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeenyApp.swift; sourceTree = "<group>"; };
 		0153B1EAE911FD1F0C64DBFF /* LessonSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonSessionTests.swift; sourceTree = "<group>"; };
 		0733A3B7723780A13FB194B4 /* ContentSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSyncService.swift; sourceTree = "<group>"; };
+		12B0A20F18DE019D011D56A1 /* FeenyMascot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeenyMascot.swift; sourceTree = "<group>"; };
 		133DE4C860D2BAE5996475A1 /* FeenyDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FeenyDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		19CC07FEA454CD5E6552FB73 /* ParentGateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentGateView.swift; sourceTree = "<group>"; };
 		1F1B9F2E21CFAE33853D3D79 /* fixtures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fixtures; path = ../curriculum/fixtures; sourceTree = SOURCE_ROOT; };
 		22721A8B67AF49BC53AC8AC3 /* PlayLessonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLessonUITests.swift; sourceTree = "<group>"; };
+		24E6C914AE0D9607C4E33DD5 /* FeenyPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeenyPaths.swift; sourceTree = "<group>"; };
 		2597EB2B770FC37D4B67E5AE /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		314C5DC283EB028DE771451A /* LevelUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpView.swift; sourceTree = "<group>"; };
 		3406CE5CD104F2C9788D74F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -324,6 +328,15 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		7EAD72DC3ADED3C179F83C3A /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				12B0A20F18DE019D011D56A1 /* FeenyMascot.swift */,
+				24E6C914AE0D9607C4E33DD5 /* FeenyPaths.swift */,
+			);
+			path = Characters;
+			sourceTree = "<group>";
+		};
 		821A1BCC453AB56541CBABFE /* LessonPlayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -407,6 +420,7 @@
 				A5B92572BE251A39B88DB20A /* Emblems.swift */,
 				A772BDA3521503CDDC8610F7 /* Theme.swift */,
 				38BEF548C7930B8A17D21381 /* VolumeNudge.swift */,
+				7EAD72DC3ADED3C179F83C3A /* Characters */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -606,6 +620,8 @@
 				0A1A46FD29D384188BEB0E8D /* Emblems.swift in Sources */,
 				6201C6384BA29BC26BA4A1CF /* ExercisePayload.swift in Sources */,
 				9F8DE4589B68D77DDD8D278D /* FeenyApp.swift in Sources */,
+				ACF478BCE71B22A0C8DD0F08 /* FeenyMascot.swift in Sources */,
+				8E9EFE5200867FF9702F7C3B /* FeenyPaths.swift in Sources */,
 				710794B27017AA0A6F64A1F1 /* FillBlankWordBankView.swift in Sources */,
 				C5F73AAFB0CBB5F560205BB2 /* GameEconomy.swift in Sources */,
 				E5EFA17790121A47C78034D1 /* LessonCompleteView.swift in Sources */,

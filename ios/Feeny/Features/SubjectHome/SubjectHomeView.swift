@@ -41,6 +41,13 @@ struct SubjectHomeView: View {
                 }
                 .padding(Theme.Space.xxl)
             }
+            // Feeny stands at the page's edge and waves hello — the face of
+            // the app, first thing every day (idle + blinks after).
+            .overlay(alignment: .bottomLeading) {
+                FeenyMascot(pose: .wave, size: 170)
+                    .padding(.leading, Theme.Space.xxl)
+                    .padding(.bottom, Theme.Space.l)
+            }
             .navigationDestination(for: String.self) { subjectId in
                 SkillMapView(subjectId: subjectId)
                     .toolbar(.hidden, for: .navigationBar)
