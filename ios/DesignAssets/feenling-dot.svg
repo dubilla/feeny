@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 180">
+  <!-- Dot, the ladybug — Number Critter (starter). Round dome, countable
+       spots: one big + one small per wing. Family grammar: geometric/round,
+       dot markings, no wings. -->
+  <path id="antennaL" fill="#4a3b6b"
+    d="M 84 30 C 78 20 70 14 60 12 C 59 16 60 19 63 20 C 71 22 77 26 81 33 Z" />
+  <path id="antennaR" fill="#4a3b6b"
+    d="M 116 30 C 122 20 130 14 140 12 C 141 16 140 19 137 20 C 129 22 123 26 119 33 Z" />
+  <circle id="antennaTipL" fill="#4a3b6b" cx="59" cy="14" r="6" />
+  <circle id="antennaTipR" fill="#4a3b6b" cx="141" cy="14" r="6" />
+  <circle id="head" fill="#4a3b6b" cx="100" cy="47" r="30" />
+  <ellipse id="eyeL" fill="#ffffff" cx="88" cy="39" rx="8" ry="9" />
+  <ellipse id="eyeR" fill="#ffffff" cx="112" cy="39" rx="8" ry="9" />
+  <circle id="pupilL" fill="#2c2344" cx="90" cy="41" r="4" />
+  <circle id="pupilR" fill="#2c2344" cx="110" cy="41" r="4" />
+  <path id="body" fill="#f26b4f"
+    d="M 22 110 C 22 72 56 50 100 50 C 144 50 178 72 178 110 C 178 145 143 168 100 168 C 57 168 22 145 22 110 Z" />
+  <path id="split" fill="#c94f36"
+    d="M 98 50 L 102 50 L 102 168 L 98 168 Z" />
+  <circle id="dotBigL" fill="#4a3b6b" cx="62" cy="100" r="15" />
+  <circle id="dotBigR" fill="#4a3b6b" cx="138" cy="100" r="15" />
+  <circle id="dotSmallL" fill="#4a3b6b" cx="80" cy="138" r="8" />
+  <circle id="dotSmallR" fill="#4a3b6b" cx="120" cy="138" r="8" />
+</svg>

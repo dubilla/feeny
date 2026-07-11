@@ -189,7 +189,7 @@ Warm paper, ink-purple type, jewel accents, rounded geometry, characters drawn a
 **User Value**: "My Feenlings" becomes an album worth browsing: unhatched species show true silhouettes (mystery, not gray boxes), hatched ones sit proud, rarity reads at a glance — with the first full family (~12 species) in designed art and the rest arriving as content drops behind the emoji fallback.
 
 **Work**:
-- Assets: first family batch (~12 species) through the pipeline; remaining families as subsequent content drops (explicitly not blocking this slice).
+- Assets: first family batch (~12 species) through the pipeline; remaining families as subsequent content drops (explicitly not blocking this slice). **Prioritize one shiny per family** — slice 4 drew commons + a rare, so the 5% jackpot tier still reveals as emoji, and the biggest ceremony beat deserves designed art first.
 - UI: `CollectionView` redesign — silhouettes from the actual character path, rarity framing, family section headers with emblems, tap → detail card (name, family, rarity, hatched-on). Cap concurrent idle animations (48 animating vector views is a real perf risk — animate only on-screen cells, prefer static poses at rest).
 - Tests: screenshots of mixed hatched/unhatched album; scroll perf sanity on device.
 

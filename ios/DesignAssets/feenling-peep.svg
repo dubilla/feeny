@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 215">
+  <!-- Peep, the just-hatched chick — Word Bird (starter). Still wearing the
+       top of its shell. Family grammar: winged, beaked, perched. -->
+  <ellipse id="footL" fill="#fa8c40" cx="80" cy="197" rx="12" ry="7" />
+  <ellipse id="footR" fill="#fa8c40" cx="120" cy="197" rx="12" ry="7" />
+  <path id="body" fill="#ffc22e"
+    d="M 100 50 C 140 50 165 85 165 130 C 165 168 138 192 100 192 C 62 192 35 168 35 130 C 35 85 60 50 100 50 Z" />
+  <path id="wingL" fill="#f5a300"
+    d="M 36 116 C 24 120 17 131 19 144 C 30 142 38 133 41 124 Z" />
+  <path id="wingR" fill="#f5a300"
+    d="M 164 116 C 176 120 183 131 181 144 C 170 142 162 133 159 124 Z" />
+  <path id="shellCap" fill="#f4e8d3"
+    d="M 62 64 C 62 30 80 14 100 14 C 120 14 138 30 138 64 L 126 55 L 114 66 L 100 55 L 86 66 L 74 55 Z" />
+  <circle id="eyeL" fill="#2c2344" cx="82" cy="103" r="6.5" />
+  <circle id="eyeR" fill="#2c2344" cx="118" cy="103" r="6.5" />
+  <path id="beak" fill="#fa8c40"
+    d="M 90 116 C 94 112 106 112 110 116 C 106 124 102 128 100 128 C 98 128 94 124 90 116 Z" />
+  <circle id="cheekL" fill="#fa8c40" opacity="0.35" cx="66" cy="120" r="8" />
+  <circle id="cheekR" fill="#fa8c40" opacity="0.35" cx="134" cy="120" r="8" />
+</svg>

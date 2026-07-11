@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 180">
+  <!-- Bloop, the fish — Number Critter. Perfect circle body, three countable
+       bubbles, big friendly eye. -->
+  <path id="tailFin" fill="#23809b"
+    d="M 148 90 C 170 62 194 52 204 58 C 200 74 195 83 188 90 C 195 97 200 106 204 122 C 194 128 170 118 148 90 Z" />
+  <path id="topFin" fill="#23809b"
+    d="M 76 42 C 86 18 110 10 126 16 C 122 32 110 42 96 46 Z" />
+  <circle id="body" fill="#2f9fbe" cx="95" cy="100" r="62" />
+  <ellipse id="belly" fill="#bfe6ef" cx="95" cy="136" rx="46" ry="20" />
+  <path id="sideFin" fill="#23809b"
+    d="M 98 116 C 112 110 124 114 128 124 C 118 132 104 130 96 122 Z" />
+  <ellipse id="eye" fill="#ffffff" cx="70" cy="86" rx="14" ry="15" />
+  <circle id="pupil" fill="#2c2344" cx="73" cy="89" r="6" />
+  <circle id="sparkle" fill="#ffffff" cx="76" cy="85" r="2.5" />
+  <ellipse id="mouth" fill="#1d6478" cx="50" cy="114" rx="8" ry="6" />
+  <circle id="bubble1" fill="#bfe6ef" opacity="0.9" cx="172" cy="38" r="8" />
+  <circle id="bubble2" fill="#bfe6ef" opacity="0.9" cx="188" cy="22" r="5.5" />
+  <circle id="bubble3" fill="#bfe6ef" opacity="0.9" cx="196" cy="42" r="4" />
+</svg>

@@ -137,6 +137,26 @@ enum FeenyPaths {
         return p
     }
 
+    /// Paint-order layers with the authored fills.
+    static let layers: [CharacterLayer] = [
+        CharacterLayer(path: stem, color: Color(red: 0.5412, green: 0.4275, blue: 0.1216)),
+        CharacterLayer(path: leafL, color: Color(red: 1, green: 0.7608, blue: 0.1804)),
+        CharacterLayer(path: leafR, color: Color(red: 1, green: 0.7608, blue: 0.1804)),
+        CharacterLayer(path: wingL, color: Color(red: 0.3529, green: 0.2549, blue: 0.7882)),
+        CharacterLayer(path: wingR, color: Color(red: 0.3529, green: 0.2549, blue: 0.7882)),
+        CharacterLayer(path: footL, color: Color(red: 0.9804, green: 0.549, blue: 0.251)),
+        CharacterLayer(path: footR, color: Color(red: 0.9804, green: 0.549, blue: 0.251)),
+        CharacterLayer(path: body, color: Color(red: 0.4784, green: 0.349, blue: 0.9216)),
+        CharacterLayer(path: belly, color: Color(red: 1, green: 0.9686, blue: 0.9216)),
+        CharacterLayer(path: eyeL, color: Color(red: 1, green: 1, blue: 1)),
+        CharacterLayer(path: eyeR, color: Color(red: 1, green: 1, blue: 1)),
+        CharacterLayer(path: pupilL, color: Color(red: 0.2392, green: 0.1922, blue: 0.349)),
+        CharacterLayer(path: pupilR, color: Color(red: 0.2392, green: 0.1922, blue: 0.349)),
+        CharacterLayer(path: cheekL, color: Color(red: 0.9804, green: 0.549, blue: 0.251), opacity: 0.35),
+        CharacterLayer(path: cheekR, color: Color(red: 0.9804, green: 0.549, blue: 0.251), opacity: 0.35),
+        CharacterLayer(path: beak, color: Color(red: 0.9804, green: 0.549, blue: 0.251)),
+    ]
+
     private static func pt(_ x: CGFloat, _ y: CGFloat, _ rect: CGRect) -> CGPoint {
         CGPoint(x: rect.minX + x * rect.width, y: rect.minY + y * rect.height)
     }

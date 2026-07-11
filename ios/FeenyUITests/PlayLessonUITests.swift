@@ -62,6 +62,9 @@ final class PlayLessonUITests: XCTestCase {
             }
             let collect = app.buttons["collect-feenling"]
             XCTAssertTrue(collect.waitForExistence(timeout: 10), "egg should hatch after three taps")
+            // Free screenshot of the reveal for the design review loop.
+            try? XCUIScreen.main.screenshot().pngRepresentation
+                .write(to: URL(fileURLWithPath: "/tmp/feeny-hatch-reveal.png"))
             collect.tap()
             hatched = true
         }

@@ -8,12 +8,15 @@ afconvert. Pure stdlib; no numpy.
 Regenerate:  python3 ios/tools/synth_sounds.py
 Palette doc: docs/DESIGN_LANGUAGE.md (Sound section)
 
-Events (slice 1 prototypes; wired screen-by-screen):
-  tap.caf       option/card touch — soft, unobtrusive
-  tick.caf      progress increment — tiny, higher
-  wrong.caf     warm "hm, try again?" — rising step, curious not corrective
-  celebrate.caf small win arpeggio (correct/hatch/levelup keep their
-                original files until the slice that redesigns their screens)
+Events (wired screen-by-screen as slices land):
+  tap.caf        option/card touch — soft, unobtrusive
+  tick.caf       progress increment — tiny, higher
+  wrong.caf      warm "hm, try again?" — rising step, curious not corrective
+  celebrate.caf  small win arpeggio
+  crack1-3.caf   hatch: three rising knocks as the shell gives way
+  pop.caf        hatch: the give
+  reveal.caf     hatch: warm C-major bloom
+  (correct/levelup keep their original files until their screens' slices)
 """
 import math
 import os
@@ -96,4 +99,22 @@ if __name__ == "__main__":
         (0.09, mallet(note("E5"), 0.5, amp=0.38, decay=7)),
         (0.18, mallet(note("G5"), 0.5, amp=0.36, decay=7)),
         (0.27, mallet(note("C6"), 0.7, amp=0.42, decay=6)),
+    ))
+    # Hatch sequence (slice 4): three rising knocks as the shell cracks…
+    for i, n in enumerate(["E4", "G4", "B4"]):
+        write_caf(f"crack{i + 1}", mix(
+            (0, mallet(note(n), 0.22, amp=0.5, decay=18, strike=0.03)),
+        ))
+    # …a bright pop as it gives way…
+    write_caf("pop", mix(
+        (0.00, mallet(note("G5"), 0.12, amp=0.5, decay=30, strike=0.02)),
+        (0.03, mallet(note("C6"), 0.16, amp=0.45, decay=24)),
+    ))
+    # …and the reveal chord: warm C-major bloom, the biggest sound we own.
+    write_caf("reveal", mix(
+        (0.00, mallet(note("C5"), 1.3, amp=0.40, decay=3.2)),
+        (0.00, mallet(note("E5"), 1.3, amp=0.34, decay=3.2)),
+        (0.00, mallet(note("G5"), 1.3, amp=0.34, decay=3.2)),
+        (0.12, mallet(note("C6"), 1.2, amp=0.36, decay=3.6)),
+        (0.24, mallet(note("E6"), 1.0, amp=0.22, decay=4.5)),
     ))

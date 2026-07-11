@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 230">
+  <!-- Hoot, the owl — Word Bird (RARE). Tall, tufted, moonlit reader. -->
+  <path id="tuftL" fill="#55408a"
+    d="M 54 42 C 50 22 58 8 70 4 C 75 18 71 34 63 46 Z" />
+  <path id="tuftR" fill="#55408a"
+    d="M 146 42 C 150 22 142 8 130 4 C 125 18 129 34 137 46 Z" />
+  <ellipse id="footL" fill="#fa8c40" cx="78" cy="217" rx="12" ry="7" />
+  <ellipse id="footR" fill="#fa8c40" cx="122" cy="217" rx="12" ry="7" />
+  <path id="body" fill="#6b539e"
+    d="M 100 18 C 142 18 168 60 168 128 C 168 186 140 214 100 214 C 60 214 32 186 32 128 C 32 60 58 18 100 18 Z" />
+  <path id="wingL" fill="#55408a"
+    d="M 34 104 C 20 120 16 152 26 178 C 38 170 46 150 45 128 Z" />
+  <path id="wingR" fill="#55408a"
+    d="M 166 104 C 180 120 184 152 174 178 C 162 170 154 150 155 128 Z" />
+  <ellipse id="belly" fill="#fff3e0" cx="100" cy="162" rx="46" ry="38" />
+  <path id="chevron1" fill="#6b539e" opacity="0.45"
+    d="M 80 146 C 87 155 97 155 104 146 C 97 151 87 151 80 146 Z" />
+  <path id="chevron2" fill="#6b539e" opacity="0.45"
+    d="M 96 164 C 103 173 113 173 120 164 C 113 169 103 169 96 164 Z" />
+  <path id="chevron3" fill="#6b539e" opacity="0.45"
+    d="M 80 182 C 87 191 97 191 104 182 C 97 187 87 187 80 182 Z" />
+  <circle id="diskL" fill="#fff3e0" cx="74" cy="84" r="26" />
+  <circle id="diskR" fill="#fff3e0" cx="126" cy="84" r="26" />
+  <circle id="irisL" fill="#ffc22e" cx="74" cy="84" r="13" />
+  <circle id="irisR" fill="#ffc22e" cx="126" cy="84" r="13" />
+  <circle id="pupilL" fill="#2c2344" cx="76" cy="86" r="6" />
+  <circle id="pupilR" fill="#2c2344" cx="124" cy="86" r="6" />
+  <path id="beak" fill="#f5a300"
+    d="M 92 100 C 96 94 104 94 108 100 C 104 111 101 115 100 115 C 99 115 96 111 92 100 Z" />
+</svg>

@@ -11,7 +11,6 @@ import Observation
 final class SoundEffects {
     enum Effect: String, CaseIterable {
         case correct
-        case hatch
         case levelUp = "levelup"
         // Mallet palette (ios/tools/synth_sounds.py) — one instrument family
         // so every interaction answers back in the same voice.
@@ -19,6 +18,12 @@ final class SoundEffects {
         case tick
         case wrong
         case celebrate
+        // Hatch ceremony sequence: three rising knocks, the give, the bloom.
+        case crack1
+        case crack2
+        case crack3
+        case pop
+        case reveal
     }
 
     /// Parent-facing toggle from grown-up settings. Defaults to on.
@@ -40,6 +45,7 @@ final class SoundEffects {
             player?.volume = switch effect {
             case .tap, .tick: 0.35
             case .wrong: 0.45
+            case .crack1, .crack2, .crack3: 0.55
             default: 0.6
             }
             players[effect] = player

@@ -161,8 +161,7 @@ struct ProfileCreateView: View {
                     onDone()
                 } label: {
                     VStack(spacing: 14) {
-                        Text(starter.emoji)
-                            .font(.system(size: 96))
+                        FeenlingSprite(feenling: starter, size: 128, breathes: true)
                         Text(starter.name)
                             .font(Theme.title(30))
                             .foregroundStyle(Theme.ink)

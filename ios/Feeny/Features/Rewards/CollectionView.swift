@@ -148,8 +148,9 @@ struct FeenlingCard: View {
     var body: some View {
         VStack(spacing: 8) {
             ZStack(alignment: .topTrailing) {
-                Text(feenling.emoji)
-                    .font(.system(size: 64))
+                // Drawn species show real art (true silhouettes when
+                // unhatched); the long tail stays emoji until its art drop.
+                FeenlingSprite(feenling: feenling, size: 84)
                     .grayscale(hatched ? 0 : 1)
                     .brightness(hatched ? 0 : -0.55)
                     .opacity(hatched ? 1 : 0.45)

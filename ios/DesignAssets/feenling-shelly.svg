@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 170">
+  <!-- Shelly, the turtle — Number Critter (starter). Dome shell with three
+       countable plates, friendly head, stubby legs. -->
+  <circle id="head" fill="#6cc088" cx="28" cy="112" r="22" />
+  <ellipse id="eye" fill="#ffffff" cx="24" cy="105" rx="8" ry="9" />
+  <circle id="pupil" fill="#2c2344" cx="26" cy="107" r="4" />
+  <path id="smile" fill="#3b7d54"
+    d="M 15 122 C 18 127 28 127 31 122 C 28 131 18 131 15 122 Z" />
+  <path id="tail" fill="#6cc088"
+    d="M 190 112 C 199 108 205 113 200 121 C 196 119 192 116 190 112 Z" />
+  <ellipse id="legL" fill="#6cc088" cx="82" cy="146" rx="14" ry="9" />
+  <ellipse id="legR" fill="#6cc088" cx="152" cy="146" rx="14" ry="9" />
+  <path id="shell" fill="#3f9b5f"
+    d="M 32 106 C 32 62 70 40 113 40 C 156 40 194 62 194 106 C 194 124 178 133 113 133 C 48 133 32 124 32 106 Z" />
+  <circle id="plateL" fill="#2e7a49" cx="72" cy="88" r="14" />
+  <circle id="plateC" fill="#2e7a49" cx="113" cy="72" r="16" />
+  <circle id="plateR" fill="#2e7a49" cx="154" cy="88" r="14" />
+  <path id="rim" fill="#8ed0a5"
+    d="M 43 126 L 183 126 C 187 126 190 129 190 133 C 190 137 187 140 183 140 L 43 140 C 39 140 36 137 36 133 C 36 129 39 126 43 126 Z" />
+</svg>

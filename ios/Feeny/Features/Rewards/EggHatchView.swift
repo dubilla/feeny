@@ -100,17 +100,28 @@ struct EggHatchView: View {
 
     private func crackTap() {
         tapCount += 1
+        // Three rising knocks as the shell gives way.
+        switch tapCount {
+        case 1: sounds.play(.crack1)
+        case 2: sounds.play(.crack2)
+        default: sounds.play(.crack3)
+        }
         withAnimation(.spring(response: 0.15, dampingFraction: 0.3)) { wobble = true }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.18) {
             withAnimation(.spring(response: 0.2, dampingFraction: 0.4)) { wobble = false }
         }
-        if tapCount >= 3 {
-            sounds.play(.hatch)
+        // Exactly-once: a 4th rapid tap must not re-roll (and nil out) the
+        // hatch while the reveal is still animating in.
+        if tapCount == 3 {
             let hatch = progressStore.hatchEgg(subjectId: subjectId)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                sounds.play(.pop)
                 withAnimation(.spring(response: 0.5, dampingFraction: 0.55)) {
                     result = hatch
                     burstScale = 1.0
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    sounds.play(.reveal)
                 }
                 announce(hatch)
             }
@@ -140,8 +151,7 @@ struct EggHatchView: View {
                                 : .default,
                             value: shimmer
                         )
-                    Text(result.feenling.emoji)
-                        .font(.system(size: 170))
+                    FeenlingSprite(feenling: result.feenling, size: 230, breathes: true)
                 }
                 .scaleEffect(burstScale)
 
