@@ -103,6 +103,9 @@ final class PlayLessonUITests: XCTestCase {
         let finishPlacement = app.buttons["finish-placement"]
         answerUntil(app, goal: finishPlacement)
         XCTAssertTrue(finishPlacement.waitForExistence(timeout: 15))
+        // Free screenshot of the arrival moment for the design review loop.
+        try? XCUIScreen.main.screenshot().pngRepresentation
+            .write(to: URL(fileURLWithPath: "/tmp/feeny-placement-done.png"))
         finishPlacement.tap()
 
         // 4. Map → play lessons until the unit finishes and the egg hatches.

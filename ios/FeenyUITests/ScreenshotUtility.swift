@@ -59,12 +59,26 @@ final class ScreenshotUtility: XCTestCase {
             if close.waitForExistence(timeout: 5) { close.tap() }
         }
 
-        // Math map (placement appears on a fresh profile — capture whatever shows).
+        // Math map → fresh profile lands on the placement intro; walk one
+        // question in to capture the guided stage too.
         let mathCard = app.buttons["subject-card-math"]
         if mathCard.waitForExistence(timeout: 5) {
             mathCard.tap()
             sleep(3)
-            try snap("6-math-map-or-placement")
+            try snap("6-placement-intro")
+            let start = app.buttons["start-placement"]
+            if start.waitForExistence(timeout: 5) {
+                start.tap()
+                sleep(2)
+                try snap("7-placement-question")
+                // One answer in: catch the interlude cheer (900ms window).
+                let option = app.buttons.matching(identifier: "answer-option").firstMatch
+                if option.waitForExistence(timeout: 5) {
+                    option.tap()
+                    usleep(400_000)
+                    try snap("8-placement-interlude")
+                }
+            }
         }
     }
 }

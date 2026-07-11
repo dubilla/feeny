@@ -12,6 +12,7 @@ struct PlacementFlowView: View {
     @State private var xpAwarded = 0
     @State private var volumeNudgeDismissed = false
     @Environment(SpeechService.self) private var speech
+    @Environment(SoundEffects.self) private var sounds
     @Environment(ProgressStore.self) private var progressStore
     @Environment(\.dismiss) private var dismiss
 
@@ -68,9 +69,10 @@ struct PlacementFlowView: View {
     /// Age-ask for profiles created before ages existed. Same big-button UI
     /// as profile creation; the answer is saved so it's never asked again.
     private var askAge: some View {
-        VStack(spacing: 32) {
+        VStack(spacing: Theme.Space.xl) {
+            FeenyMascot(pose: .idle, size: 130)
             Text("How old are you?")
-                .font(Theme.title(48))
+                .font(Theme.display(48))
                 .foregroundStyle(Theme.ink)
             Text("This helps us find the perfect starting spot")
                 .font(Theme.body(26))
@@ -80,19 +82,19 @@ struct PlacementFlowView: View {
                 withAnimation { stage = .intro }
             }
         }
-        .padding(60)
+        .padding(Theme.Space.xxl)
         .onAppear {
             let name = progressStore.activeProfile?.name ?? ""
             speech.speak(name.isEmpty ? "How old are you?" : "How old are you, \(name)?")
         }
     }
 
+    /// Feeny invites the kid along — the mascot is the guide, not a quiz.
     private var intro: some View {
-        VStack(spacing: 32) {
-            Text("🧭")
-                .font(.system(size: 110))
+        VStack(spacing: Theme.Space.xl) {
+            FeenyMascot(pose: .wave, size: 200)
             Text("Warm-Up Adventure!")
-                .font(Theme.title(48))
+                .font(Theme.display(52))
                 .foregroundStyle(Theme.ink)
             Text("Let's find the perfect spot for you to start.\nJust try your best — every answer helps!")
                 .font(Theme.body(26))
@@ -111,7 +113,7 @@ struct PlacementFlowView: View {
             .buttonStyle(SquishyButtonStyle())
             .accessibilityIdentifier("start-placement")
         }
-        .padding(60)
+        .padding(Theme.Space.xxl)
         .onAppear {
             speech.speak("Let's go on a warm up adventure! Just try your best. Every answer helps!")
         }
@@ -119,16 +121,16 @@ struct PlacementFlowView: View {
 
     private func questionView(_ exercise: Exercise) -> some View {
         VStack(spacing: 0) {
-            HStack(spacing: 16) {
-                Text("🧭")
-                    .font(.system(size: 40))
+            HStack(spacing: Theme.Space.m) {
+                // The guide stays at the kid's side for the whole walk.
+                FeenyMascot(pose: .idle, size: 56)
                 ProgressView(value: session.progress)
                     .progressViewStyle(.linear)
                     .tint(Theme.gold)
                     .scaleEffect(y: 3)
                     .animation(.spring, value: session.progress)
             }
-            .padding(.bottom, 8)
+            .padding(.bottom, Theme.Space.xs)
 
             if let prompt = exercise.payload.prompt {
                 HStack(spacing: 20) {
@@ -181,30 +183,45 @@ struct PlacementFlowView: View {
         }
     }
 
+    /// Feeny cheers between questions — motion + a tiny palette tick.
     private func interludeView(_ text: String) -> some View {
-        Text(text)
-            .font(Theme.title(40))
-            .foregroundStyle(Theme.accent)
-            .transition(.scale.combined(with: .opacity))
+        VStack(spacing: Theme.Space.l) {
+            FeenyMascot(pose: .celebrate, size: 150)
+            Text(text)
+                .font(Theme.display(40))
+                .foregroundStyle(Theme.accent)
+        }
+        .transition(.scale.combined(with: .opacity))
+        .onAppear { sounds.play(.tick) }
     }
 
+    /// Arrival: the kid's starting *place*, by name — never a band number.
     private var doneView: some View {
         let band = pack.bands.first { $0.bandNumber == session.placementBand }
-        return VStack(spacing: 28) {
+        return VStack(spacing: Theme.Space.l) {
             ConfettiView(count: 50)
-            Text("🎉")
-                .font(.system(size: 100))
+            FeenyMascot(pose: .celebrate, size: 190)
             Text("You're all set!")
-                .font(Theme.title(48))
+                .font(Theme.display(50))
                 .foregroundStyle(Theme.ink)
             if let band {
-                Text("Your adventure starts in \(band.title)!")
-                    .font(Theme.body(28))
-                    .foregroundStyle(Theme.ink.opacity(0.75))
+                VStack(spacing: Theme.Space.xs) {
+                    Text("Your adventure starts in")
+                        .font(Theme.body(26))
+                        .foregroundStyle(Theme.ink.opacity(0.7))
+                    Text(band.title)
+                        .font(Theme.displayBold(44))
+                        .foregroundStyle(Theme.accent)
+                }
             }
+            // White-on-gold chip (home-cluster idiom); raw gold text on the
+            // cream background fails even the large-text contrast floor.
             Text("+\(xpAwarded) XP")
-                .font(Theme.title(38))
-                .foregroundStyle(Theme.accent)
+                .font(Theme.displayBold(32))
+                .foregroundStyle(.white)
+                .padding(.horizontal, Theme.Space.l)
+                .padding(.vertical, Theme.Space.s)
+                .background(Capsule().fill(Theme.gold))
             Button {
                 dismiss()
             } label: {
@@ -219,6 +236,7 @@ struct PlacementFlowView: View {
             .accessibilityIdentifier("finish-placement")
         }
         .onAppear {
+            sounds.play(.celebrate)
             let bandTitle = band?.title ?? "your starting spot"
             speech.speak("You're all set! Your adventure starts in \(bandTitle)!")
         }
