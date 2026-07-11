@@ -73,6 +73,12 @@ Apply via `.motion(token, value:)` or `token.resolved(reduceMotion:)`;
 `SquishyButtonStyle` already honors Reduce Motion. Idle loops must be
 decorative-only, so their reduced variant is nil (they simply don't run).
 
+**Idle-loop rule (load-bearing):** looping animations must use the
+modifier form (`.animation(_, value:)` / `.motion(token, value:)`), never
+imperative `withAnimation(.repeatForever)`. The imperative form registers a
+transaction that never settles, so XCUITest's wait-for-idle blocks and the
+UI-test runner dies mid-journey.
+
 ## Sound — one instrument: soft mallets
 
 Synthesized by `ios/tools/synth_sounds.py` (regenerate with plain python3;
