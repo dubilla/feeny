@@ -194,35 +194,7 @@ struct EggHatchView: View {
     }
 }
 
-/// A proper egg: wider at the bottom, pointier on top.
-struct EggShape: Shape {
-    func path(in rect: CGRect) -> Path {
-        var p = Path()
-        let w = rect.width, h = rect.height
-        p.move(to: CGPoint(x: w * 0.5, y: 0))
-        p.addCurve(
-            to: CGPoint(x: w, y: h * 0.62),
-            control1: CGPoint(x: w * 0.85, y: h * 0.06),
-            control2: CGPoint(x: w, y: h * 0.35)
-        )
-        p.addCurve(
-            to: CGPoint(x: w * 0.5, y: h),
-            control1: CGPoint(x: w, y: h * 0.88),
-            control2: CGPoint(x: w * 0.78, y: h)
-        )
-        p.addCurve(
-            to: CGPoint(x: 0, y: h * 0.62),
-            control1: CGPoint(x: w * 0.22, y: h),
-            control2: CGPoint(x: 0, y: h * 0.88)
-        )
-        p.addCurve(
-            to: CGPoint(x: w * 0.5, y: 0),
-            control1: CGPoint(x: 0, y: h * 0.35),
-            control2: CGPoint(x: w * 0.15, y: h * 0.06)
-        )
-        return p
-    }
-}
+// EggShape lives in Core/UI/Emblems.swift (shared with the home stat cluster).
 
 /// Zigzag cracks that grow with each tap (1 → 2 segments visible).
 struct CrackShape: Shape {

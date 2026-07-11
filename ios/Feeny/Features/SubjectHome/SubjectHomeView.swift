@@ -1,27 +1,30 @@
 import SwiftUI
 
-/// Post-profile home: one big card per subject, each leading to its own
-/// skill map (and its own independent placement).
+/// Post-profile home — the north-star screen of the design language
+/// (docs/DESIGN_LANGUAGE.md): greeting block, one stat cluster, a designed
+/// card per subject, and a quiet grown-ups affordance. Calm at rest; every
+/// touch answers with motion + sound.
 struct SubjectHomeView: View {
     @Environment(ContentStore.self) private var contentStore
     @Environment(ContentSyncService.self) private var syncService
     @Environment(ProgressStore.self) private var progressStore
+    @Environment(SoundEffects.self) private var soundEffects
 
+    @State private var path: [String] = []
     @State private var showCollection = false
     @State private var showParentGate = false
     @State private var showSettings = false
 
-    private static let subjectEmoji: [String: String] = ["math": "🔢", "reading": "📚"]
     private static let subjectColor: [String: Color] = [
         "math": Theme.accent,
-        "reading": Color(red: 0.13, green: 0.62, blue: 0.74),
+        "reading": Theme.teal,
     ]
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             ZStack {
                 Theme.background.ignoresSafeArea()
-                VStack(spacing: 40) {
+                VStack(spacing: Theme.Space.xxl) {
                     header
                     if contentStore.packs.isEmpty {
                         Spacer()
@@ -30,12 +33,13 @@ struct SubjectHomeView: View {
                             .font(Theme.body(24))
                             .foregroundStyle(Theme.ink.opacity(0.7))
                     } else {
+                        Spacer()
                         subjectCards
                     }
                     Spacer()
                     parentCorner
                 }
-                .padding(48)
+                .padding(Theme.Space.xxl)
             }
             .navigationDestination(for: String.self) { subjectId in
                 SkillMapView(subjectId: subjectId)
@@ -54,134 +58,134 @@ struct SubjectHomeView: View {
         }
     }
 
+    // MARK: - Header
+
     private var header: some View {
-        HStack(spacing: 20) {
+        HStack(spacing: Theme.Space.l) {
             // Tapping your buddy hands the iPad over (back to the picker).
             Button {
+                soundEffects.play(.tap)
                 progressStore.deselectProfile()
             } label: {
                 Text(progressStore.activeProfile?.avatarId ?? "🙂")
                     .font(.system(size: 52))
-                    .frame(width: 86, height: 86)
+                    .frame(width: Theme.minTouchTarget, height: Theme.minTouchTarget)
                     .background(Circle().fill(Theme.card))
                     .overlay(Circle().stroke(Theme.accent.opacity(0.3), lineWidth: 4))
             }
             .buttonStyle(SquishyButtonStyle())
             .accessibilityIdentifier("switch-profile")
+            .accessibilityLabel("Switch player")
 
-            VStack(alignment: .leading, spacing: 2) {
+            VStack(alignment: .leading, spacing: Theme.Space.xxs) {
                 Text("Hi \(progressStore.activeProfile?.name ?? "friend")!")
-                    .font(Theme.title(38))
+                    .font(Theme.display(46))
                     .foregroundStyle(Theme.ink)
                 Text("What do you want to play?")
                     .font(Theme.body(22))
                     .foregroundStyle(Theme.ink.opacity(0.6))
             }
-            Spacer()
+            Spacer(minLength: Theme.Space.l)
+            statCluster
+        }
+    }
 
-            streakChip
-            collectionButton
-
-            VStack(spacing: 2) {
-                Text("Level \(GameEconomy.level(forXP: progressStore.totalXP))")
-                    .font(Theme.body(18))
-                    .foregroundStyle(.white)
-                Text("\(progressStore.totalXP) XP")
-                    .font(Theme.title(26))
-                    .foregroundStyle(.white)
+    /// Streak, Feenlings, and level/XP as one composed cluster.
+    private var statCluster: some View {
+        let streak = progressStore.streakDisplay
+        return HStack(spacing: 0) {
+            // Streak flame: bright once a lesson is done today, asleep
+            // otherwise — a sleeping flame is an invitation, never guilt.
+            HStack(spacing: Theme.Space.xs) {
+                FlameGlyph(size: 30, isLit: streak.isAwakeToday)
+                Text("\(streak.count)")
+                    .font(Theme.displayBold(28))
+                    .foregroundStyle(streak.isAwakeToday ? Theme.incorrect : Theme.ink.opacity(0.45))
                     .contentTransition(.numericText())
             }
-            .padding(.horizontal, 28)
-            .padding(.vertical, 12)
-            .background(Capsule().fill(Theme.gold))
-        }
-    }
+            .padding(.horizontal, Theme.Space.l)
+            .accessibilityElement(children: .ignore)
+            .accessibilityIdentifier("streak-chip")
+            .accessibilityLabel(
+                streak.isAwakeToday
+                    ? "\(streak.count) day streak"
+                    : "Your streak flame is sleeping. Play a lesson to wake it up!"
+            )
 
-    /// The streak flame: bright once a lesson is done today, asleep otherwise.
-    /// A sleeping flame is an invitation ("wake it up!"), never a guilt trip.
-    private var streakChip: some View {
-        let streak = progressStore.streakDisplay
-        return HStack(spacing: 8) {
-            ZStack {
-                Image(systemName: "flame.fill")
-                    .font(.system(size: 30))
-                    .foregroundStyle(
-                        streak.isAwakeToday
-                            ? AnyShapeStyle(LinearGradient(
-                                colors: [Theme.gold, Theme.incorrect],
-                                startPoint: .top, endPoint: .bottom
-                            ))
-                            : AnyShapeStyle(Theme.ink.opacity(0.25))
-                    )
-                if !streak.isAwakeToday {
-                    Image(systemName: "zzz")
-                        .font(.system(size: 15, weight: .bold))
-                        .foregroundStyle(Theme.ink.opacity(0.45))
-                        .offset(x: 16, y: -16)
-                }
-            }
-            Text("\(streak.count)")
-                .font(Theme.title(28))
-                .foregroundStyle(streak.isAwakeToday ? Theme.incorrect : Theme.ink.opacity(0.45))
-                .contentTransition(.numericText())
-        }
-        .padding(.horizontal, 22)
-        .frame(height: 86)
-        .background(Capsule().fill(Theme.card))
-        .accessibilityIdentifier("streak-chip")
-        .accessibilityLabel(
-            streak.isAwakeToday
-                ? "\(streak.count) day streak"
-                : "Your streak flame is sleeping. Play a lesson to wake it up!"
-        )
-    }
+            divider
 
-    /// Quiet corner button for parents — deliberately small and low-contrast
-    /// (this is the one tappable thing on screen NOT designed for kids).
-    private var parentCorner: some View {
-        HStack {
-            Spacer()
+            // Doorway to the Feenling album, with a badge when eggs wait.
             Button {
-                showParentGate = true
+                soundEffects.play(.tap)
+                showCollection = true
             } label: {
-                Image(systemName: "gearshape.fill")
-                    .font(.system(size: 22))
-                    .foregroundStyle(Theme.ink.opacity(0.25))
-                    .frame(width: 56, height: 56)
-            }
-            .accessibilityIdentifier("parent-gate-button")
-            .accessibilityLabel("Grown-up settings")
-        }
-    }
-
-    /// Doorway to the Feenling album, with an egg badge when hatches are owed.
-    private var collectionButton: some View {
-        Button {
-            showCollection = true
-        } label: {
-            ZStack(alignment: .topTrailing) {
-                Image(systemName: "pawprint.fill")
-                    .font(.system(size: 34))
-                    .foregroundStyle(Theme.accent)
-                    .frame(width: 86, height: 86)
-                    .background(Circle().fill(Theme.card))
-                let eggs = progressStore.pendingEggCount()
-                if eggs > 0 {
-                    Text("\(eggs)")
-                        .font(Theme.title(18))
-                        .foregroundStyle(.white)
-                        .frame(width: 34, height: 34)
-                        .background(Circle().fill(Theme.incorrect))
+                ZStack(alignment: .topTrailing) {
+                    HStack(spacing: Theme.Space.xs) {
+                        EggGlyph(size: 24)
+                        Text("\(progressStore.ownedFeenlingCounts.count)")
+                            .font(Theme.displayBold(28))
+                            .foregroundStyle(Theme.ink.opacity(0.8))
+                    }
+                    let eggs = progressStore.pendingEggCount()
+                    if eggs > 0 {
+                        Text("\(eggs)")
+                            .font(Theme.heading(15))
+                            .foregroundStyle(.white)
+                            .padding(.horizontal, 7)
+                            .frame(minWidth: 26, minHeight: 26)
+                            .background(Capsule().fill(Theme.incorrect))
+                            .offset(x: 16, y: -12)
+                    }
                 }
+                .padding(.horizontal, Theme.Space.l)
+                .frame(maxHeight: .infinity)
             }
+            .buttonStyle(SquishyButtonStyle())
+            .accessibilityIdentifier("collection-button")
+            .accessibilityLabel(collectionLabel)
+
+            // Level + XP on gold, closing the cluster.
+            VStack(spacing: 2) {
+                Text("Level \(GameEconomy.level(forXP: progressStore.totalXP))")
+                    .font(Theme.caption(16))
+                    .foregroundStyle(.white.opacity(0.95))
+                    .fixedSize()
+                Text("\(progressStore.totalXP) XP")
+                    .font(Theme.displayBold(26))
+                    .foregroundStyle(.white)
+                    .contentTransition(.numericText())
+                    .fixedSize()
+            }
+            .padding(.horizontal, Theme.Space.l)
+            .frame(maxHeight: .infinity)
+            .background(Theme.gold)
         }
-        .buttonStyle(SquishyButtonStyle())
-        .accessibilityIdentifier("collection-button")
-        .accessibilityLabel("My Feenlings")
+        .frame(height: Theme.minTouchTarget)
+        .background(Theme.card)
+        .clipShape(Capsule())
+        .shadow(color: Theme.ink.opacity(0.08), radius: 8, y: 4)
     }
 
+    private var collectionLabel: String {
+        let friends = progressStore.ownedFeenlingCounts.count
+        let eggs = progressStore.pendingEggCount()
+        var label = "My Feenlings: \(friends) friend\(friends == 1 ? "" : "s")"
+        if eggs > 0 { label += ", \(eggs) egg\(eggs == 1 ? "" : "s") waiting" }
+        return label
+    }
+
+    private var divider: some View {
+        Rectangle()
+            .fill(Theme.ink.opacity(0.08))
+            .frame(width: 1.5, height: 44)
+    }
+
+    // MARK: - Subject cards
+
+    // NOTE: fixed 350pt cards fit exactly two subjects in portrait (834pt);
+    // a third subject pack needs a width-driven layout here first.
     private var subjectCards: some View {
-        HStack(spacing: 36) {
+        HStack(spacing: Theme.Space.xl) {
             ForEach(contentStore.subjectsSorted, id: \.subjectId) { pack in
                 subjectCard(pack)
             }
@@ -195,37 +199,64 @@ struct SubjectHomeView: View {
         let color = Self.subjectColor[pack.subjectId] ?? Theme.accent
         let placed = progressStore.subjectProgress(for: pack.subjectId) != nil
 
-        return NavigationLink(value: pack.subjectId) {
-            VStack(spacing: 18) {
-                Text(Self.subjectEmoji[pack.subjectId] ?? "✨")
-                    .font(.system(size: 84))
+        return Button {
+            soundEffects.play(.tap)
+            path.append(pack.subjectId)
+        } label: {
+            VStack(spacing: Theme.Space.m) {
+                SubjectEmblem(subjectId: pack.subjectId, size: 116)
                 Text(subjectTitle(pack))
-                    .font(Theme.title(38))
+                    .font(Theme.display(42))
                     .foregroundStyle(.white)
                 if placed {
-                    ProgressView(value: fraction)
-                        .progressViewStyle(.linear)
-                        .tint(.white)
-                        .scaleEffect(y: 2.5)
-                        .padding(.horizontal, 36)
-                    Text("\(doneCount) of \(allLessons.count) lessons")
-                        .font(Theme.body(18))
-                        .foregroundStyle(.white.opacity(0.85))
+                    VStack(spacing: Theme.Space.xs) {
+                        Capsule()
+                            .fill(.white.opacity(0.3))
+                            .frame(width: 220, height: 10)
+                            .overlay(alignment: .leading) {
+                                Capsule()
+                                    .fill(.white)
+                                    .frame(width: 220 * fraction)
+                            }
+                        Text("\(doneCount) of \(allLessons.count) lessons")
+                            .font(Theme.caption(17))
+                            .foregroundStyle(.white.opacity(0.9))
+                    }
                 } else {
                     Text("Start your adventure!")
                         .font(Theme.body(20))
                         .foregroundStyle(.white.opacity(0.9))
                 }
             }
-            .frame(width: 340, height: 300)
-            .background(RoundedRectangle(cornerRadius: 32).fill(color))
-            .shadow(color: color.opacity(0.4), radius: 14, y: 7)
+            .frame(width: 350, height: 330)
+            .background(RoundedRectangle(cornerRadius: Theme.Radius.xl).fill(color))
+            .shadow(color: color.opacity(0.35), radius: 14, y: 7)
         }
         .buttonStyle(SquishyButtonStyle())
         .accessibilityIdentifier("subject-card-\(pack.subjectId)")
+        .accessibilityLabel(subjectTitle(pack))
     }
 
     private func subjectTitle(_ pack: SubjectPack) -> String {
         pack.subjectId == "math" ? "Math" : pack.subjectId == "reading" ? "Reading" : pack.subjectId.capitalized
+    }
+
+    /// Quiet corner affordance for parents — words, not machinery. The one
+    /// tappable thing on screen not designed for kids, so it whispers.
+    private var parentCorner: some View {
+        HStack {
+            Spacer()
+            Button {
+                showParentGate = true
+            } label: {
+                Text("For grown-ups")
+                    .font(Theme.caption(17))
+                    .foregroundStyle(Theme.ink.opacity(0.38))
+                    .padding(.horizontal, Theme.Space.m)
+                    .frame(height: 56)
+            }
+            .accessibilityIdentifier("parent-gate-button")
+            .accessibilityLabel("Grown-up settings")
+        }
     }
 }

@@ -13,6 +13,12 @@ final class SoundEffects {
         case correct
         case hatch
         case levelUp = "levelup"
+        // Mallet palette (ios/tools/synth_sounds.py) — one instrument family
+        // so every interaction answers back in the same voice.
+        case tap
+        case tick
+        case wrong
+        case celebrate
     }
 
     /// Parent-facing toggle from grown-up settings. Defaults to on.
@@ -30,7 +36,12 @@ final class SoundEffects {
             guard let url = Bundle.main.url(forResource: effect.rawValue, withExtension: "caf") else { continue }
             let player = try? AVAudioPlayer(contentsOf: url)
             player?.prepareToPlay()
-            player?.volume = 0.6
+            // Touch feedback sits under everything else; rewards may sing.
+            player?.volume = switch effect {
+            case .tap, .tick: 0.35
+            case .wrong: 0.45
+            default: 0.6
+            }
             players[effect] = player
         }
     }

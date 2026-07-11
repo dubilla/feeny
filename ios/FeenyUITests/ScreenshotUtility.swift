@@ -20,6 +20,15 @@ final class ScreenshotUtility: XCTestCase {
             profileCard.tap()
             sleep(2)
             try snap("2-subject-home")
+            // Landscape is the design-primary orientation — capture both.
+            // (defer: orientation is device-global for the whole run.)
+            do {
+                defer { XCUIDevice.shared.orientation = .portrait }
+                XCUIDevice.shared.orientation = .landscapeLeft
+                sleep(2)
+                try snap("2-subject-home-landscape")
+            }
+            sleep(2)
         }
 
         // Feenling collection (slice 4).

@@ -30,6 +30,10 @@ targets:
           - UIInterfaceOrientationLandscapeLeft
           - UIInterfaceOrientationLandscapeRight
         APIBaseURL: $(API_BASE_URL)
+        # Display face (Fraunces instanced + renamed, OFL — Resources/Fonts).
+        UIAppFonts:
+          - FeenyDisplay-Semibold.ttf
+          - FeenyDisplay-Bold.ttf
         # Only standard HTTPS (exempt) — without this every TestFlight build
         # stalls on the manual "Missing Compliance" question in ASC.
         ITSAppUsesNonExemptEncryption: false
