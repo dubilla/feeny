@@ -161,7 +161,7 @@ probes intentionally don't sample anchors yet (folded into F3's
 re-curation, noted in map doc). Full suite green ×2. **Left:** Dan prod
 seed + pack export.
 
-### [x] F3: Digraphs, bonus letters, and glued sounds — DONE locally (2026-07-11); prod seed pending (Dan)
+### [x] F3: Digraphs, bonus letters, and glued sounds — SHIPPED to prod 2026-07-11 (reading v6)
 
 **User Value**: The distinctive Level-1 material — wh/ch/sh/th/ck digraphs,
 bonus letters (ff/ll/ss), and glued sounds (all/am/an, -ang/-ing/-ong/-ung,
@@ -188,8 +188,7 @@ spelling-only (wine–whine merger makes it inaudible in TTS), no bare-w
 chips, floss endings spoken as letters, no -an/-am chips in ng/nk banks.
 Band-2 probe #1 now samples the F2 anchor units. Digraph Dive 3-01 copy
 de-conflicted. Review fixes: 🗑️-as-"trash" ear task → word labels,
-lesson-3 answer cycle broken, "kill"-formable chip swapped. Suite green.
-**Left:** Dan prod seed + pack export.
+lesson-3 answer cycle broken, "kill"-formable chip swapped. Suite green; prod-shipped same day (reading v6).
 
 ### [ ] F4: Trick words track
 
