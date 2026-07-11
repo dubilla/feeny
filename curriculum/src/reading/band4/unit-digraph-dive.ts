@@ -1,14 +1,14 @@
 import type { UnitSeed } from "../../schema/pack";
 
 /**
- * Reading Band 5 · Digraph Dive
+ * Reading Band 4 · Digraph Dive
  * Lesson 1 introduces sh (start and end of words).
  * Lesson 2 adds ch and th.
  * Lesson 3 mixes all three plus a wh/ck stretch.
  */
 export const digraphDive: UnitSeed = {
   id: "read-u-digraphs",
-  bandId: "reading-b5",
+  bandId: "reading-b4",
   title: "Digraph Dive",
   icon: "🤿",
   lessons: [

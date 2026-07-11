@@ -150,6 +150,33 @@ final class ProgressEngineTests: XCTestCase {
         XCTAssertEqual(lesson?.primarySkillId, "skill-b1")
     }
 
+    func testEffectiveMasteriesAssumesBelowPlacementAtReadTime() {
+        let pack = makePack()
+        // Kid placed at band 3, but skill-b2 has no stored row (e.g. the skill
+        // moved bands or was added after placement — re-sequencing case).
+        let effective = ProgressEngine.effectiveMasteries(
+            pack: pack,
+            stored: ["skill-b1": 0.9],
+            placementBandNumber: 3
+        )
+        XCTAssertEqual(effective["skill-b2"], TuningConstants.assumedMasteryBelowPlacement)
+        XCTAssertEqual(effective["skill-b1"], 0.9, "stored mastery is never overwritten")
+        XCTAssertNil(effective["skill-b3"], "at/above placement stays unknown")
+    }
+
+    func testReviewLessonWithEffectiveMasteriesSkipsUnplayedBelowPlacementSkill() {
+        let pack = makePack()
+        // Without read-time assumption, skill-b1 (nil → 0) would win and drag
+        // the kid back to band 1; with it, the genuinely weak played skill wins.
+        let effective = ProgressEngine.effectiveMasteries(
+            pack: pack,
+            stored: ["skill-b2": 0.4],
+            placementBandNumber: 2
+        )
+        let lesson = ProgressEngine.reviewLesson(pack: pack, masteries: effective, currentBandNumber: 2)
+        XCTAssertEqual(lesson?.primarySkillId, "skill-b2")
+    }
+
     func testChallengeLessonSamplesSixFromRemaining() {
         let pack = makePack()
         let unit = pack.units[0]

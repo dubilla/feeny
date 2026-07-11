@@ -73,6 +73,24 @@ enum ProgressEngine {
             && recent.allSatisfy { $0 < TuningConstants.reviewAccuracy }
     }
 
+    /// Placement assumes mastery of everything below the placed band. Derived
+    /// at read time (not only seeded at placement) so skills that move bands or
+    /// are added below a kid's placement after re-sequencing are still assumed —
+    /// write-time seeding only knew the pack as it existed on placement day.
+    static func effectiveMasteries(
+        pack: SubjectPack,
+        stored: [String: Double],
+        placementBandNumber: Int
+    ) -> [String: Double] {
+        let bandNumberById = Dictionary(uniqueKeysWithValues: pack.bands.map { ($0.id, $0.bandNumber) })
+        var result = stored
+        for skill in pack.skills
+        where (bandNumberById[skill.bandId] ?? 99) < placementBandNumber && result[skill.id] == nil {
+            result[skill.id] = TuningConstants.assumedMasteryBelowPlacement
+        }
+        return result
+    }
+
     /// "Power-up practice": the first lesson of the earliest unit teaching the
     /// weakest-mastery skill at or below the current band. Never shaming —
     /// always framed as a power-up.

@@ -90,9 +90,14 @@ struct SkillMapView: View {
         let states = unitStates(pack)
         let currentBand = pack.units.first { states[$0.id] == .current }
             .flatMap { unit in pack.bands.first { $0.id == unit.bandId }?.bandNumber } ?? 1
+        let masteries = ProgressEngine.effectiveMasteries(
+            pack: pack,
+            stored: progressStore.masteriesBySkill,
+            placementBandNumber: progressStore.subjectProgress(for: pack.subjectId)?.placementBandNumber ?? 1
+        )
         return ProgressEngine.reviewLesson(
             pack: pack,
-            masteries: progressStore.masteriesBySkill,
+            masteries: masteries,
             currentBandNumber: currentBand
         )
     }

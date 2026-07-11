@@ -1,21 +1,21 @@
 import type { UnitSeed } from "../../schema/pack";
 
 /**
- * Reading Band 5 · Word Detective
+ * Reading Band 6 · Word Detective
  * Vocabulary in context: figure out a fancy word from its sentence,
  * hunt opposites, and pick the word that fits. Context sentences live in
  * prompt.text (the kid reads them); spokenText only encourages + asks.
  */
 export const wordDetective: UnitSeed = {
   id: "read-u-detective",
-  bandId: "reading-b5",
+  bandId: "reading-b6",
   title: "Word Detective",
   icon: "🔍",
   lessons: [
     {
       id: "read-l-detective-1",
       title: "What Words Mean",
-      primarySkillId: "read-passages",
+      primarySkillId: "read-vocabulary",
       xpReward: 10,
       exercises: [
         {
@@ -152,7 +152,7 @@ export const wordDetective: UnitSeed = {
     {
       id: "read-l-detective-2",
       title: "Opposite Hunt",
-      primarySkillId: "read-passages",
+      primarySkillId: "read-vocabulary",
       xpReward: 10,
       exercises: [
         {
@@ -290,7 +290,7 @@ export const wordDetective: UnitSeed = {
     {
       id: "read-l-detective-3",
       title: "Detective Pro",
-      primarySkillId: "read-passages",
+      primarySkillId: "read-vocabulary",
       xpReward: 10,
       exercises: [
         {

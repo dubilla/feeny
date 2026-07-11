@@ -1,7 +1,7 @@
 import type { UnitSeed } from "../../schema/pack";
 
 /**
- * Band 4 · Sentence Builders
+ * Band 5 · Sentence Builders
  * Building and completing simple sentences.
  * Lesson 1 uses three-word sentences; the spoken prompt reads the choices.
  * Lesson 2 grows to four-word sentences.
@@ -9,7 +9,7 @@ import type { UnitSeed } from "../../schema/pack";
  */
 export const sentenceBuilders: UnitSeed = {
   id: "read-u-sentences",
-  bandId: "reading-b4",
+  bandId: "reading-b5",
   title: "Sentence Builders",
   icon: "🌉",
   lessons: [

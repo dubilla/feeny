@@ -1,7 +1,7 @@
 import type { UnitSeed } from "../../schema/pack";
 
 /**
- * Band 4 · Question Quest
+ * Band 5 · Question Quest
  * One-sentence comprehension. Most items are read aloud in full;
  * READ-IT-YOURSELF items (2–3 per lesson) put the sentence only in
  * prompt.text — spokenText cheers and asks the question without
@@ -9,7 +9,7 @@ import type { UnitSeed } from "../../schema/pack";
  */
 export const questionQuest: UnitSeed = {
   id: "read-u-questions",
-  bandId: "reading-b4",
+  bandId: "reading-b5",
   title: "Question Quest",
   icon: "❓",
   lessons: [

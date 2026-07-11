@@ -11,15 +11,18 @@ import { soundMatchUp } from "./band2/unit-sound-match-up";
 import { wordBuilders } from "./band3/unit-word-builders";
 import { rhymeTime } from "./band3/unit-rhyme-time";
 import { wordFamilies } from "./band3/unit-word-families";
-// Band 4 — Sentence Sky
+// Band 4 — Team-Up Trail (Fundations L1 early-mid: digraphs → glued sounds,
+// trick words in parallel — see curriculum/FUNDATIONS_MAP.md)
+import { digraphDive } from "./band4/unit-digraph-dive";
+import { stickySounds } from "./band4/unit-sticky-sounds";
 import { sightWordStars } from "./band4/unit-sight-word-stars";
-import { sentenceBuilders } from "./band4/unit-sentence-builders";
-import { questionQuest } from "./band4/unit-question-quest";
-// Band 5 — Story Stream
-import { digraphDive } from "./band5/unit-digraph-dive";
+// Band 5 — Story Stream (blends → sentences → little stories)
+import { blendBlast } from "./band5/unit-blend-blast";
+import { sentenceBuilders } from "./band5/unit-sentence-builders";
+import { questionQuest } from "./band5/unit-question-quest";
 import { storyTime } from "./band5/unit-story-time";
-import { wordDetective } from "./band5/unit-word-detective";
 // Band 6 — Fluency Falls
+import { wordDetective } from "./band6/unit-word-detective";
 import { wordPower } from "./band6/unit-word-power";
 import { wordPartsWorkshop } from "./band6/unit-word-parts-workshop";
 import { contextClues } from "./band6/unit-context-clues";
@@ -44,8 +47,8 @@ export const readingSeed: SubjectSeed = {
     { id: "reading-b1", bandNumber: 1, title: "Letter Lagoon", description: "Knowing the letters" },
     { id: "reading-b2", bandNumber: 2, title: "Sound Springs", description: "Letter sounds" },
     { id: "reading-b3", bandNumber: 3, title: "Word Woods", description: "Building and reading small words" },
-    { id: "reading-b4", bandNumber: 4, title: "Sentence Sky", description: "Sight words and simple sentences" },
-    { id: "reading-b5", bandNumber: 5, title: "Story Stream", description: "Sound teams and little stories" },
+    { id: "reading-b4", bandNumber: 4, title: "Team-Up Trail", description: "Sound teams, sticky sounds, and star words" },
+    { id: "reading-b5", bandNumber: 5, title: "Story Stream", description: "Blends, sentences, and little stories" },
     { id: "reading-b6", bandNumber: 6, title: "Fluency Falls", description: "Reading smoothly, vocabulary" },
     { id: "reading-b7", bandNumber: 7, title: "Meaning Mountain", description: "Paragraph comprehension" },
     { id: "reading-b8", bandNumber: 8, title: "Inference Isle", description: "Reading between the lines" },
@@ -57,9 +60,11 @@ export const readingSeed: SubjectSeed = {
     { id: "read-first-sounds", bandId: "reading-b2", title: "First sounds in words" },
     { id: "read-cvc", bandId: "reading-b3", title: "Small words" },
     { id: "read-rhymes", bandId: "reading-b3", title: "Rhymes" },
+    { id: "read-digraphs", bandId: "reading-b4", title: "Sound teams" },
+    { id: "read-glued", bandId: "reading-b4", title: "Sticky sounds" },
     { id: "read-sight-words", bandId: "reading-b4", title: "Sight words" },
-    { id: "read-sentences", bandId: "reading-b4", title: "Sentences" },
-    { id: "read-digraphs", bandId: "reading-b5", title: "Sound teams" },
+    { id: "read-blends", bandId: "reading-b5", title: "Blends" },
+    { id: "read-sentences", bandId: "reading-b5", title: "Sentences" },
     { id: "read-passages", bandId: "reading-b5", title: "Little stories" },
     { id: "read-vocabulary", bandId: "reading-b6", title: "Word power" },
     { id: "read-word-parts", bandId: "reading-b6", title: "Word parts" },
@@ -78,10 +83,12 @@ export const readingSeed: SubjectSeed = {
     wordBuilders,
     rhymeTime,
     wordFamilies,
+    digraphDive,
+    stickySounds,
     sightWordStars,
+    blendBlast,
     sentenceBuilders,
     questionQuest,
-    digraphDive,
     storyTime,
     wordDetective,
     wordPower,
@@ -99,8 +106,8 @@ export const readingSeed: SubjectSeed = {
     { bandNumber: 1, exerciseIds: ["read-e-abc-2-02", "read-e-letters2-2-03", "read-e-lower-2-04"] },
     { bandNumber: 2, exerciseIds: ["read-e-sounds-2-02", "read-e-firstsounds-2-04", "read-e-soundmatch-2-03"] },
     { bandNumber: 3, exerciseIds: ["read-e-cvc-2-03", "read-e-rhymes-2-02", "read-e-families-2-01"] },
-    { bandNumber: 4, exerciseIds: ["read-e-sight-2-04", "read-e-sentences-2-05", "read-e-questions-2-01"] },
-    { bandNumber: 5, exerciseIds: ["read-e-digraphs-2-01", "read-e-stories-2-04", "read-e-detective-2-03"] },
+    { bandNumber: 4, exerciseIds: ["read-e-digraphs-2-01", "read-e-glued-2-02", "read-e-sight-2-04"] },
+    { bandNumber: 5, exerciseIds: ["read-e-blends-2-03", "read-e-sentences-2-05", "read-e-stories-2-04"] },
     { bandNumber: 6, exerciseIds: ["read-e-wordpower-2-01", "read-e-wordparts-2-04", "read-e-context-2-03"] },
     { bandNumber: 7, exerciseIds: ["read-e-sleuth-2-02", "read-e-order-2-06", "read-e-mainidea-2-04"] },
     { bandNumber: 8, exerciseIds: ["read-e-cluehunt-2-02", "read-e-feelings-2-04", "read-e-idioms-2-04"] },

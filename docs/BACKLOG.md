@@ -82,21 +82,50 @@ in kid-facing copy. Parent-facing copy says the honest generic thing:
 "follows the phonics sequence used in most classrooms (Orton-Gillingham
 style)."
 
-### [ ] F1: Re-sequence early reading onto the OG spine
+### [x] F1: Re-sequence early reading onto the OG spine — DONE locally (2026-07-11); prod seed + pack export pending (Dan)
 
 **User Value**: A kid mid-way through Fundations K or 1 places into Feeny
 and lands on the *same skill family they're doing at school this month* —
 the app feels like it knows their classroom.
 
-**Work**: Write `curriculum/FUNDATIONS_MAP.md` (level/unit → band/skill
-alignment, gaps called out); re-sequence/re-skill bands 1–3 reading units to
-the spine (letter-sound anchors → CVC → digraphs → glued sounds → blends);
-fill the 2–3 worst gap units; re-curate reading placement probes so probe
-order matches the new spine; ship ritual.
+**Scope note (2026-07-11):** the misalignment reaches band 5, not band 3 —
+today digraphs live in band 5 *after* sight words/sentences (band 4), which
+inverts the Fundations Level 1 order. F1 re-sequences **bands 1–5**: the
+big move is pulling digraphs/glued sounds down to ~bands 3–4 and pushing
+sentence work up.
 
-**Definition of Done**: The band 1–3 reading path reads in Fundations order
+**Work**: Write `curriculum/FUNDATIONS_MAP.md` covering **all three
+Fundations levels** (K ≈ bands 1–3, L1 ≈ bands 3–5, L2 ≈ bands 5–6; unit →
+band/skill alignment, gaps called out) so F2–F6 and placement probes cite
+one source; resolve the `read-sight-words` overlap in the map doc (band 4's
+one-shot sight-words unit vs F4's recurring trick-words track — decide
+whether it anchors the track or is absorbed by it); re-sequence/re-skill
+bands 1–5 reading units to the spine (letter-sound anchors → CVC →
+digraphs → glued sounds → blends → sentences/stories); fill the 2–3 worst
+gap units; re-curate reading placement probes so probe order matches the
+new spine; ship ritual.
+
+**Definition of Done**: The band 1–5 reading path reads in Fundations order
 end-to-end; placement lands a mid-K kid on letter-sounds/CVC, a mid-1 kid on
-digraphs/glued sounds; map doc exists for every later slice to cite.
+digraphs/glued sounds; map doc covers K–L2 and settles the sight-words/
+trick-words question for every later slice to cite.
+
+**Resolution (2026-07-11):** `curriculum/FUNDATIONS_MAP.md` written (K–L2 →
+bands 1–6, decisions of record inside). Band 4 is now Team-Up Trail
+(Digraph Dive ↓ from b5, new Sticky Sounds `read-u-glued` for *all/am/an*,
+Sight Word Stars as the F4 trick-words anchor); band 5 is Story Stream
+(new Blend Blast `read-u-blends`, Sentence Builders + Question Quest ↑ from
+b4, Story Time); Word Detective → band 6 (skill `read-vocabulary`) for
+pacing. All unit/lesson/exercise ids stable; skills moved bands with their
+units. Band 4/5 placement probes re-curated (all single-tap, mid-unit).
+**Engine fix (advisor-caught):** placement's assumed-mastery is now also
+derived at read time (`ProgressEngine.effectiveMasteries`) so skills
+moved/added below a kid's placement after a re-sequence don't read as
+mastery-0 and drag Power-Up Practice back to band 1 — covered by new
+engine tests. Full suite green; adversarial review findings fixed
+(ambiguous 🍳-as-pan probe-adjacent exercise, duplicate drum fill-blank,
+stale headers). **Left:** Dan runs prod seed + `pnpm export:packs` against
+prod + bundled-packs commit, per ship ritual.
 
 ### [ ] F2: Letter-keyword-sound anchors
 
@@ -165,8 +194,27 @@ answer loop; ship ritual.
 ear; fixtures decode on old + new app posture; the type appears in
 placement probes only if single-tap-solvable (else excluded by rule).
 
+### [ ] F6: The decoding middle — silent-e, vowel teams, r-controlled, blends
+
+**User Value**: A kid who finishes digraphs today jumps straight to
+vocabulary-in-context — the actual learning-to-read middle is missing.
+This slice gives the 6–8 year old mid-reader (Fundations L1 late → L2) a
+real path: blends, silent-e/long vowels, vowel teams (ai/ee/oa…),
+r-controlled vowels, and first multisyllable decoding.
+
+**Work**: Author blend units (named in the F3 spine but no unit exists),
+silent-e, vowel-team, and r-controlled units into bands 5–6 per the F1 map;
+reframe band 6's "word parts" as syllable-aware decoding rather than only
+prefixes/suffixes; update band 5–6 placement probes; ship ritual. No new
+exercise types needed.
+
+**Definition of Done**: A kid can travel band 5 → 6 through blends →
+silent-e → vowel teams → r-controlled without a gap; each family is a
+nameable unit; probes cover the new middle.
+
 *Sequencing: F1 first (pure re-sequencing, highest leverage, no new
-surface), F2–F4 in any order after it, F5 last (only contract change —
+surface), F2–F4 in any order after it, F6 after F3 (biggest kid-value gap,
+no new surface — arguably ahead of F4/F5), F5 last (only contract change —
 riskiest).*
 
 ---
