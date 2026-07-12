@@ -272,10 +272,105 @@ riskiest).*
 
 ---
 
-## Later / unscoped
+## Initiative 2: Second-grade add/sub strategies (math ↔ classroom)
 
-- Math spine alignment pass (same treatment once a math curriculum anchor
-  is chosen — Bridges? Eureka? TBD by what school uses).
+**Why now:** The school's second-grade classroom teaches two-digit addition
+and subtraction as a repertoire of named strategies (source: classroom
+anchor charts, on file — "Addition and Subtraction Strategies.pdf" in
+Dan's Downloads; standard CGI/Common Core strategy set, no IP concern
+beyond not copying the chart art/wording). Feeny's band 5 currently asks
+only for *answers* (Two-Digit Team-Up) and quietly avoids every regrouping
+problem (32+15, 41+26 — never 27+16). When the app names the same moves
+the classroom names, each reinforces the other — the Fundations lesson,
+applied to math.
+
+**The strategy set (source of record for this initiative):**
+
+*Addition (canonical worked example 27 + 16 = 43):*
+- **Counting On** — start with the larger addend, count on by ones or in
+  chunks: 27 → +10 → 37 → +3 → 40 → +3 → 43.
+- **Adding by Place Value** — decompose both addends (27 = 20+7,
+  16 = 10+6), add tens (30), add ones (13), combine (43).
+- **Compensation** — shift between addends to make "friendly" numbers
+  (ending in 0): 27+16 → (+3/−3) → 30+13 = 43.
+- **Diagram in sets of 10** — classroom treats as a fallback ("working
+  away from drawing pictures"); NOT its own unit — appears only as
+  "count tens first" framing inside place-value exercises.
+
+*Subtraction (canonical worked example 32 − 15 = 17):*
+- **Count Back** — number line back by ones or chunks:
+  32 → −10 → 22 → −2 → 20 → −3 → 17.
+- **Subtract in Parts** — keep the larger number whole, break up the
+  smaller: 32 − 10 = 22, 22 − 5 = 17.
+- **Add Up** — rewrite as missing addend: 15 + ___ = 32; jump
+  15 → +10 → 25 → +5 → 30 → +2 → 32, so 10+5+2 = 17.
+- **Diagram** — same fallback status as addition.
+
+### [ ] M1: Strategy units for band 5 (+ make-ten bridge in band 4)
+
+**User Value**: A second grader mid-way through two-digit add/sub hears
+Feeny use the exact strategy language from class — "count on in chunks,"
+"friendly numbers," "add up" — and finally gets regrouping problems
+(27+16, 32−15), which the current band 5 unit avoids entirely.
+
+**Work** (all expressible in the existing 6 exercise types — NO contract
+change; F5 remains the only contract slice):
+
+1. New band-4 bridge unit `math-u-maketen` "Make-Ten Machine" (skill
+   `math-add-sub-20`): the make-a-ten move within 20 (9+7 → 10+6,
+   8+5 → 10+3) — the precursor to compensation and chunking. Types:
+   tapMatchPairs (9+7 ↔ 10+6), fillBlankWordBank ("9 + 7 = 10 + ___"),
+   multipleChoiceImage.
+2. Three new band-5 units (skill `math-add-sub-100`), path order after
+   Hundred Chart Hike, before Two-Digit Team-Up (strategies first, then
+   the existing mixed-practice unit becomes their payoff):
+   - `math-u-jumps` "Jump-Along Trail" — Counting On + Count Back in
+     chunks. `ordering` = number-line landmarks in visit order
+     (27, 37, 40, 43); `fillBlankWordBank` = next-stop chains
+     ("27 + 10 = ___", "37 + 3 = ___"); `listenAndPick` for by-ones
+     counting. Lesson 3 mixes direction (on vs back).
+   - `math-u-breakapart` "Break-Apart Builders" — Adding by Place Value +
+     Subtract in Parts. `tapMatchPairs` (27 ↔ 20 + 7); fill-blank
+     partial-step chains ("20 + 10 = ___", "30 + 13 = ___",
+     "32 − 10 = ___ then ___ − 5 = 17"); "count tens first" diagram
+     framing lives here (emoji ten-groups in multipleChoiceImage).
+   - `math-u-friendly` "Friendly Number Fix-Up" — Compensation + Add Up.
+     multipleChoiceImage "which problem is the same as 27 + 16?"
+     (→ 30 + 13, distractors 30 + 16 / 24 + 13); missing-addend
+     fill-blanks (15 + ___ = 32); tapMatchPairs problem ↔ friendly twin.
+3. Regrouping unlocked: every unit's lesson 3 uses regrouping problems
+   (sums crossing a ten, differences borrowing). Audit Two-Digit Team-Up
+   afterward: add 2–3 regrouping exercises to its lesson 3 under NEW
+   exercise ids (never edit existing ids' content semantics).
+4. Curate band-4/5 placement probes: consider swapping one band-5 probe
+   for a single-tap strategy exercise (mid-unit, per probe rules) —
+   decide at execution, document either way.
+5. Ship ritual (author → zod → local seed → suite → Dan prod seed →
+   export:packs → commit).
+
+**Authoring hazards (binding, F4-style):**
+- Math must be correct at every STEP, not just the final answer — chains
+  like 27+10=37 have per-exercise answers; check each twice.
+- Distractors = real error patterns: forgot-the-carry (33 for 27+16),
+  ten-slip (±10), compensation-both-ways (30+19 for 27+16). Never random.
+- Spoken prompts: numbers read naturally ("twenty-seven plus ten"); never
+  state the step's answer; one register (equation OR story, not both);
+  strategy names spoken warmly ("Let's count on in chunks!").
+- `ordering` landmark exercises must have exactly one correct order —
+  landmark sets must be strictly monotonic (no ambiguity about direction).
+- fillBlankWordBank: one blank, 3–4 numeric chips, no two chips that both
+  satisfy the template.
+- Band 5 kids read short words, but every prompt still carries the full
+  task when spoken.
+
+**Definition of Done**: A kid in band 5 meets all six named strategies
+across three units with regrouping problems throughout; make-ten bridge
+exists in band 4; each strategy's *method* is the thing exercised (steps,
+equivalences, landmarks) — not just final answers; suite green; shipped.
+
+---
+
+## Later / unscoped
 - Parent progress email/weekly digest (needs backend send infra).
 - iPhone layout; seasonal events; collection sharing-poster (deferred from
   the design relaunch).
