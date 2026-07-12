@@ -223,7 +223,7 @@ answer loop; ship ritual.
 ear; fixtures decode on old + new app posture; the type appears in
 placement probes only if single-tap-solvable (else excluded by rule).
 
-### [ ] F6: The decoding middle — silent-e, vowel teams, r-controlled, blends
+### [x] F6: The decoding middle — silent-e, vowel teams, r-controlled, blends — DONE 2026-07-11 (local reading v13; prod seed pending)
 
 **User Value**: A kid who finishes digraphs today jumps straight to
 vocabulary-in-context — the actual learning-to-read middle is missing.
@@ -240,6 +240,16 @@ exercise types needed.
 **Definition of Done**: A kid can travel band 5 → 6 through blends →
 silent-e → vowel teams → r-controlled without a gap; each family is a
 nameable unit; probes cover the new middle.
+
+**Shipped as**: Super Blends (`read-u-blends2`, band 5) + Magic E /
+Team Vowels / Bossy R (`read-u-silente`/`read-u-vowelteams`/
+`read-u-rcontrolled`, three new band-6 skills) + Word Parts Workshop
+reframed syllable-aware under stable ids. Band-6 probes resampled
+(silent-e, vowel teams, context). Guardrails recorded in
+FUNDATIONS_MAP.md "F6 decisions of record" (ow/ea one-sound rule,
+er/ir/ur spelling-fact rule, cross-unit homophone bans). Adversarial
+review pass applied (answer leak, double-solve banks, thread/ea
+violation, emoji bindings). Prod seed + pack export pending.
 
 *Sequencing: F1 first (pure re-sequencing, highest leverage, no new
 surface), F2–F4 in any order after it, F6 after F3 (biggest kid-value gap,

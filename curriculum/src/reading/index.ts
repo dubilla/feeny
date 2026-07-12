@@ -25,10 +25,16 @@ import { singAndHonk } from "./band4/unit-sing-and-honk";
 import { sightWordStars } from "./band4/unit-sight-word-stars";
 // Band 5 — Story Stream (blends → sentences → little stories)
 import { blendBlast } from "./band5/unit-blend-blast";
+import { superBlends } from "./band5/unit-super-blends";
 import { sentenceBuilders } from "./band5/unit-sentence-builders";
 import { questionQuest } from "./band5/unit-question-quest";
 import { storyTime } from "./band5/unit-story-time";
-// Band 6 — Fluency Falls
+// Band 6 — Fluency Falls (F6: the decoding middle — silent-e → vowel teams →
+// r-controlled → syllable-aware word parts, THEN vocabulary/comprehension.
+// Guardrails in curriculum/FUNDATIONS_MAP.md "F6 decisions of record".)
+import { magicE } from "./band6/unit-magic-e";
+import { teamVowels } from "./band6/unit-team-vowels";
+import { bossyR } from "./band6/unit-bossy-r";
 import { wordDetective } from "./band6/unit-word-detective";
 import { wordPower } from "./band6/unit-word-power";
 import { wordPartsWorkshop } from "./band6/unit-word-parts-workshop";
@@ -56,7 +62,7 @@ export const readingSeed: SubjectSeed = {
     { id: "reading-b3", bandNumber: 3, title: "Word Woods", description: "Building and reading small words" },
     { id: "reading-b4", bandNumber: 4, title: "Team-Up Trail", description: "Sound teams, sticky sounds, and star words" },
     { id: "reading-b5", bandNumber: 5, title: "Story Stream", description: "Blends, sentences, and little stories" },
-    { id: "reading-b6", bandNumber: 6, title: "Fluency Falls", description: "Reading smoothly, vocabulary" },
+    { id: "reading-b6", bandNumber: 6, title: "Fluency Falls", description: "Magic e, vowel teams, and reading smoothly" },
     { id: "reading-b7", bandNumber: 7, title: "Meaning Mountain", description: "Paragraph comprehension" },
     { id: "reading-b8", bandNumber: 8, title: "Inference Isle", description: "Reading between the lines" },
   ],
@@ -73,6 +79,9 @@ export const readingSeed: SubjectSeed = {
     { id: "read-blends", bandId: "reading-b5", title: "Blends" },
     { id: "read-sentences", bandId: "reading-b5", title: "Sentences" },
     { id: "read-passages", bandId: "reading-b5", title: "Little stories" },
+    { id: "read-silent-e", bandId: "reading-b6", title: "Magic e words" },
+    { id: "read-vowel-teams", bandId: "reading-b6", title: "Vowel teams" },
+    { id: "read-r-controlled", bandId: "reading-b6", title: "Bossy r words" },
     { id: "read-vocabulary", bandId: "reading-b6", title: "Word power" },
     { id: "read-word-parts", bandId: "reading-b6", title: "Word parts" },
     { id: "read-comprehension", bandId: "reading-b7", title: "Understanding stories" },
@@ -100,12 +109,16 @@ export const readingSeed: SubjectSeed = {
     singAndHonk,
     sightWordStars,
     blendBlast,
+    superBlends,
     sentenceBuilders,
     questionQuest,
     storyTime,
-    wordDetective,
-    wordPower,
+    magicE,
+    teamVowels,
+    bossyR,
     wordPartsWorkshop,
+    wordPower,
+    wordDetective,
     contextClues,
     storySleuths,
     orderTheTale,
@@ -121,7 +134,7 @@ export const readingSeed: SubjectSeed = {
     { bandNumber: 3, exerciseIds: ["read-e-cvc-2-03", "read-e-rhymes-2-02", "read-e-families-2-01"] },
     { bandNumber: 4, exerciseIds: ["read-e-digraphs-2-01", "read-e-glued-2-02", "read-e-sight-2-04"] },
     { bandNumber: 5, exerciseIds: ["read-e-blends-2-03", "read-e-sentences-2-05", "read-e-stories-2-04"] },
-    { bandNumber: 6, exerciseIds: ["read-e-wordpower-2-01", "read-e-wordparts-2-04", "read-e-context-2-03"] },
+    { bandNumber: 6, exerciseIds: ["read-e-silente-2-03", "read-e-vowelteams-2-03", "read-e-context-2-03"] },
     { bandNumber: 7, exerciseIds: ["read-e-sleuth-2-02", "read-e-order-2-06", "read-e-mainidea-2-04"] },
     { bandNumber: 8, exerciseIds: ["read-e-cluehunt-2-02", "read-e-feelings-2-04", "read-e-idioms-2-04"] },
   ],

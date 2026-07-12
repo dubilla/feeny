@@ -26,7 +26,7 @@ of high-frequency irregulars running alongside from early Level 1.
 | K late / L1 U1 | CVC blending & segmenting; rhyme | 3 — Word Woods | `read-cvc` (Word Builders, Word Families), `read-rhymes` |
 | L1 early-mid | Digraphs (wh/ch/sh/th/ck); bonus letters (ff/ll/ss); glued *all/am/an*; trick words begin | 4 — Team-Up Trail | `read-digraphs` (Digraph Dive), `read-glued` (Sticky Sounds — starter: *all/am/an*; F3 deepens into -ng/-nk families), `read-sight-words` (Sight Word Stars — **anchor of the F4 trick-words track**) |
 | L1 mid-late | Blends (initial & final); reading connected text | 5 — Story Stream | `read-blends` (Blend Blast), `read-sentences` (Sentence Builders, Question Quest), `read-passages` (Story Time) |
-| L1 late / L2 | VCe (silent-e); vowel teams; r-controlled; suffixes; syllable division | 6 — Fluency Falls | **GAP** — today only `read-vocabulary` / `read-word-parts`; the decoding middle is F6 |
+| L1 late / L2 | VCe (silent-e); vowel teams; r-controlled; suffixes; syllable division | 6 — Fluency Falls | `read-silent-e` (Magic E), `read-vowel-teams` (Team Vowels), `read-r-controlled` (Bossy R), `read-word-parts` (Word Parts Workshop, syllable-aware since F6); blends depth in band 5 (`read-u-blends2` Super Blends) |
 | (beyond Fundations) | Comprehension, inference, figurative language | 7–8 | Untouched by this initiative — Fundations is a phonics program |
 
 ## Decisions of record
@@ -98,6 +98,38 @@ x box 📦 (final /ks/: "box ends with X") · y yo-yo 🪀 · z zebra 🦓
   (`read-e-soundfriends-am-2-03`); first-sounds and sound-match probes kept
   so both band-2 skills stay represented.
 
+## F6 decisions of record (2026-07-11)
+
+- **Three new band-6 skills** (`read-silent-e`, `read-vowel-teams`,
+  `read-r-controlled`), not one combined decoding skill — per-family skills
+  let the review engine target the weak grapheme family. Band-6 path order:
+  Magic E → Team Vowels → Bossy R → Word Parts Workshop → vocabulary units
+  (decoding before vocabulary; reorder never touches ids, F1 precedent).
+- **Spelling facts vs listening facts (extends F3's wh rule):** ai/ay, ee/ea,
+  and er/ir/ur are homophones by ear — never ear-only discrimination between
+  spellings of the same sound; never two of {er, ir, ur} chips in one
+  fill-blank bank. ar/or/er contrasts and short-vs-long minimal pairs
+  (cap/cape) ARE audible → legitimate `listenAndPick`.
+- **Two-sound graphemes restricted to one sound:** `ow` = long-o only
+  (cow/now/down/how/owl never appear, even as distractors); `ea` = long-e
+  only (bread/head never appear). igh and oo deliberately deferred (L2-late/
+  L3; oo has the same two-sound problem) — see known gaps.
+- **Cross-unit homophones (silent-e ↔ vowel teams):** road/rode, made/maid,
+  tail/tale, meet/meat — spelling contrasts are read/fill-blank only, never
+  ear-only; no bank may hold two chips that both form a real word.
+- **Magic E hygiene:** prompts never say "add an e"/"silent e" when that's
+  the answer; minimal-pair options are word labels, not emoji (hope/cape
+  aren't representable); VCe exceptions (have, give, come, some, love)
+  banned everywhere.
+- **Word Parts Workshop reframed, not replaced:** same unit/lesson/exercise
+  ids and `read-word-parts` skill (kid progress preserved); compounds/
+  prefixes/suffixes recast as syllable chunks; syllable-count-by-ear capped
+  at 2–3 exercises using unambiguous-beat words only (TTS can't model
+  chunking, so counting is assessment, not teaching).
+- **Band-6 probes** resampled to the new middle: silent-e + vowel teams
+  (highest-information discriminators) + context-clues (keeps comprehension
+  represented); r-controlled intentionally unprobed.
+
 ## Known gaps (by slice)
 
 - F2: letter-keyword-sound three-part drill (band 2) with Feeny's own
@@ -106,6 +138,6 @@ x box 📦 (final /ks/: "box ends with X") · y yo-yo 🪀 · z zebra 🦓
   -ank/-ink/-onk/-unk families.
 - F4: trick words as a spaced-review track, bands 2–4.
 - F5: phoneme-tapping exercise type (contract change — last).
-- F6: the decoding middle — blends depth, VCe/silent-e, vowel teams,
-  r-controlled, syllable-aware word parts (bands 5–6). Biggest gap in the
-  5–9 promise.
+- Post-F6: igh, oo (two-sound: moon/book), ou/ough, soft c/g, multisyllable
+  division beyond first chunks — L2-late/L3 territory, deliberately deferred
+  from F6.

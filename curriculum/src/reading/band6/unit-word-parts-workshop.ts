@@ -1,11 +1,15 @@
 import type { UnitSeed } from "../../schema/pack";
 
 /**
- * Reading Band 6 · Word Parts Workshop
- * Take words apart and build them back up: compound words (rain + bow),
- * prefixes (un-, re-), and suffixes (-er, -est, -ful). Kids read short
- * words; spokenText always explains the rule so the meaning carries.
- * L1 compounds · L2 prefixes · L3 suffixes.
+ * Reading Band 6 · Word Parts Workshop (syllable-aware decoding)
+ * Long words are read in beats: chunk them, read a chunk at a time, blend.
+ * L1 compounds — two small words = two beats. L2 prefixes — read the first
+ * chunk (un-, re-), then the rest. L3 suffixes — read the base, then the last
+ * chunk (-er, -est, -ful). Three exercises (1-05, 2-08, 3-06) count beats by
+ * ear via listenAndPick, using only clean, un-schwa'd words (rainbow,
+ * butterfly, kangaroo); the naturally spoken whole word is the stimulus —
+ * spokenText NEVER chunks it aloud (TTS renders "kan…ga…roo" badly).
+ * spokenText names the rule so meaning carries, and never states the answer.
  */
 export const wordPartsWorkshop: UnitSeed = {
   id: "read-u-wordparts",
@@ -15,7 +19,7 @@ export const wordPartsWorkshop: UnitSeed = {
   lessons: [
     {
       id: "read-l-wordparts-1",
-      title: "Two Words, One Word",
+      title: "Two Words, Two Beats",
       primarySkillId: "read-word-parts",
       xpReward: 10,
       exercises: [
@@ -25,7 +29,7 @@ export const wordPartsWorkshop: UnitSeed = {
           payload: {
             prompt: {
               text: "rain + bow = ?",
-              spokenText: "Snap two words together! Rain plus bow makes which word?",
+              spokenText: "Two small words snap together — two beats! Rain plus bow makes which word?",
             },
             options: [
               { id: "a", label: "rainbow" },
@@ -41,7 +45,7 @@ export const wordPartsWorkshop: UnitSeed = {
           payload: {
             prompt: {
               text: "🌻 Snap the words together!",
-              spokenText: "Sun plus flower makes which word? Tap it!",
+              spokenText: "Two words, two beats! Sun plus flower makes which word? Tap it!",
             },
             template: "sun + flower = ___",
             bank: [
@@ -57,8 +61,8 @@ export const wordPartsWorkshop: UnitSeed = {
           type: "tapMatchPairs",
           payload: {
             prompt: {
-              text: "Match the word parts that build a word!",
-              spokenText: "Tap a word part, then tap the part that finishes the word!",
+              text: "Match the two beats that build a word!",
+              spokenText: "Every word here has two beats. Tap a beat, then tap the beat that finishes the word!",
             },
             pairs: [
               { id: "p1", left: { label: "cup" }, right: { label: "cake" } },
@@ -73,7 +77,7 @@ export const wordPartsWorkshop: UnitSeed = {
           payload: {
             prompt: {
               text: "Which two words make cupcake?",
-              spokenText: "Break it apart! Which two words make the word cupcake?",
+              spokenText: "Break it into its two beats! Which two words make the word cupcake?",
             },
             options: [
               { id: "a", label: "cap and cake" },
@@ -88,15 +92,15 @@ export const wordPartsWorkshop: UnitSeed = {
           type: "listenAndPick",
           payload: {
             prompt: {
-              text: "Listen!",
-              spokenText: "Tap the word that is made of two words joined together!",
+              text: "How many beats?",
+              spokenText: "Clap the beats in the word rainbow! How many beats do you hear?",
             },
             options: [
-              { id: "a", label: "happy" },
-              { id: "b", label: "sunny" },
-              { id: "c", label: "sunshine" },
+              { id: "a", label: "1" },
+              { id: "b", label: "2" },
+              { id: "c", label: "3" },
             ],
-            correctOptionId: "c",
+            correctOptionId: "b",
           },
         },
         {
@@ -105,7 +109,7 @@ export const wordPartsWorkshop: UnitSeed = {
           payload: {
             prompt: {
               text: "foot + ball = ?",
-              spokenText: "Snap them together! Foot plus ball makes which word?",
+              spokenText: "Two words, two beats! Foot plus ball makes which word?",
             },
             options: [
               { id: "a", label: "ballfoot" },
@@ -138,7 +142,7 @@ export const wordPartsWorkshop: UnitSeed = {
           payload: {
             prompt: {
               text: "Which word is made of two words?",
-              spokenText: "Detective time! Which word is really two words joined together?",
+              spokenText: "Detective time! Which word is really two words — two beats — joined together?",
             },
             options: [
               { id: "a", label: "table" },
@@ -152,7 +156,7 @@ export const wordPartsWorkshop: UnitSeed = {
     },
     {
       id: "read-l-wordparts-2",
-      title: "Front Parts",
+      title: "Read the First Chunk",
       primarySkillId: "read-word-parts",
       xpReward: 10,
       exercises: [
@@ -162,7 +166,7 @@ export const wordPartsWorkshop: UnitSeed = {
           payload: {
             prompt: {
               text: "Undo means NOT do.\nWhich word means NOT happy?",
-              spokenText: "The part un- means not. Undo means not do. So which word means not happy?",
+              spokenText: "Read the first chunk, un-, then the rest! Un- means not. So which word means not happy?",
             },
             options: [
               { id: "a", label: "unhappy" },
@@ -178,7 +182,7 @@ export const wordPartsWorkshop: UnitSeed = {
           payload: {
             prompt: {
               text: "Re- means do again.\nWhich word means to fill again?",
-              spokenText: "The part re- means again. So which word means to fill again?",
+              spokenText: "Read the first chunk, re-, then the rest! Re- means again. So which word means to fill again?",
             },
             options: [
               { id: "a", label: "unfill" },
@@ -194,7 +198,7 @@ export const wordPartsWorkshop: UnitSeed = {
           payload: {
             prompt: {
               text: "Match each word to what it means!",
-              spokenText: "Tap a word, then tap what it means!",
+              spokenText: "Read the first chunk, then the rest. Tap a word, then tap what it means!",
             },
             pairs: [
               { id: "p1", left: { label: "unhappy" }, right: { label: "not happy" } },
@@ -242,7 +246,7 @@ export const wordPartsWorkshop: UnitSeed = {
           payload: {
             prompt: {
               text: "Re- means do again.\nWhich word means to read again?",
-              spokenText: "The part re- means again. So which word means to read again?",
+              spokenText: "Read the first chunk, re-, then the rest! Re- means again. So which word means to read again?",
             },
             options: [
               { id: "a", label: "unread" },
@@ -258,7 +262,7 @@ export const wordPartsWorkshop: UnitSeed = {
           payload: {
             prompt: {
               text: "Un- means not.\nWhich word means NOT locked?",
-              spokenText: "The part un- means not. So which word means not locked?",
+              spokenText: "Read the first chunk, un-, then the rest! Un- means not. So which word means not locked?",
             },
             options: [
               { id: "a", label: "relock" },
@@ -273,22 +277,22 @@ export const wordPartsWorkshop: UnitSeed = {
           type: "listenAndPick",
           payload: {
             prompt: {
-              text: "Listen!",
-              spokenText: "Remember, re- means again. Tap the word that means to write again!",
+              text: "How many beats?",
+              spokenText: "Clap the beats in the word butterfly! How many beats do you hear?",
             },
             options: [
-              { id: "a", label: "unwrite" },
-              { id: "b", label: "writer" },
-              { id: "c", label: "rewrite" },
+              { id: "a", label: "2" },
+              { id: "b", label: "3" },
+              { id: "c", label: "4" },
             ],
-            correctOptionId: "c",
+            correctOptionId: "b",
           },
         },
       ],
     },
     {
       id: "read-l-wordparts-3",
-      title: "End Parts",
+      title: "Read the Last Chunk",
       primarySkillId: "read-word-parts",
       xpReward: 10,
       exercises: [
@@ -298,7 +302,7 @@ export const wordPartsWorkshop: UnitSeed = {
           payload: {
             prompt: {
               text: "-er can mean more.\nWhich word means MORE tall?",
-              spokenText: "Adding -er can mean more. So which word means more tall?",
+              spokenText: "Read the base, then the last chunk, -er! Adding -er can mean more. So which word means more tall?",
             },
             options: [
               { id: "a", label: "taller" },
@@ -314,7 +318,7 @@ export const wordPartsWorkshop: UnitSeed = {
           payload: {
             prompt: {
               text: "-est means the most.\nWhich word means the MOST big?",
-              spokenText: "Adding -est means the most. So which word means the most big?",
+              spokenText: "Read the base, then the last chunk, -est! -est means the most. So which word means the most big?",
             },
             options: [
               { id: "a", label: "bigger" },
@@ -345,7 +349,7 @@ export const wordPartsWorkshop: UnitSeed = {
           payload: {
             prompt: {
               text: "Pick the word that fits!",
-              spokenText: "The part -ful means full of. A day full of joy is a what day? Pick the word!",
+              spokenText: "Read the base, then the last chunk, -ful! It means full of. A day full of joy is a what day? Pick the word!",
             },
             template: "A day full of joy is a ___ day.",
             bank: [
@@ -362,7 +366,7 @@ export const wordPartsWorkshop: UnitSeed = {
           payload: {
             prompt: {
               text: "-ful means full of.\nWhich word means full of color?",
-              spokenText: "The part -ful means full of. So which word means full of color?",
+              spokenText: "Read the base, then the last chunk, -ful! It means full of. So which word means full of color?",
             },
             options: [
               { id: "a", label: "colorless" },
@@ -377,15 +381,15 @@ export const wordPartsWorkshop: UnitSeed = {
           type: "listenAndPick",
           payload: {
             prompt: {
-              text: "Listen!",
-              spokenText: "Remember, -est means the most. Tap the word that means the MOST fast!",
+              text: "How many beats?",
+              spokenText: "Clap the beats in the word kangaroo! How many beats do you hear?",
             },
             options: [
-              { id: "a", label: "fast" },
-              { id: "b", label: "faster" },
-              { id: "c", label: "fastest" },
+              { id: "a", label: "2" },
+              { id: "b", label: "3" },
+              { id: "c", label: "4" },
             ],
-            correctOptionId: "c",
+            correctOptionId: "b",
           },
         },
         {
@@ -394,7 +398,7 @@ export const wordPartsWorkshop: UnitSeed = {
           payload: {
             prompt: {
               text: "-ful means full of.\nWhich word means full of help?",
-              spokenText: "The part -ful means full of. So which word means full of help?",
+              spokenText: "Read the base, then the last chunk, -ful! It means full of. So which word means full of help?",
             },
             options: [
               { id: "a", label: "helper" },
@@ -410,7 +414,7 @@ export const wordPartsWorkshop: UnitSeed = {
           payload: {
             prompt: {
               text: "Listen!",
-              spokenText: "Remember, -er can mean more. Tap the word that means MORE small!",
+              spokenText: "Read the base, then the last chunk, -er! It can mean more. Tap the word that means MORE small!",
             },
             options: [
               { id: "a", label: "smallest" },
