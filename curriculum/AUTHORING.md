@@ -41,6 +41,7 @@ One TypeScript file per unit at `curriculum/src/math/band{N}/unit-<slug>.ts`, ex
 - Distribute correct answers evenly across option positions (never mostly the middle).
 - Distractors must be plausible near-misses, not random.
 - Band 1–2: no reading required beyond single numerals. Band 3+: short words OK ("more", "less") but the spoken prompt always carries the meaning.
+  - **Trick-word exception (F4):** in trick-word units ONLY, printed-word options are allowed in band 2 — the printed word IS the stimulus; that's the skill. ≤3 options, distractors visually distinct at band 2 (no the/them/that-severity look-alikes until band 3+), and the spoken prompt always names the target word inside a usage sentence.
 - Math must be correct. Check every sum, difference, count, and sequence twice.
 
 ## Spoken-prompt rules (TTS is the narrator — write for its failure modes)

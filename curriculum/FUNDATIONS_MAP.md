@@ -130,6 +130,42 @@ x box 📦 (final /ks/: "box ends with X") · y yo-yo 🪀 · z zebra 🦓
   (highest-information discriminators) + context-clues (keeps comprehension
   represented); r-controlled intentionally unprobed.
 
+## F4 decisions of record (2026-07-11)
+
+- **The 40-word track** — our own Dolch-derived sequencing (IP guardrail:
+  NOT Wilson's trick-word list), 8 words per unit, parallel to phonics
+  from band 2. Trick-word units slot AFTER the phonics units in each band:
+  - b2 `read-u-sight-start` Star Word Sprouts (`read-sight-start`):
+    me, up, to, go, my, we, is, no
+  - b3 `read-u-sight-grow` Star Words Grow (`read-sight-grow`):
+    of, was, do, has, have, they, are, from
+  - b3 `read-u-sight-pals` Star Word Pals (shares `read-sight-grow` —
+    F3 precedent: a per-unit skill would fragment review mastery):
+    one, two, what, who, want, put, some, your
+  - b4 `read-u-sight` Sight Word Stars (existing anchor, unchanged):
+    the, and, you, said, come, here, like, see
+  - b4 `read-u-sight-sky` Star Word Sky (shares `read-sight-words`):
+    where, there, were, done, gone, very, only, once
+- **No bare *a*/*I* as targets:** TTS renders "a" as schwa and a
+  single-letter tile is indistinguishable from a band-1/2 letter exercise
+  with different correct behavior. Swapped for *me*/*up*.
+- **Homophone rule (extends F6's):** to/two, one/won, there/their are
+  homophones by ear — never co-present in an option set, and neither may
+  be an ear-only target where the other is a plausible reading. Look-alike
+  distractor hazards (visual, fine in b3+ / banned in b2): was/saw,
+  where/were/there, of/off, no/on, gone/done.
+- **Band-2 printed-word carve-out:** trick-word units are the ONLY band-2
+  units allowed printed-word option tiles (the printed word IS the
+  stimulus). Rules in AUTHORING.md quality bar.
+- **Review reach is band-scoped, by design:** the engine's weakest-skill
+  review means kids placed at band 4+ get assumed mastery on the b2/b3
+  trick skills (`effectiveMasteries`) — for them, resurfacing runs through
+  `read-sight-words` in band 4 only. The b2/b3 track serves kids currently
+  in those bands.
+- **Placement probes deliberately unchanged:** F4's DoD doesn't require
+  them; sight-word probes are lower-information than CVC/rhyme at those
+  bands. Not forgotten — declined.
+
 ## Known gaps (by slice)
 
 - F2: letter-keyword-sound three-part drill (band 2) with Feeny's own

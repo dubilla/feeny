@@ -12,10 +12,13 @@ import { soundFriendsNZ } from "./band2/unit-sound-friends-nz";
 import { soundSafari } from "./band2/unit-sound-safari";
 import { firstSounds } from "./band2/unit-first-sounds";
 import { soundMatchUp } from "./band2/unit-sound-match-up";
+import { sightWordSprouts } from "./band2/unit-sight-word-sprouts";
 // Band 3 — Word Woods
 import { wordBuilders } from "./band3/unit-word-builders";
 import { rhymeTime } from "./band3/unit-rhyme-time";
 import { wordFamilies } from "./band3/unit-word-families";
+import { sightWordsGrow } from "./band3/unit-sight-words-grow";
+import { sightWordPals } from "./band3/unit-sight-word-pals";
 // Band 4 — Team-Up Trail (Fundations L1 early-mid: digraphs → glued sounds,
 // trick words in parallel — see curriculum/FUNDATIONS_MAP.md)
 import { digraphDive } from "./band4/unit-digraph-dive";
@@ -23,6 +26,7 @@ import { moreSoundTeams } from "./band4/unit-more-sound-teams";
 import { stickySounds } from "./band4/unit-sticky-sounds";
 import { singAndHonk } from "./band4/unit-sing-and-honk";
 import { sightWordStars } from "./band4/unit-sight-word-stars";
+import { sightWordSky } from "./band4/unit-sight-word-sky";
 // Band 5 — Story Stream (blends → sentences → little stories)
 import { blendBlast } from "./band5/unit-blend-blast";
 import { superBlends } from "./band5/unit-super-blends";
@@ -71,8 +75,13 @@ export const readingSeed: SubjectSeed = {
     { id: "read-letters-lower", bandId: "reading-b1", title: "Little letters" },
     { id: "read-letter-sounds", bandId: "reading-b2", title: "Letter sounds" },
     { id: "read-first-sounds", bandId: "reading-b2", title: "First sounds in words" },
+    // F4 trick-words track runs parallel to phonics from band 2 (see
+    // FUNDATIONS_MAP.md "F4 decisions of record"). One skill per band —
+    // two skills for 16 words in one band would fragment review mastery.
+    { id: "read-sight-start", bandId: "reading-b2", title: "First star words" },
     { id: "read-cvc", bandId: "reading-b3", title: "Small words" },
     { id: "read-rhymes", bandId: "reading-b3", title: "Rhymes" },
+    { id: "read-sight-grow", bandId: "reading-b3", title: "Star words" },
     { id: "read-digraphs", bandId: "reading-b4", title: "Sound teams" },
     { id: "read-glued", bandId: "reading-b4", title: "Sticky sounds" },
     { id: "read-sight-words", bandId: "reading-b4", title: "Sight words" },
@@ -100,14 +109,18 @@ export const readingSeed: SubjectSeed = {
     soundSafari,
     firstSounds,
     soundMatchUp,
+    sightWordSprouts,
     wordBuilders,
     rhymeTime,
     wordFamilies,
+    sightWordsGrow,
+    sightWordPals,
     digraphDive,
     moreSoundTeams,
     stickySounds,
     singAndHonk,
     sightWordStars,
+    sightWordSky,
     blendBlast,
     superBlends,
     sentenceBuilders,
