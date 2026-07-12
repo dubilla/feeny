@@ -190,7 +190,7 @@ Band-2 probe #1 now samples the F2 anchor units. Digraph Dive 3-01 copy
 de-conflicted. Review fixes: 🗑️-as-"trash" ear task → word labels,
 lesson-3 answer cycle broken, "kill"-formable chip swapped. Suite green; prod-shipped same day (reading v6).
 
-### [ ] F4: Trick words track
+### [x] F4: Trick words track — SHIPPED to prod 2026-07-12 (reading v8)
 
 **User Value**: The words kids are drilled on weekly ("the", "of", "said" …)
 show up in Feeny as a recurring track with spaced review — the app's
@@ -205,7 +205,7 @@ engine); recognition exercises by ear and by sight (`listenAndPick`,
 misses trick words sees them resurface in Power-Up Practice within a
 session or two.
 
-**Resolution (2026-07-11, commit 186da5c — prod seed pending):** 40 words
+**Resolution (2026-07-11, commit 186da5c; prod-seeded 2026-07-12, reading v8, packs 7d4b77e):** 40 words
 (8 live in Sight Word Stars + 32 new), our own Dolch-derived sequencing
 (IP guardrail). Four new units after each band's phonics: Star Word
 Sprouts (b2, `read-sight-start`, recognition-only per new AUTHORING.md
