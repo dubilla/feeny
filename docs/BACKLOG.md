@@ -223,7 +223,7 @@ answer loop; ship ritual.
 ear; fixtures decode on old + new app posture; the type appears in
 placement probes only if single-tap-solvable (else excluded by rule).
 
-### [x] F6: The decoding middle — silent-e, vowel teams, r-controlled, blends — DONE 2026-07-11 (local reading v13; prod seed pending)
+### [x] F6: The decoding middle — silent-e, vowel teams, r-controlled, blends — SHIPPED to prod 2026-07-11 (reading v7)
 
 **User Value**: A kid who finishes digraphs today jumps straight to
 vocabulary-in-context — the actual learning-to-read middle is missing.
@@ -249,7 +249,7 @@ reframed syllable-aware under stable ids. Band-6 probes resampled
 FUNDATIONS_MAP.md "F6 decisions of record" (ow/ea one-sound rule,
 er/ir/ur spelling-fact rule, cross-unit homophone bans). Adversarial
 review pass applied (answer leak, double-solve banks, thread/ea
-violation, emoji bindings). Prod seed + pack export pending.
+violation, emoji bindings). Prod-seeded same day (reading v7, packs 4c24bb4).
 
 *Sequencing: F1 first (pure re-sequencing, highest leverage, no new
 surface), F2–F4 in any order after it, F6 after F3 (biggest kid-value gap,
