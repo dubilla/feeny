@@ -205,6 +205,20 @@ engine); recognition exercises by ear and by sight (`listenAndPick`,
 misses trick words sees them resurface in Power-Up Practice within a
 session or two.
 
+**Resolution (2026-07-11, commit 186da5c — prod seed pending):** 40 words
+(8 live in Sight Word Stars + 32 new), our own Dolch-derived sequencing
+(IP guardrail). Four new units after each band's phonics: Star Word
+Sprouts (b2, `read-sight-start`, recognition-only per new AUTHORING.md
+band-2 printed-word carve-out), Star Words Grow + Star Word Pals (b3,
+shared `read-sight-grow` — F3 precedent), Star Word Sky (b4, shared
+`read-sight-words`). Zero engine work: weakest-skill review surfaces the
+track in Power-Up Practice; per `effectiveMasteries`, kids placed at b4+
+get resurfacing via the b4 units only (documented, accepted). Advisor
+catches folded in (a/I → me/up TTS trap, to/two + one/won homophone
+rules); adversarial review fixes applied (ordering double-solve,
+band-2 audio/option leak, fill-blank near-double-solves). Probes
+deliberately unchanged. Decisions of record in FUNDATIONS_MAP.md.
+
 ### [ ] F5: Tap-the-sounds — phoneme segmentation exercise type
 
 **User Value**: Fundations' signature physical move — tapping out the
