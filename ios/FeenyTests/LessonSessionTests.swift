@@ -84,6 +84,49 @@ final class LessonSessionTests: XCTestCase {
         XCTAssertEqual(session.progress, 0.25)
     }
 
+    private func tapTheSounds(id: String) -> Exercise {
+        Exercise(id: id, payload: .tapTheSounds(TapTheSoundsPayload(
+            prompt: ExercisePrompt(text: "Tap it out!", spokenText: "Cat!"),
+            word: "cat",
+            visual: nil,
+            sounds: [SoundTile(id: 0, grapheme: "c"), SoundTile(id: 1, grapheme: "a"), SoundTile(id: 2, grapheme: "t")]
+        )))
+    }
+
+    private func lesson(with exercises: [Exercise]) -> Lesson {
+        Lesson(id: "lesson", title: "Test", primarySkillId: "skill", sortOrder: 0, xpReward: 10, exercises: exercises)
+    }
+
+    /// The always-correct tap-out must not pad the accuracy denominator, or a
+    /// lesson mixing one graded miss with practice would report inflated mastery.
+    func testTapTheSoundsExcludedFromAccuracyDenominator() {
+        let graded = makeLesson(exerciseCount: 1).exercises[0]
+        let session = LessonSession(lesson: lesson(with: [graded, tapTheSounds(id: "tap")]))
+
+        // Miss the one graded exercise on the first try, pass on retry.
+        session.submit(correct: false); session.advance()
+        // Now the tap-out (always correct).
+        XCTAssertEqual(session.current?.id, "tap")
+        session.submit(correct: true); session.advance()
+        // Re-queued graded exercise, passed on retry.
+        session.submit(correct: true); session.advance()
+
+        XCTAssertEqual(session.phase, .complete)
+        // 0 of 1 *graded* exercises correct first try — the tap-out is invisible here.
+        XCTAssertEqual(session.firstTryAccuracy, 0.0)
+        XCTAssertFalse(session.isPerfect)
+    }
+
+    /// A lesson made only of tap-outs has no graded work; accuracy is the empty
+    /// case (1.0), and completing it grants no false first-try credit to hoard.
+    func testAllTapTheSoundsLessonHasNoGradedDenominator() {
+        let session = LessonSession(lesson: lesson(with: [tapTheSounds(id: "t0"), tapTheSounds(id: "t1")]))
+        session.submit(correct: true); session.advance()
+        session.submit(correct: true); session.advance()
+        XCTAssertEqual(session.phase, .complete)
+        XCTAssertEqual(session.firstTryAccuracy, 1.0)
+    }
+
     func testUnsupportedExercisesAreExcluded() {
         var lesson = makeLesson(exerciseCount: 2)
         let withUnsupported = Lesson(

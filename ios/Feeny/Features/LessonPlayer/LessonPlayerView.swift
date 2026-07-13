@@ -209,6 +209,8 @@ struct LessonPlayerView: View {
             OrderingView(payload: payload, revealAnswer: revealAnswer) { session.submit(correct: $0) }
         case .fillBlankWordBank(let payload):
             FillBlankWordBankView(payload: payload, revealAnswer: revealAnswer) { session.submit(correct: $0) }
+        case .tapTheSounds(let payload):
+            TapTheSoundsView(payload: payload) { session.submit(correct: $0) }
         case .unsupported:
             // playableExercises filters these out; defensive fallback only.
             Color.clear.onAppear { session.submit(correct: true) }

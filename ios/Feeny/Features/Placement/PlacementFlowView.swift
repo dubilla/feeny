@@ -178,7 +178,9 @@ struct PlacementFlowView: View {
             OrderingView(payload: payload, revealAnswer: false) { answer($0) }
         case .fillBlankWordBank(let payload):
             FillBlankWordBankView(payload: payload, revealAnswer: false) { answer($0) }
-        case .unsupported:
+        case .tapTheSounds, .unsupported:
+            // tapTheSounds is multi-tap and never a placement probe (see rule);
+            // defensive pass keeps a mis-curated probe from stalling placement.
             Color.clear.onAppear { answer(true) }
         }
     }

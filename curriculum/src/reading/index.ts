@@ -13,12 +13,14 @@ import { soundSafari } from "./band2/unit-sound-safari";
 import { firstSounds } from "./band2/unit-first-sounds";
 import { soundMatchUp } from "./band2/unit-sound-match-up";
 import { sightWordSprouts } from "./band2/unit-sight-word-sprouts";
+import { tapItOut } from "./band2/unit-tap-it-out";
 // Band 3 — Word Woods
 import { wordBuilders } from "./band3/unit-word-builders";
 import { rhymeTime } from "./band3/unit-rhyme-time";
 import { wordFamilies } from "./band3/unit-word-families";
 import { sightWordsGrow } from "./band3/unit-sight-words-grow";
 import { sightWordPals } from "./band3/unit-sight-word-pals";
+import { soundTappers } from "./band3/unit-sound-tappers";
 // Band 4 — Team-Up Trail (Fundations L1 early-mid: digraphs → glued sounds,
 // trick words in parallel — see curriculum/FUNDATIONS_MAP.md)
 import { digraphDive } from "./band4/unit-digraph-dive";
@@ -75,11 +77,13 @@ export const readingSeed: SubjectSeed = {
     { id: "read-letters-lower", bandId: "reading-b1", title: "Little letters" },
     { id: "read-letter-sounds", bandId: "reading-b2", title: "Letter sounds" },
     { id: "read-first-sounds", bandId: "reading-b2", title: "First sounds in words" },
+    { id: "read-tap-b2", bandId: "reading-b2", title: "Tapping sounds" },
     // F4 trick-words track runs parallel to phonics from band 2 (see
     // FUNDATIONS_MAP.md "F4 decisions of record"). One skill per band —
     // two skills for 16 words in one band would fragment review mastery.
     { id: "read-sight-start", bandId: "reading-b2", title: "First star words" },
     { id: "read-cvc", bandId: "reading-b3", title: "Small words" },
+    { id: "read-tap-b3", bandId: "reading-b3", title: "Tapping sounds" },
     { id: "read-rhymes", bandId: "reading-b3", title: "Rhymes" },
     { id: "read-sight-grow", bandId: "reading-b3", title: "Star words" },
     { id: "read-digraphs", bandId: "reading-b4", title: "Sound teams" },
@@ -110,11 +114,13 @@ export const readingSeed: SubjectSeed = {
     firstSounds,
     soundMatchUp,
     sightWordSprouts,
+    tapItOut,
     wordBuilders,
     rhymeTime,
     wordFamilies,
     sightWordsGrow,
     sightWordPals,
+    soundTappers,
     digraphDive,
     moreSoundTeams,
     stickySounds,

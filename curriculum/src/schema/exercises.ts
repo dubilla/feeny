@@ -122,6 +122,31 @@ export const fillBlankWordBankPayloadSchema = z
     message: "correctChipId must reference a bank chip",
   });
 
+/**
+ * Fundations-style phoneme tap-out. Audio-first: the prompt speaks the whole
+ * word; the kid taps a row of `sounds.length` boxes left→right, each revealing
+ * its grapheme, then the word blends. Kinesthetic practice, not assessment —
+ * always warm-correct and excluded from the accuracy denominator + placement
+ * probes. No per-sound audio: TTS mangles isolated phonemes (AUTHORING.md), so
+ * all speech stays at the word level. `graphemes` a digraph = ONE tile ("sh").
+ */
+export const tapTheSoundsPayloadSchema = z
+  .object({
+    prompt: promptSchema.extend({ spokenText: z.string().min(1) }),
+    /** The whole word, spoken up front and blended on completion. */
+    word: z.string().min(1),
+    /** Optional meaning anchor (emoji of the word) shown above the boxes. */
+    visual: visualSchema.optional(),
+    /** Ordered sound tiles; each `grapheme` is the letter(s) for one phoneme. */
+    sounds: z.array(z.object({ grapheme: z.string().min(1) })).min(2).max(5),
+  })
+  .refine(
+    (p) =>
+      p.sounds.map((s) => s.grapheme).join("").toLowerCase() ===
+      p.word.toLowerCase(),
+    { message: "sound graphemes must concatenate to word" },
+  );
+
 export const exerciseSchema = z.discriminatedUnion("type", [
   z.object({
     id: z.string().min(1),
@@ -152,6 +177,11 @@ export const exerciseSchema = z.discriminatedUnion("type", [
     id: z.string().min(1),
     type: z.literal("fillBlankWordBank"),
     payload: fillBlankWordBankPayloadSchema,
+  }),
+  z.object({
+    id: z.string().min(1),
+    type: z.literal("tapTheSounds"),
+    payload: tapTheSoundsPayloadSchema,
   }),
 ]);
 export type Exercise = z.infer<typeof exerciseSchema>;

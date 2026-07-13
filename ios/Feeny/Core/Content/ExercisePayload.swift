@@ -104,6 +104,44 @@ struct FillBlankWordBankPayload: Decodable, Equatable {
     }
 }
 
+struct SoundTile: Decodable, Equatable, Identifiable {
+    /// Position is identity — the payload carries no ids (mirror of the zod
+    /// `sounds` array, which is ordered and unindexed). Assigned on decode.
+    let id: Int
+    let grapheme: String
+}
+
+/// Fundations tap-out: spoken word up front, tap boxes left→right to reveal
+/// each grapheme, blend on completion. Kinesthetic practice, always warm.
+struct TapTheSoundsPayload: Decodable, Equatable {
+    let prompt: ExercisePrompt
+    let word: String
+    let visual: Visual?
+    let sounds: [SoundTile]
+
+    private enum CodingKeys: String, CodingKey {
+        case prompt, word, visual, sounds
+    }
+
+    private struct RawSound: Decodable { let grapheme: String }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        prompt = try container.decode(ExercisePrompt.self, forKey: .prompt)
+        word = try container.decode(String.self, forKey: .word)
+        visual = try container.decodeIfPresent(Visual.self, forKey: .visual)
+        let raw = try container.decode([RawSound].self, forKey: .sounds)
+        sounds = raw.enumerated().map { SoundTile(id: $0.offset, grapheme: $0.element.grapheme) }
+    }
+
+    init(prompt: ExercisePrompt, word: String, visual: Visual?, sounds: [SoundTile]) {
+        self.prompt = prompt
+        self.word = word
+        self.visual = visual
+        self.sounds = sounds
+    }
+}
+
 enum ExercisePayload: Equatable {
     case multipleChoiceImage(MultipleChoiceImagePayload)
     case countObjects(CountObjectsPayload)
@@ -111,11 +149,22 @@ enum ExercisePayload: Equatable {
     case listenAndPick(ListenAndPickPayload)
     case ordering(OrderingPayload)
     case fillBlankWordBank(FillBlankWordBankPayload)
+    case tapTheSounds(TapTheSoundsPayload)
     case unsupported(type: String)
 
     var isUnsupported: Bool {
         if case .unsupported = self { return true }
         return false
+    }
+
+    /// Kinesthetic-practice types (tap-out) always succeed, so they must not
+    /// count toward first-try accuracy — otherwise they silently inflate the
+    /// mastery signal that drives band advancement.
+    var contributesToAccuracy: Bool {
+        switch self {
+        case .tapTheSounds, .unsupported: false
+        default: true
+        }
     }
 
     var prompt: ExercisePrompt? {
@@ -126,6 +175,7 @@ enum ExercisePayload: Equatable {
         case .listenAndPick(let payload): payload.prompt
         case .ordering(let payload): payload.prompt
         case .fillBlankWordBank(let payload): payload.prompt
+        case .tapTheSounds(let payload): payload.prompt
         case .unsupported: nil
         }
     }
@@ -161,6 +211,8 @@ struct Exercise: Decodable, Equatable, Identifiable {
             payload = .ordering(try container.decode(OrderingPayload.self, forKey: .payload))
         case "fillBlankWordBank":
             payload = .fillBlankWordBank(try container.decode(FillBlankWordBankPayload.self, forKey: .payload))
+        case "tapTheSounds":
+            payload = .tapTheSounds(try container.decode(TapTheSoundsPayload.self, forKey: .payload))
         default:
             payload = .unsupported(type: type)
         }

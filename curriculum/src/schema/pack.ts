@@ -88,6 +88,18 @@ export const subjectPackSchema = z.object({
 });
 export type SubjectPack = z.infer<typeof subjectPackSchema>;
 
+/** Types that a kid resolves in exactly one tap — the only ones eligible as placement probes. */
+const SINGLE_TAP_TYPES = new Set(["multipleChoiceImage", "countObjects", "listenAndPick", "fillBlankWordBank"]);
+/** Types that carry accuracy weight (everything except always-correct practice like tapTheSounds). */
+const GRADED_TYPES = new Set([
+  "multipleChoiceImage",
+  "countObjects",
+  "listenAndPick",
+  "fillBlankWordBank",
+  "tapMatchPairs",
+  "ordering",
+]);
+
 /** Validates a seed's internal references (skill/band/probe IDs). Throws with a readable message. */
 export function validateSubjectSeed(seed: SubjectSeed): SubjectSeed {
   const parsed = subjectSeedSchema.parse(seed);
@@ -95,6 +107,9 @@ export function validateSubjectSeed(seed: SubjectSeed): SubjectSeed {
   const skillIds = new Set(parsed.skills.map((s) => s.id));
   const exerciseIds = new Set(
     parsed.units.flatMap((u) => u.lessons.flatMap((l) => l.exercises.map((e) => e.id))),
+  );
+  const exerciseTypeById = new Map(
+    parsed.units.flatMap((u) => u.lessons.flatMap((l) => l.exercises.map((e) => [e.id, e.type] as const))),
   );
   const problems: string[] = [];
   for (const skill of parsed.skills) {
@@ -105,11 +120,27 @@ export function validateSubjectSeed(seed: SubjectSeed): SubjectSeed {
     for (const lesson of unit.lessons) {
       if (!skillIds.has(lesson.primarySkillId))
         problems.push(`lesson ${lesson.id}: unknown skill ${lesson.primarySkillId}`);
+      // tapTheSounds is always warm-correct, so it carries no accuracy weight
+      // (see AUTHORING.md). A lesson that leans on it must still have real
+      // graded work, or completing it grants perfect mastery for free.
+      if (lesson.exercises.some((e) => e.type === "tapTheSounds")) {
+        const graded = lesson.exercises.filter((e) => GRADED_TYPES.has(e.type)).length;
+        if (graded < 2)
+          problems.push(`lesson ${lesson.id}: has tapTheSounds but only ${graded} graded exercises (need ≥2)`);
+      }
     }
   }
   for (const probe of parsed.placementProbes) {
     for (const id of probe.exerciseIds) {
-      if (!exerciseIds.has(id)) problems.push(`placement probe band ${probe.bandNumber}: unknown exercise ${id}`);
+      if (!exerciseIds.has(id)) {
+        problems.push(`placement probe band ${probe.bandNumber}: unknown exercise ${id}`);
+      } else if (!SINGLE_TAP_TYPES.has(exerciseTypeById.get(id)!)) {
+        // Probes must be answerable in one tap — a multi-tap type can't cleanly
+        // signal a right/wrong placement decision.
+        problems.push(
+          `placement probe band ${probe.bandNumber}: ${id} is ${exerciseTypeById.get(id)}, not single-tap`,
+        );
+      }
     }
   }
   const allIds = [

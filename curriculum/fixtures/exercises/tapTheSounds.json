@@ -1,0 +1,26 @@
+{
+  "id": "read-e-tapb2-1-01",
+  "type": "tapTheSounds",
+  "payload": {
+    "prompt": {
+      "text": "Tap it out!",
+      "spokenText": "Cat! Tap out the sounds in cat."
+    },
+    "word": "cat",
+    "visual": {
+      "kind": "emoji",
+      "value": "🐱"
+    },
+    "sounds": [
+      {
+        "grapheme": "c"
+      },
+      {
+        "grapheme": "a"
+      },
+      {
+        "grapheme": "t"
+      }
+    ]
+  }
+}

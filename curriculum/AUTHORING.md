@@ -29,6 +29,9 @@ One TypeScript file per unit at `curriculum/src/math/band{N}/unit-<slug>.ts`, ex
 | `tapMatchPairs` | quantity↔numeral, shape↔object | 2–3 pairs max; left/right tile faces = visual and/or label |
 | `ordering` | number order, size sequence | 3–5 items; `correctOrder` is a permutation of item ids; numeral labels fine |
 | `fillBlankWordBank` | equations with a missing part | bands 3+; `template` has exactly one `___` (e.g. `"3 + ___ = 5"`); 3–4 numeric chips |
+| `tapTheSounds` | phoneme segmentation (reading, tap-out) | 2–5 sounds; `sounds[].grapheme` joined must equal `word` (a digraph is ONE tile — `sh`/`ch`/`th`/`ck`); spoken word only, never isolated phonemes; use clean words (every grapheme = one sound, no silent letters, no `x`=/ks/) |
+
+**`tapTheSounds` is kinesthetic practice, not assessment**: it is always warm-correct, carries no accuracy weight, and must NEVER be a placement probe (multi-tap). Because it can't be the thing that proves mastery, every lesson containing it must also carry **≥2 graded exercises** (listenAndPick / multipleChoiceImage) on the same words.
 
 ## Per-lesson type mix (rough)
 

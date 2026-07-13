@@ -27,12 +27,16 @@ final class LessonSession {
     private var resolved: Set<String> = []
 
     private let totalCount: Int
+    /// Exercises that count toward accuracy (excludes always-correct practice
+    /// types like tap-the-sounds), so kinesthetic practice can't inflate mastery.
+    private let gradedCount: Int
 
     init(lesson: Lesson) {
         let playable = lesson.playableExercises
         self.lesson = lesson
         self.queue = playable
         self.totalCount = playable.count
+        self.gradedCount = playable.filter { $0.payload.contributesToAccuracy }.count
     }
 
     var current: Exercise? { queue.first }
@@ -43,7 +47,7 @@ final class LessonSession {
     }
 
     var firstTryAccuracy: Double {
-        totalCount == 0 ? 1 : Double(firstTryCorrect.count) / Double(totalCount)
+        gradedCount == 0 ? 1 : Double(firstTryCorrect.count) / Double(gradedCount)
     }
 
     var isPerfect: Bool { firstTryAccuracy >= 1.0 }
@@ -55,7 +59,7 @@ final class LessonSession {
         attempted.insert(exercise.id)
 
         if correct {
-            if isFirstAttempt {
+            if isFirstAttempt && exercise.payload.contributesToAccuracy {
                 firstTryCorrect.insert(exercise.id)
             }
             resolved.insert(exercise.id)
