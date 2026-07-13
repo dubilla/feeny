@@ -66,6 +66,10 @@ placement lands nondeterministically, usually band 1).
 
 ## Initiative 1: Weave Fundations into the reading path
 
+**Status (2026-07-12):** all six slices (F1–F6) built. F1–F3 + F6 prod-shipped;
+F4 prod-shipped (reading v8); **F5 merged, prod seed pending** (reading → v17).
+Initiative closes once F5 is prod-seeded and packs are exported.
+
 **Why now:** Feeny's reading bands teach generic phonics in a plausible
 order. Most K–3 classrooms (including ours) run Wilson **Fundations®** — an
 Orton-Gillingham program with a very specific spine: letter-keyword-sound
@@ -219,7 +223,7 @@ rules); adversarial review fixes applied (ordering double-solve,
 band-2 audio/option leak, fill-blank near-double-solves). Probes
 deliberately unchanged. Decisions of record in FUNDATIONS_MAP.md.
 
-### [ ] F5: Tap-the-sounds — phoneme segmentation exercise type
+### [x] F5: Tap-the-sounds — BUILT + merged (PR #1, 2026-07-12); prod seed pending
 
 **User Value**: Fundations' signature physical move — tapping out the
 sounds in a word — becomes a Feeny exercise: TTS says "cat," the kid taps
@@ -236,6 +240,25 @@ answer loop; ship ritual.
 **Definition of Done**: A pre-reader can complete a segmentation lesson by
 ear; fixtures decode on old + new app posture; the type appears in
 placement probes only if single-tap-solvable (else excluded by rule).
+
+**Resolution (2026-07-12, PR #1 merged to main):** Interaction is the
+**Guided tap-out** (owner call over build-by-ear / count-the-sounds): TTS
+speaks the whole word, kid taps a row of boxes L→R — each revealing its
+grapheme + a soft pop — then the word blends. Kinesthetic practice, always
+warm-correct. Contract: `tapTheSoundsPayloadSchema` (prompt spokenText
+required, `word`, optional `visual`, `sounds: [{grapheme}]` 2–5) + refine
+that graphemes concatenate to `word` (digraph = ONE tile: sh/ch/th/ck).
+**No per-phoneme audio** — TTS mangles isolated sounds (AUTHORING ban), so
+all speech stays at word level. Two guardrails beyond the raw contract:
+(1) always-correct tap-outs are excluded from the `firstTryAccuracy`
+denominator (`LessonSession.gradedCount`) so they can't inflate mastery/
+band advancement; (2) `validateSubjectSeed` now enforces "tap-out lesson ⇒
+≥2 graded exercises" and "placement probes must be single-tap." Content:
+band-2 *Tap It Out* (clean CVC) + band-3 *Sound Tappers* (digraphs), 6
+lessons. Reading content bumps to **v17** on the prod seed. Verified: unit
+suite + full UI journey + 2 new accuracy-exclusion tests; view confirmed
+on-sim (c→a→t builds). **Remaining (Dan): prod seed → `pnpm export:packs`
+against prod → bundled-packs commit → TestFlight.**
 
 ### [x] F6: The decoding middle — silent-e, vowel teams, r-controlled, blends — SHIPPED to prod 2026-07-11 (reading v7)
 
