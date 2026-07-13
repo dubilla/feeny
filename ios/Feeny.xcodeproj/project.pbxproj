@@ -66,6 +66,7 @@
 		C5F73AAFB0CBB5F560205BB2 /* GameEconomy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E861A5C2429B09FBB2DF9246 /* GameEconomy.swift */; };
 		CB82882BCEEA6AC52E80114C /* fixtures in Resources */ = {isa = PBXBuildFile; fileRef = 1F1B9F2E21CFAE33853D3D79 /* fixtures */; };
 		CE9D71FDF3B0BF97E89DF7B1 /* PlacementSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B4C07881349A87392EE5EF /* PlacementSessionTests.swift */; };
+		D0BF06A5F0656840CCAC2254 /* TapTheSoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966E2D0A60D2D88A81402963 /* TapTheSoundsView.swift */; };
 		D5B31672917FB8721EFBF964 /* SkillMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685D1E80D6489C8C83DD3F41 /* SkillMapView.swift */; };
 		D6420FE4E14393885F22D348 /* SoundEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57C179234C8D50CD2FB3EF5 /* SoundEffects.swift */; };
 		DB453955B2A8B49271E1C598 /* crack1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 85DDC489BCD133A6397CD355 /* crack1.caf */; };
@@ -163,6 +164,7 @@
 		9330D36601541BB383C31119 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		94F799AA34488CD8F9FF8DAF /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		9662A2C2F93EBE337BDF0C6C /* LessonSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonSession.swift; sourceTree = "<group>"; };
+		966E2D0A60D2D88A81402963 /* TapTheSoundsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapTheSoundsView.swift; sourceTree = "<group>"; };
 		A190A25DE9BF6EC8E2C7203E /* FeenlingArtTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeenlingArtTests.swift; sourceTree = "<group>"; };
 		A343C86BA7116E243B39E6EF /* TuningConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuningConstants.swift; sourceTree = "<group>"; };
 		A5B92572BE251A39B88DB20A /* Emblems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emblems.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				8DDA1AF5976E84EE13C73BC9 /* MultipleChoiceImageView.swift */,
 				52BDF84E8A54D5ED47F2AFCE /* OrderingView.swift */,
 				7198DD648F060E8C44816176 /* TapMatchPairsView.swift */,
+				966E2D0A60D2D88A81402963 /* TapTheSoundsView.swift */,
 			);
 			path = Exercises;
 			sourceTree = "<group>";
@@ -698,6 +701,7 @@
 				DF358C3AC179DF4B0BBDC6F6 /* StreakEngine.swift in Sources */,
 				B22D92A69FC0228D668DCF02 /* SubjectHomeView.swift in Sources */,
 				5B166A03C372CD918BDC18E7 /* TapMatchPairsView.swift in Sources */,
+				D0BF06A5F0656840CCAC2254 /* TapTheSoundsView.swift in Sources */,
 				660D31652C733AB8CB790254 /* Theme.swift in Sources */,
 				25EC8FF543DEF51C4A231BC8 /* TuningConstants.swift in Sources */,
 				E1772D2387A6F82619DFF89B /* UnitDetailSheet.swift in Sources */,

@@ -33,6 +33,7 @@ An exercise on the wire:
 | `listenAndPick` | audio-only stimulus, tap 1 of 2–4 cards | `spokenText` required; no giveaway text |
 | `ordering` | tap tiles in sequence to fill slots | 3–5 items; correct = zero wrong taps |
 | `fillBlankWordBank` | tap a chip to fill the single `___` blank | template has exactly one `___` |
+| `tapTheSounds` | hear the word, tap boxes left→right (one per sound) to build & blend it | kinesthetic practice: always warm-correct, no accuracy weight, never a placement probe; `sounds[].grapheme` joined must equal `word` (digraph = one tile); no per-phoneme audio (TTS mangles isolated sounds) |
 
 ## Difficulty bands
 
