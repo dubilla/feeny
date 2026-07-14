@@ -421,6 +421,55 @@ export const twoDigitTeamUp: UnitSeed = {
             correctOrder: ["i3", "i4", "i1", "i2"],
           },
         },
+        {
+          id: "math-e-2digit-3-09",
+          type: "multipleChoiceImage",
+          payload: {
+            prompt: {
+              text: "38 + 27 = ?",
+              spokenText: "Now the ones make a new ten! Thirty-eight plus twenty-seven equals what?",
+            },
+            options: [
+              { id: "a", label: "55" },
+              { id: "b", label: "65" },
+              { id: "c", label: "66" },
+            ],
+            correctOptionId: "b",
+          },
+        },
+        {
+          id: "math-e-2digit-3-10",
+          type: "fillBlankWordBank",
+          payload: {
+            prompt: {
+              text: "53 − 28 = ?",
+              spokenText: "This time you borrow a ten! Fifty-three minus twenty-eight equals what? Fill in the answer!",
+            },
+            template: "53 − 28 = ___",
+            bank: [
+              { id: "c1", label: "25" },
+              { id: "c2", label: "35" },
+              { id: "c3", label: "27" },
+            ],
+            correctChipId: "c1",
+          },
+        },
+        {
+          id: "math-e-2digit-3-11",
+          type: "multipleChoiceImage",
+          payload: {
+            prompt: {
+              text: "48 + 25 = ?",
+              spokenText: "Forty-eight bugs are on a leaf. Twenty-five more crawl on! How many bugs are there now?",
+            },
+            options: [
+              { id: "a", label: "63" },
+              { id: "b", label: "73" },
+              { id: "c", label: "74" },
+            ],
+            correctOptionId: "b",
+          },
+        },
       ],
     },
   ],

@@ -15,9 +15,13 @@ import { numberBondBridge } from "./band3/unit-number-bond-bridge";
 import { teenSumsTrek } from "./band4/unit-teen-sums-trek";
 import { tensOnesTower } from "./band4/unit-tens-ones-tower";
 import { doubleTrouble } from "./band4/unit-double-trouble";
+import { makeTenMachine } from "./band4/unit-make-ten-machine";
 // Band 5 — Hundred Hills
 import { skipCountExpress } from "./band5/unit-skip-count-express";
 import { hundredChartHike } from "./band5/unit-hundred-chart-hike";
+import { jumpAlongTrail } from "./band5/unit-jump-along-trail";
+import { breakApartBuilders } from "./band5/unit-break-apart-builders";
+import { friendlyNumberFixUp } from "./band5/unit-friendly-number-fix-up";
 import { twoDigitTeamUp } from "./band5/unit-two-digit-team-up";
 // Band 6 — Times Tide
 import { groupGatherers } from "./band6/unit-group-gatherers";
@@ -82,8 +86,12 @@ export const mathSeed: SubjectSeed = {
     teenSumsTrek,
     tensOnesTower,
     doubleTrouble,
+    makeTenMachine,
     skipCountExpress,
     hundredChartHike,
+    jumpAlongTrail,
+    breakApartBuilders,
+    friendlyNumberFixUp,
     twoDigitTeamUp,
     groupGatherers,
     clockClimbers,
@@ -103,7 +111,7 @@ export const mathSeed: SubjectSeed = {
     { bandNumber: 2, exerciseIds: ["math-e-teens-2-01", "math-e-compare-2-04", "math-e-order20-2-05"] },
     { bandNumber: 3, exerciseIds: ["math-e-add10-a2-03", "math-e-sub10-2-02", "math-e-bonds10-2-07"] },
     { bandNumber: 4, exerciseIds: ["math-e-add20-2-02", "math-e-tensones-2-03", "math-e-doubles-2-06"] },
-    { bandNumber: 5, exerciseIds: ["math-e-skip-2-05", "math-e-hundred-2-04", "math-e-2digit-2-03"] },
+    { bandNumber: 5, exerciseIds: ["math-e-skip-2-05", "math-e-hundred-2-04", "math-e-jumps-2-07"] },
     { bandNumber: 6, exerciseIds: ["math-e-groups-2-01", "math-e-clock-2-03", "math-e-coins-2-02"] },
     { bandNumber: 7, exerciseIds: ["math-e-times-2-03", "math-e-share-2-02", "math-e-fracs-2-01"] },
     { bandNumber: 8, exerciseIds: ["math-e-bignum-2-01", "math-e-multbig-2-04", "math-e-fraccomp-2-04"] },
