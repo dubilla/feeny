@@ -329,7 +329,7 @@ applied to math.
   15 → +10 → 25 → +5 → 30 → +2 → 32, so 10+5+2 = 17.
 - **Diagram** — same fallback status as addition.
 
-### [ ] M1: Strategy units for band 5 (+ make-ten bridge in band 4)
+### [x] M1: Strategy units for band 5 (+ make-ten bridge in band 4) — BUILT (2026-07-13); prod seed pending
 
 **User Value**: A second grader mid-way through two-digit add/sub hears
 Feeny use the exact strategy language from class — "count on in chunks,"
@@ -390,6 +390,26 @@ change; F5 remains the only contract slice):
 across three units with regrouping problems throughout; make-ten bridge
 exists in band 4; each strategy's *method* is the thing exercised (steps,
 equivalences, landmarks) — not just final answers; suite green; shipped.
+
+**Resolution (2026-07-13, built):** All four units authored (fan-out, one
+agent per unit) and wired in path order: band 4 `math-u-maketen` "Make-Ten
+Machine" (make-a-ten within 20, precursor to compensation/chunking); band 5
+`math-u-jumps` "Jump-Along Trail" (Counting On + Count Back in chunks),
+`math-u-breakapart` "Break-Apart Builders" (Place Value + Subtract in Parts),
+`math-u-friendly` "Friendly Number Fix-Up" (Compensation + Add Up) — inserted
+`hundred → jumps → breakapart → friendly → 2digit`, so Two-Digit Team-Up
+becomes the mixed-practice payoff. All six named classroom strategies covered.
+Two-Digit Team-Up lesson 3 gained three regrouping exercises under NEW ids
+(`-3-09/-10/-11`, existing untouched). Band-5 placement probe swapped
+`math-e-2digit-2-03` (no-regroup) → `math-e-jumps-2-07` (45−17, regrouping,
+single-tap) so the gate tests band-5-level regrouping. No contract change (all
+6 existing types). Fable reviewer pass caught + fixed two `tapMatchPairs`
+ambiguities (two problems sharing a sum) and a "friendly twin" that had no
+friendly ten; math otherwise clean. Verified: full-seed `validateSubjectSeed`
++ automated tapMatchPairs-ambiguity check green; `xcodebuild test` green
+(FeenyTests + PlayLessonUITests); reviewed on an artifact page (92 exercises).
+Math content → **v8** on next prod seed. **Remaining (Dan): prod seed →
+`pnpm export:packs` against prod → bundled-packs commit → TestFlight.**
 
 ---
 
