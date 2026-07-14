@@ -66,9 +66,10 @@ placement lands nondeterministically, usually band 1).
 
 ## Initiative 1: Weave Fundations into the reading path
 
-**Status (2026-07-12):** all six slices (F1–F6) built. F1–F3 + F6 prod-shipped;
-F4 prod-shipped (reading v8); **F5 merged, prod seed pending** (reading → v17).
-Initiative closes once F5 is prod-seeded and packs are exported.
+**Status (2026-07-13):** all six slices (F1–F6) built and **prod-shipped**.
+F5 prod-seeded + packs exported on 2026-07-13 (reading → **v9** on the prod
+channel, bundled alongside M1's math seed). Initiative complete pending only
+the TestFlight archive (shared with M1). ✅
 
 **Why now:** Feeny's reading bands teach generic phonics in a plausible
 order. Most K–3 classrooms (including ours) run Wilson **Fundations®** — an
@@ -223,7 +224,7 @@ rules); adversarial review fixes applied (ordering double-solve,
 band-2 audio/option leak, fill-blank near-double-solves). Probes
 deliberately unchanged. Decisions of record in FUNDATIONS_MAP.md.
 
-### [x] F5: Tap-the-sounds — BUILT + merged (PR #1, 2026-07-12); prod seed pending
+### [x] F5: Tap-the-sounds — SHIPPED to prod 2026-07-13 (reading v9)
 
 **User Value**: Fundations' signature physical move — tapping out the
 sounds in a word — becomes a Feeny exercise: TTS says "cat," the kid taps
@@ -329,7 +330,7 @@ applied to math.
   15 → +10 → 25 → +5 → 30 → +2 → 32, so 10+5+2 = 17.
 - **Diagram** — same fallback status as addition.
 
-### [x] M1: Strategy units for band 5 (+ make-ten bridge in band 4) — BUILT (2026-07-13); prod seed pending
+### [x] M1: Strategy units for band 5 (+ make-ten bridge in band 4) — SHIPPED to prod 2026-07-13 (math v4)
 
 **User Value**: A second grader mid-way through two-digit add/sub hears
 Feeny use the exact strategy language from class — "count on in chunks,"
@@ -408,8 +409,9 @@ ambiguities (two problems sharing a sum) and a "friendly twin" that had no
 friendly ten; math otherwise clean. Verified: full-seed `validateSubjectSeed`
 + automated tapMatchPairs-ambiguity check green; `xcodebuild test` green
 (FeenyTests + PlayLessonUITests); reviewed on an artifact page (92 exercises).
-Math content → **v8** on next prod seed. **Remaining (Dan): prod seed →
-`pnpm export:packs` against prod → bundled-packs commit → TestFlight.**
+Prod-seeded 2026-07-13 (math → **v4** on the prod channel; local counter was
+v8) and bundled packs exported against prod alongside F5 (reading v9).
+**Remaining (Dan): TestFlight archive** (shared with F5).
 
 ---
 
